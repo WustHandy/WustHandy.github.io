@@ -36,7 +36,7 @@
 
    <style>
     body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-image: url(https://pic1.zhimg.com/80/v2-af16da70cb8e243abd76406cc4c52df4_1440w.jpg);
        background-repeat:no-repeat;
        background-size:cover;
        background-attachment:fixed;
@@ -472,14 +472,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -488,6 +488,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -512,30 +515,32 @@
 <p>原根：当 ordna=φ(n)时，称a为模n的原根</p>
 </blockquote>
 <p>python代码实现：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LCG</span><span class="token punctuation">:</span>
-  a <span class="token operator">=</span> <span class="token number">672257317069504227</span>  <span class="token comment" spellcheck="true"># "乘数"</span>
-  b <span class="token operator">=</span> <span class="token number">7382843889490547368</span>  <span class="token comment" spellcheck="true"># "增量"</span>
-  m <span class="token operator">=</span> <span class="token number">9223372036854775783</span>  <span class="token comment" spellcheck="true"># "模数"</span>
-  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> seed<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>state <span class="token operator">=</span> seed  <span class="token comment" spellcheck="true"># "种子"</span>
-  <span class="token keyword">def</span> <span class="token function">next</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>state <span class="token operator">*</span> self<span class="token punctuation">.</span>a <span class="token operator">+</span> self<span class="token punctuation">.</span>b<span class="token punctuation">)</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>m
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>state
-gen <span class="token operator">=</span> LCG<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># seed = 123</span>
-<span class="token keyword">print</span> gen<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第一个生成值</span>
-<span class="token keyword">print</span> gen<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第二个生成值</span>
-<span class="token keyword">print</span> gen<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 第三个生成值</span>
-<span class="token comment" spellcheck="true"># 7060145557346585242</span>
-<span class="token comment" spellcheck="true"># 3490819368718893392</span>
-<span class="token comment" spellcheck="true"># 6200546448603839134</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class LCG:
+  a &#x3D; 672257317069504227  # &quot;乘数&quot;
+  b &#x3D; 7382843889490547368  # &quot;增量&quot;
+  m &#x3D; 9223372036854775783  # &quot;模数&quot;
+  def __init__(self, seed):
+    self.state &#x3D; seed  # &quot;种子&quot;
+  def next(self):
+    self.state &#x3D; (self.state * self.a + self.b) % self.m
+    return self.state
+gen &#x3D; LCG(123)  # seed &#x3D; 123
+print gen.next()  # 第一个生成值
+print gen.next()  # 第二个生成值
+print gen.next()  # 第三个生成值
+# 7060145557346585242
+# 3490819368718893392
+# 6200546448603839134<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <h2 id="Crack-methods"><a href="#Crack-methods" class="headerlink" title="Crack methods"></a>Crack methods</h2><h3 id="unknown-b"><a href="#unknown-b" class="headerlink" title="unknown b"></a>unknown b</h3><p>已知：a,m,s0,s1</p>
 <p>因为<code> s1 = a * s0 + b (mod m)</code></p>
 <p>所以<code>b = s1 - a * s0 (mod m)</code></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_increment</span><span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    increment <span class="token operator">=</span> <span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span>multiplier<span class="token punctuation">)</span> <span class="token operator">%</span> modulus
-    <span class="token keyword">return</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">,</span> increment
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def crack_unknown_increment(states, modulus, multiplier):
+    increment &#x3D; (states[1] - states[0]*multiplier) % modulus
+    return modulus, multiplier, increment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
 <h3 id="unknown-a-b"><a href="#unknown-a-b" class="headerlink" title="unknown (a, b)"></a>unknown (a, b)</h3><p>已知：m,s0,s1,s2</p>
 <p>因为</p>
 <p><code>s1 = a * s0 + b (mod m) </code></p>
@@ -543,39 +548,40 @@ gen <span class="token operator">=</span> LCG<span class="token punctuation">(</
 <p>所以</p>
 <p><code>s2 - s1 = a * (s1 - s0) (mod m)</code></p>
 <p><code>a = (s2 - s1) / (s1 - s0) (mod m)</code></p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_multiplier</span><span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    multiplier <span class="token operator">=</span> <span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> modulus<span class="token punctuation">)</span> <span class="token operator">%</span> modulus <span class="token comment" spellcheck="true"># 注意这里求逆元</span>
-    <span class="token keyword">return</span> crack_unknown_increment<span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def crack_unknown_multiplier(states, modulus):
+    multiplier &#x3D; (states[2] - states[1]) * invert(states[1] - states[0], modulus) % modulus # 注意这里求逆元
+    return crack_unknown_increment(states, modulus, multiplier)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
 <p>这里贴一下一个大师傅的另一种解法（现在没研究明白，等以后研究格密码再补）</p>
 <blockquote>
 <p>求模等式方程组的通法</p>
 <p>基于LLL，对构造的格基进行约化</p>
 <p><img src="https://0xdktb.top/2020/03/27/Summary-of-Crypto-in-CTF-PRNG/Snipaste_2020-03-30_22-30-12.png" alt="img"></p>
 <p><img src="imgs/image-20210203152457151.png" alt="image-20210203152457151"></p>
-<pre class="line-numbers language-python"><code class="language-python">A <span class="token operator">=</span> Matrix<span class="token punctuation">(</span><span class="token punctuation">[</span>
-    <span class="token punctuation">[</span>s0  <span class="token punctuation">,</span>s1  <span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">/</span>m <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span><span class="token number">1</span>   <span class="token punctuation">,</span><span class="token number">1</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">/</span>m <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span><span class="token operator">-</span>s1 <span class="token punctuation">,</span><span class="token operator">-</span>s2 <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">1</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span>m   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token punctuation">[</span><span class="token number">0</span>   <span class="token punctuation">,</span>m   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span>
-<span class="token punctuation">]</span><span class="token punctuation">)</span>
-A <span class="token operator">=</span> A<span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span>
-a <span class="token operator">=</span> None
-b <span class="token operator">=</span> None
-<span class="token keyword">for</span> l <span class="token keyword">in</span> A<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">and</span> l<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> l<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-            a<span class="token punctuation">,</span> b <span class="token operator">=</span> l<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> m<span class="token punctuation">,</span> l<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> m
-        <span class="token keyword">elif</span> l<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token operator">-</span>l<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> m<span class="token punctuation">,</span> <span class="token operator">-</span>l<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">*</span> m
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">continue</span>
-<span class="token keyword">if</span> <span class="token operator">not</span> a <span class="token operator">or</span> <span class="token operator">not</span> b<span class="token punctuation">:</span>
-    <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"[*] No solves"</span><span class="token punctuation">)</span>
-a <span class="token operator">%=</span> m
-b <span class="token operator">%=</span> m
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">A &#x3D; Matrix([
+    [s0  ,s1  ,1&#x2F;m ,0   ,0   ],
+    [1   ,1   ,0   ,1&#x2F;m ,0   ],
+    [-s1 ,-s2 ,0   ,0   ,1   ],
+    [m   ,0   ,0   ,0   ,0   ],
+    [0   ,m   ,0   ,0   ,0   ]
+])
+A &#x3D; A.LLL()
+a &#x3D; None
+b &#x3D; None
+for l in A:
+    if l[0] &#x3D;&#x3D; 0 and l[1] &#x3D;&#x3D; 0:
+        if l[-1] &#x3D;&#x3D; 1:
+            a, b &#x3D; l[2] * m, l[3] * m
+        elif l[-1] &#x3D;&#x3D; -1:
+            a, b &#x3D; -l[2] * m, -l[3] * m
+        else:
+            continue
+if not a or not b:
+    raise ValueError(&quot;[*] No solves&quot;)
+a %&#x3D; m
+b %&#x3D; m<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>构造矩阵进行LLL约化是在解决模等式和CVP等问题时很实用的方法</p>
 </blockquote>
 <h3 id="unknown-a-b-m"><a href="#unknown-a-b-m" class="headerlink" title="unknown (a, b, m)"></a>unknown (a, b, m)</h3><p>已知：s0-s6</p>
@@ -583,229 +589,233 @@ b <span class="token operator">%=</span> m
 <p>假设我们有一组数据data = {𝑘𝑖𝑁}(N为大素数，𝑘𝑖为𝐹𝑁下的随机数)，则reduce(gcd, data)很大概率即为N或N乘上一些很小的因子.（∵ 假设len(data)=n，则在𝑘𝑖视作完全随机的情况下，reduce(gcd, data)有除N外的素因子p的概率约为1/𝑝^𝑛，∴ 在p或n足够大的时候该方法能有效求解N）</p>
 </blockquote>
 <p>即：如果有几个随机数分别乘以n，那么这几个数的gcd就很可能等于n。</p>
-<pre class="line-numbers language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">123456789</span>
-<span class="token keyword">print</span> reduce<span class="token punctuation">(</span>gcd<span class="token punctuation">,</span> <span class="token punctuation">[</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">,</span> randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">,</span> randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 123456789</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">n &#x3D; 123456789
+print reduce(gcd, [randint(1, 1000000)*n, randint(1, 1000000)*n, randint(1, 1000000)*n])
+# 123456789<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>引入序列𝑇𝑛=𝑆𝑛+1−𝑆𝑛</p>
 <p>𝑇𝑛+1=𝑆𝑛+2−𝑆𝑛+1=𝑎(𝑆𝑛+1−𝑆𝑛)=𝑎𝑇𝑛(𝑚𝑜𝑑 𝑚)</p>
 <p>𝑇𝑛+2=𝑆𝑛+3−𝑆𝑛+2=𝑎(𝑆𝑛+2−𝑆𝑛+1)=𝑎𝑇𝑛+1=𝑎^2𝑇𝑛(𝑚𝑜𝑑 𝑚)】</p>
 <p>∴𝑇𝑛𝑇𝑛+2−(𝑇𝑛+1)^2=0(𝑚𝑜𝑑 𝑚)</p>
 <p>因此只要我们能拿到连续𝑛(𝑛≥6)组数据，即可对module进行有效攻击. 后续即转为上一个情形的LCG攻击.</p>
 <p>也就是说我们可以利用n组s，生成几个mod m为0(m的倍数)的一组data(通过<code>𝑇𝑛𝑇𝑛+2−(𝑇𝑛+1)^2</code>求得)，就可以求得它们的最大公因数(<code>reduce(gcd, data)</code>)，也就是模数m，得到了m，就可以进而转化为unknown(a, b)。</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_modulus</span><span class="token punctuation">(</span>states<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    diffs <span class="token operator">=</span> <span class="token punctuation">[</span>s1 <span class="token operator">-</span> s0 <span class="token keyword">for</span> s0<span class="token punctuation">,</span> s1 <span class="token keyword">in</span> zip<span class="token punctuation">(</span>states<span class="token punctuation">,</span> states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    zeroes <span class="token operator">=</span> <span class="token punctuation">[</span>t2<span class="token operator">*</span>t0 <span class="token operator">-</span> t1<span class="token operator">*</span>t1 <span class="token keyword">for</span> t0<span class="token punctuation">,</span> t1<span class="token punctuation">,</span> t2 <span class="token keyword">in</span> zip<span class="token punctuation">(</span>diffs<span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    modulus <span class="token operator">=</span> abs<span class="token punctuation">(</span>reduce<span class="token punctuation">(</span>gcd<span class="token punctuation">,</span> zeroes<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> crack_unknown_multiplier<span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def crack_unknown_modulus(states):
+    diffs &#x3D; [s1 - s0 for s0, s1 in zip(states, states[1:])]
+    zeroes &#x3D; [t2*t0 - t1*t1 for t0, t1, t2 in zip(diffs, diffs[1:], diffs[2:])]
+    modulus &#x3D; abs(reduce(gcd, zeroes))
+    return crack_unknown_multiplier(states, modulus)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Many-Time-Pad-Attack-多次一密攻击"><a href="#Many-Time-Pad-Attack-多次一密攻击" class="headerlink" title="Many Time Pad Attack(多次一密攻击)"></a>Many Time Pad Attack(多次一密攻击)</h2><p><a target="_blank" rel="noopener" href="https://lazzzaro.github.io/2020/11/07/crypto-%E6%B5%81%E5%AF%86%E7%A0%81/#%E5%A4%9A%E6%AC%A1%E4%B8%80%E5%AF%86%E6%94%BB%E5%87%BB%EF%BC%88Many-Time-Pad-Attack%EF%BC%89">https://lazzzaro.github.io/2020/11/07/crypto-%E6%B5%81%E5%AF%86%E7%A0%81/#%E5%A4%9A%E6%AC%A1%E4%B8%80%E5%AF%86%E6%94%BB%E5%87%BB%EF%BC%88Many-Time-Pad-Attack%EF%BC%89</a></p>
 <h2 id="Truncated-LCG-given-a-b-m"><a href="#Truncated-LCG-given-a-b-m" class="headerlink" title="Truncated LCG(given a, b, m)"></a>Truncated LCG(given a, b, m)</h2><p><a target="_blank" rel="noopener" href="https://0xdktb.top/2020/03/27/Summary-of-Crypto-in-CTF-PRNG/">https://0xdktb.top/2020/03/27/Summary-of-Crypto-in-CTF-PRNG/</a></p>
 <h2 id="examples"><a href="#examples" class="headerlink" title="examples"></a>examples</h2><h3 id="NPUCTF2020-babyLCG"><a href="#NPUCTF2020-babyLCG" class="headerlink" title="[NPUCTF2020]babyLCG"></a>[NPUCTF2020]babyLCG</h3><p>又要跟格结合。。学完格再来补</p>
-<h3 id="NCTF2019-LCG"><a href="#NCTF2019-LCG" class="headerlink" title="[NCTF2019]LCG"></a>[NCTF2019]LCG</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LCG</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> seed<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>N <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>a <span class="token operator">=</span> randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>N<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>b <span class="token operator">=</span> randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>N<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>seed <span class="token operator">=</span> seed <span class="token operator">%</span> self<span class="token punctuation">.</span>N
-        self<span class="token punctuation">.</span>state <span class="token operator">=</span> self<span class="token punctuation">.</span>seed
+<h3 id="NCTF2019-LCG"><a href="#NCTF2019-LCG" class="headerlink" title="[NCTF2019]LCG"></a>[NCTF2019]LCG</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">class LCG(object):
+    def __init__(self, seed):
+        self.N &#x3D; getPrime(256)
+        self.a &#x3D; randrange(self.N)
+        self.b &#x3D; randrange(self.N)
+        self.seed &#x3D; seed % self.N
+        self.state &#x3D; self.seed
 
-    <span class="token keyword">def</span> <span class="token function">next</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>a <span class="token operator">*</span> self<span class="token punctuation">.</span>state <span class="token operator">+</span> self<span class="token punctuation">.</span>b<span class="token punctuation">)</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>N
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>state
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="challenge1"><a href="#challenge1" class="headerlink" title="challenge1"></a>challenge1</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Generating challenge 1 [++++++++++++++++]'</span>
-    init_seed <span class="token operator">=</span> getrandbits<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-    lcg <span class="token operator">=</span> LCG<span class="token punctuation">(</span>init_seed<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] init_seed = getrandbits(256)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg = LCG(init_seed)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.N = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>N<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.a = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.b = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>b<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># print lcg.seed</span>
-    guess <span class="token operator">=</span> int<span class="token punctuation">(</span>raw_input<span class="token punctuation">(</span><span class="token string">"[-] lcg.seed = "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> guess <span class="token operator">!=</span> lcg<span class="token punctuation">.</span>seed<span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">'[!] Sorry, you are wrong, exit...'</span>
-        exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Challenge 1 completed [++++++++++++++++]\n\n'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-N <span class="token operator">=</span> <span class="token number">58752504807475554471851705640525123198743088433770689920509844260675922894303</span>
-a <span class="token operator">=</span> <span class="token number">42193965358850167681766742821143818559444699348244818042292306553454049730799</span>
-b <span class="token operator">=</span> <span class="token number">42429115791925198614889893041072535667400342792227251328952232401985843207872</span>
-s1 <span class="token operator">=</span> <span class="token number">123623408317446005887944641919451936767286763339264317753249629629642353726</span>
-<span class="token keyword">print</span> <span class="token punctuation">(</span>s1 <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token operator">*</span>invert<span class="token punctuation">(</span>a<span class="token punctuation">,</span> N<span class="token punctuation">)</span><span class="token operator">%</span>N
-<span class="token comment" spellcheck="true"># 3089764217562322037307689879824939943247311529771999590125371401998628371556</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="challenge2"><a href="#challenge2" class="headerlink" title="challenge2"></a>challenge2</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Generating challenge 2 [++++++++++++++++]'</span>
-    init_seed <span class="token operator">=</span> getrandbits<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-    lcg <span class="token operator">=</span> LCG<span class="token punctuation">(</span>init_seed<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] init_seed = getrandbits(256)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg = LCG(init_seed)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.N = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>N<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.a = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># print lcg.seed</span>
-    guess <span class="token operator">=</span> int<span class="token punctuation">(</span>raw_input<span class="token punctuation">(</span><span class="token string">"[-] lcg.seed = "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> guess <span class="token operator">!=</span> lcg<span class="token punctuation">.</span>seed<span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">'[!] Sorry, you are wrong, exit...'</span>
-        exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Challenge 2 completed [++++++++++++++++]\n'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python">N <span class="token operator">=</span> <span class="token number">101470213826837298141028377779692401427985568344670829326638899536127536313103</span>
-a <span class="token operator">=</span> <span class="token number">86370044869286000119047733119317698391807712572419053385405009900702446856846</span>
-s1 <span class="token operator">=</span> <span class="token number">27339319018189698721036925245943861167317224772565620839961798799373592916981</span>
-s2 <span class="token operator">=</span> <span class="token number">45263309243420058081365422177433427100509767860087066494963084621382820012390</span>
-b <span class="token operator">=</span> <span class="token punctuation">(</span>s2 <span class="token operator">-</span> s1 <span class="token operator">*</span> a<span class="token punctuation">)</span><span class="token operator">%</span>N
-<span class="token keyword">print</span> <span class="token punctuation">(</span>s1 <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token operator">*</span>invert<span class="token punctuation">(</span>a<span class="token punctuation">,</span> N<span class="token punctuation">)</span><span class="token operator">%</span>N
-<span class="token comment" spellcheck="true"># 33765136920494984413601288497824917256683713134500996060688539794373845183755</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="challenge3"><a href="#challenge3" class="headerlink" title="challenge3"></a>challenge3</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Generating challenge 3 [++++++++++++++++]'</span>
-    init_seed <span class="token operator">=</span> getrandbits<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-    lcg <span class="token operator">=</span> LCG<span class="token punctuation">(</span>init_seed<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] init_seed = getrandbits(256)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg = LCG(init_seed)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.N = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>N<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># print lcg.seed</span>
-    guess <span class="token operator">=</span> int<span class="token punctuation">(</span>raw_input<span class="token punctuation">(</span><span class="token string">"[-] lcg.seed = "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> guess <span class="token operator">!=</span> lcg<span class="token punctuation">.</span>seed<span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">'[!] Sorry, you are wrong, exit...'</span>
-        exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Challenge 3 completed [++++++++++++++++]\n'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-N <span class="token operator">=</span> <span class="token number">86766439951265287525487539006776786932804476484278575487912531572552286991509</span>
-s1 <span class="token operator">=</span> <span class="token number">63587912967838086183322581621576636358608467591605562266383548088573935033444</span>
-s2 <span class="token operator">=</span> <span class="token number">28390902812821650275945306214310346484832726105204083622359403128874833124588</span>
-s3 <span class="token operator">=</span> <span class="token number">30101273684101790863644319735020937206505092134221511353128745353203553781415</span>
-a <span class="token operator">=</span> <span class="token punctuation">(</span>s3 <span class="token operator">-</span> s2<span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>s2 <span class="token operator">-</span> s1<span class="token punctuation">,</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N
-b <span class="token operator">=</span> <span class="token punctuation">(</span>s2 <span class="token operator">-</span> s1 <span class="token operator">*</span> a<span class="token punctuation">)</span> <span class="token operator">%</span> N
-s0 <span class="token operator">=</span> <span class="token punctuation">(</span>s1 <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>a<span class="token punctuation">,</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N
-<span class="token keyword">print</span> s0
-<span class="token comment" spellcheck="true"># 3481108678780346291643455023551848157248371628861397673129497751455844069120</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="challenge4"><a href="#challenge4" class="headerlink" title="challenge4"></a>challenge4</h4><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] Generating challenge 4 [++++++++++++++++]'</span>
-    init_seed <span class="token operator">=</span> getrandbits<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-    lcg <span class="token operator">=</span> LCG<span class="token punctuation">(</span>init_seed<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] init_seed = getrandbits(256)'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] lcg = LCG(init_seed)'</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">'[+] lcg.next() = '</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># print lcg.seed</span>
-    guess <span class="token operator">=</span> int<span class="token punctuation">(</span>raw_input<span class="token punctuation">(</span><span class="token string">"[-] lcg.seed = "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> guess <span class="token operator">!=</span> lcg<span class="token punctuation">.</span>seed<span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">'[!] Sorry, you are wrong, exit...'</span>
-        exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span> <span class="token string">'[++++++++++++++++] challenge 4 completed [++++++++++++++++]\n'</span>
-    <span class="token keyword">print</span> <span class="token string">'[+] Good job! Here is your flag: '</span> <span class="token operator">+</span> flag
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> primefac <span class="token keyword">import</span> <span class="token operator">*</span>
-s <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">91998030559539294118763300984087645302586520269401699283197802967845643768875</span><span class="token punctuation">,</span> <span class="token number">80069740776294650362142884296348197761629802041548573589982752426687778180055</span><span class="token punctuation">,</span> <span class="token number">55063243971314211579722221731224042285420160417657223615910086478363530969645</span><span class="token punctuation">,</span> <span class="token number">102301473242334107121311900448732568466210701241317168575997729679274391909345</span><span class="token punctuation">,</span> <span class="token number">50041444132184927123261592271067474333230884356724219423508831265553492817229</span><span class="token punctuation">,</span> <span class="token number">50661436852907184517648938922437143528821344611212575011889385677863365840831</span><span class="token punctuation">]</span>
-diffs <span class="token operator">=</span> <span class="token punctuation">[</span>s1 <span class="token operator">-</span> s0 <span class="token keyword">for</span> s1<span class="token punctuation">,</span> s0 <span class="token keyword">in</span> zip<span class="token punctuation">(</span>s<span class="token punctuation">,</span> s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-zeros <span class="token operator">=</span> <span class="token punctuation">[</span>t2<span class="token operator">*</span>t0<span class="token operator">-</span>t1<span class="token operator">*</span>t1 <span class="token keyword">for</span> t0<span class="token punctuation">,</span> t1<span class="token punctuation">,</span> t2 <span class="token keyword">in</span> zip<span class="token punctuation">(</span>diffs<span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-N <span class="token operator">=</span> abs<span class="token punctuation">(</span>reduce<span class="token punctuation">(</span>gcd<span class="token punctuation">,</span> zeros<span class="token punctuation">)</span><span class="token punctuation">)</span>
-factors <span class="token operator">=</span> factorint<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-<span class="token keyword">while</span> <span class="token operator">not</span> isprime<span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 注意这里N刚开始有可能不是素数导致后面无法求出逆元</span>
-    <span class="token keyword">for</span> prime<span class="token punctuation">,</span> order <span class="token keyword">in</span> factors<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> prime<span class="token punctuation">.</span>bit_length<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">128</span><span class="token punctuation">:</span>
-            <span class="token keyword">continue</span>
-        N <span class="token operator">=</span> N <span class="token operator">/</span> prime<span class="token operator">**</span>order
-a <span class="token operator">=</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N
-b <span class="token operator">=</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> a<span class="token punctuation">)</span> <span class="token operator">%</span> N
-seed <span class="token operator">=</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>a<span class="token punctuation">,</span> N<span class="token punctuation">)</span> <span class="token operator">%</span> N
-<span class="token keyword">print</span> seed
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="BJDCTF3rd-easyLCG"><a href="#BJDCTF3rd-easyLCG" class="headerlink" title="[BJDCTF3rd]easyLCG"></a>[BJDCTF3rd]easyLCG</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span><span class="token operator">*</span>
-<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
+    def next(self):
+        self.state &#x3D; (self.a * self.state + self.b) % self.N
+        return self.state<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<span class="token keyword">class</span> <span class="token class-name">LCG</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>a <span class="token operator">=</span> getRandomNBitInteger<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>b <span class="token operator">=</span> getRandomNBitInteger<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>m <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>seed <span class="token operator">=</span> getRandomNBitInteger<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">next</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>seed <span class="token operator">=</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>a<span class="token operator">*</span>self<span class="token punctuation">.</span>seed<span class="token operator">+</span>self<span class="token punctuation">.</span>b<span class="token punctuation">)</span> <span class="token operator">%</span> self<span class="token punctuation">.</span>m
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>seed <span class="token operator">>></span> <span class="token number">16</span>
-
-    <span class="token keyword">def</span> <span class="token function">output</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"a = &amp;#123;&amp;#125;\nb = &amp;#123;&amp;#125;\nm = &amp;#123;&amp;#125;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>a<span class="token punctuation">,</span> self<span class="token punctuation">.</span>b<span class="token punctuation">,</span> self<span class="token punctuation">.</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"state1 = &amp;#123;&amp;#125;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"state2 = &amp;#123;&amp;#125;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>self<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">class</span> <span class="token class-name">DH</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>lcg <span class="token operator">=</span> LCG<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>lcg<span class="token punctuation">.</span>output<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>g <span class="token operator">=</span> getRandomNBitInteger<span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>m <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>A<span class="token punctuation">,</span> self<span class="token punctuation">.</span>a <span class="token operator">=</span> self<span class="token punctuation">.</span>gen_AB<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>B<span class="token punctuation">,</span> self<span class="token punctuation">.</span>b <span class="token operator">=</span> self<span class="token punctuation">.</span>gen_AB<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>key <span class="token operator">=</span> pow<span class="token punctuation">(</span>self<span class="token punctuation">.</span>A<span class="token punctuation">,</span> self<span class="token punctuation">.</span>b<span class="token punctuation">,</span> self<span class="token punctuation">.</span>m<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">gen_AB</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token string">''</span>
-        <span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            x <span class="token operator">+=</span> <span class="token string">'1'</span> <span class="token keyword">if</span> self<span class="token punctuation">.</span>lcg<span class="token punctuation">.</span>next<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token keyword">else</span> <span class="token string">'0'</span>
-        <span class="token keyword">return</span> pow<span class="token punctuation">(</span>self<span class="token punctuation">.</span>g<span class="token punctuation">,</span> int<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>m<span class="token punctuation">)</span><span class="token punctuation">,</span> int<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<h4 id="challenge1"><a href="#challenge1" class="headerlink" title="challenge1"></a>challenge1</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">def challenge1():
+    print &#39;[++++++++++++++++] Generating challenge 1 [++++++++++++++++]&#39;
+    init_seed &#x3D; getrandbits(256)
+    lcg &#x3D; LCG(init_seed)
+    print &#39;[+] init_seed &#x3D; getrandbits(256)&#39;
+    print &#39;[+] lcg &#x3D; LCG(init_seed)&#39;
+    print &#39;[+] lcg.N &#x3D; &#39; + str(lcg.N)
+    print &#39;[+] lcg.a &#x3D; &#39; + str(lcg.a)
+    print &#39;[+] lcg.b &#x3D; &#39; + str(lcg.b)
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    # print lcg.seed
+    guess &#x3D; int(raw_input(&quot;[-] lcg.seed &#x3D; &quot;))
+    if guess !&#x3D; lcg.seed:
+        print &#39;[!] Sorry, you are wrong, exit...&#39;
+        exit(0)
+    print &#39;[++++++++++++++++] Challenge 1 completed [++++++++++++++++]\n\n&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-DH <span class="token operator">=</span> DH<span class="token punctuation">(</span><span class="token punctuation">)</span>
-flag <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"g = &amp;#123;&amp;#125;\nA = &amp;#123;&amp;#125;\nB = &amp;#123;&amp;#125;\nM = &amp;#123;&amp;#125;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>DH<span class="token punctuation">.</span>g<span class="token punctuation">,</span> DH<span class="token punctuation">.</span>A<span class="token punctuation">,</span> DH<span class="token punctuation">.</span>B<span class="token punctuation">,</span> DH<span class="token punctuation">.</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Cipher = &amp;#123;&amp;#125;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>flag <span class="token operator">^</span> DH<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+N &#x3D; 58752504807475554471851705640525123198743088433770689920509844260675922894303
+a &#x3D; 42193965358850167681766742821143818559444699348244818042292306553454049730799
+b &#x3D; 42429115791925198614889893041072535667400342792227251328952232401985843207872
+s1 &#x3D; 123623408317446005887944641919451936767286763339264317753249629629642353726
+print (s1 - b)*invert(a, N)%N
+# 3089764217562322037307689879824939943247311529771999590125371401998628371556<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token triple-quoted-string string">'''
-a = 3844066521
-b = 3316005024
-m = 2249804527
-state1 = 16269
-state2 = 4249
-g = 183096451267674849541594370111199688704
-A = 102248652770540219619953045171664636108622486775480799200725530949685509093530
-B = 74913924633988481450801262607456437193056607965094613549273335198280176291445
-M = 102752586316294557951738800745394456033378966059875498971396396583576430992701
-Cipher = 13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703
-'''</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="challenge2"><a href="#challenge2" class="headerlink" title="challenge2"></a>challenge2</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">def challenge2():
+    print &#39;[++++++++++++++++] Generating challenge 2 [++++++++++++++++]&#39;
+    init_seed &#x3D; getrandbits(256)
+    lcg &#x3D; LCG(init_seed)
+    print &#39;[+] init_seed &#x3D; getrandbits(256)&#39;
+    print &#39;[+] lcg &#x3D; LCG(init_seed)&#39;
+    print &#39;[+] lcg.N &#x3D; &#39; + str(lcg.N)
+    print &#39;[+] lcg.a &#x3D; &#39; + str(lcg.a)
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    # print lcg.seed
+    guess &#x3D; int(raw_input(&quot;[-] lcg.seed &#x3D; &quot;))
+    if guess !&#x3D; lcg.seed:
+        print &#39;[!] Sorry, you are wrong, exit...&#39;
+        exit(0)
+    print &#39;[++++++++++++++++] Challenge 2 completed [++++++++++++++++]\n&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">N &#x3D; 101470213826837298141028377779692401427985568344670829326638899536127536313103
+a &#x3D; 86370044869286000119047733119317698391807712572419053385405009900702446856846
+s1 &#x3D; 27339319018189698721036925245943861167317224772565620839961798799373592916981
+s2 &#x3D; 45263309243420058081365422177433427100509767860087066494963084621382820012390
+b &#x3D; (s2 - s1 * a)%N
+print (s1 - b)*invert(a, N)%N
+# 33765136920494984413601288497824917256683713134500996060688539794373845183755<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h4 id="challenge3"><a href="#challenge3" class="headerlink" title="challenge3"></a>challenge3</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">def challenge3():
+    print &#39;[++++++++++++++++] Generating challenge 3 [++++++++++++++++]&#39;
+    init_seed &#x3D; getrandbits(256)
+    lcg &#x3D; LCG(init_seed)
+    print &#39;[+] init_seed &#x3D; getrandbits(256)&#39;
+    print &#39;[+] lcg &#x3D; LCG(init_seed)&#39;
+    print &#39;[+] lcg.N &#x3D; &#39; + str(lcg.N)
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    # print lcg.seed
+    guess &#x3D; int(raw_input(&quot;[-] lcg.seed &#x3D; &quot;))
+    if guess !&#x3D; lcg.seed:
+        print &#39;[!] Sorry, you are wrong, exit...&#39;
+        exit(0)
+    print &#39;[++++++++++++++++] Challenge 3 completed [++++++++++++++++]\n&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+N &#x3D; 86766439951265287525487539006776786932804476484278575487912531572552286991509
+s1 &#x3D; 63587912967838086183322581621576636358608467591605562266383548088573935033444
+s2 &#x3D; 28390902812821650275945306214310346484832726105204083622359403128874833124588
+s3 &#x3D; 30101273684101790863644319735020937206505092134221511353128745353203553781415
+a &#x3D; (s3 - s2) * invert(s2 - s1, N) % N
+b &#x3D; (s2 - s1 * a) % N
+s0 &#x3D; (s1 - b) * invert(a, N) % N
+print s0
+# 3481108678780346291643455023551848157248371628861397673129497751455844069120<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h4 id="challenge4"><a href="#challenge4" class="headerlink" title="challenge4"></a>challenge4</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">def challenge4():
+    print &#39;[++++++++++++++++] Generating challenge 4 [++++++++++++++++]&#39;
+    init_seed &#x3D; getrandbits(256)
+    lcg &#x3D; LCG(init_seed)
+    print &#39;[+] init_seed &#x3D; getrandbits(256)&#39;
+    print &#39;[+] lcg &#x3D; LCG(init_seed)&#39;
+    for _ in range(6):
+        print &#39;[+] lcg.next() &#x3D; &#39; + str(lcg.next())
+    # print lcg.seed
+    guess &#x3D; int(raw_input(&quot;[-] lcg.seed &#x3D; &quot;))
+    if guess !&#x3D; lcg.seed:
+        print &#39;[!] Sorry, you are wrong, exit...&#39;
+        exit(0)
+    print &#39;[++++++++++++++++] challenge 4 completed [++++++++++++++++]\n&#39;
+    print &#39;[+] Good job! Here is your flag: &#39; + flag<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+from primefac import *
+s &#x3D; [91998030559539294118763300984087645302586520269401699283197802967845643768875, 80069740776294650362142884296348197761629802041548573589982752426687778180055, 55063243971314211579722221731224042285420160417657223615910086478363530969645, 102301473242334107121311900448732568466210701241317168575997729679274391909345, 50041444132184927123261592271067474333230884356724219423508831265553492817229, 50661436852907184517648938922437143528821344611212575011889385677863365840831]
+diffs &#x3D; [s1 - s0 for s1, s0 in zip(s, s[1:])]
+zeros &#x3D; [t2*t0-t1*t1 for t0, t1, t2 in zip(diffs, diffs[1:], diffs[2:])]
+N &#x3D; abs(reduce(gcd, zeros))
+factors &#x3D; factorint(N)
+while not isprime(N): # 注意这里N刚开始有可能不是素数导致后面无法求出逆元
+    for prime, order in factors.items():
+        if prime.bit_length() &gt; 128:
+            continue
+        N &#x3D; N &#x2F; prime**order
+a &#x3D; (s[2] - s[1]) * invert(s[1] - s[0], N) % N
+b &#x3D; (s[1] - s[0] * a) % N
+seed &#x3D; (s[0] - b) * invert(a, N) % N
+print seed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h3 id="BJDCTF3rd-easyLCG"><a href="#BJDCTF3rd-easyLCG" class="headerlink" title="[BJDCTF3rd]easyLCG"></a>[BJDCTF3rd]easyLCG</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">from Crypto.Util.number import*
+from secret import flag
+
+
+class LCG:
+    def __init__(self):
+        self.a &#x3D; getRandomNBitInteger(32)
+        self.b &#x3D; getRandomNBitInteger(32)
+        self.m &#x3D; getPrime(32)
+        self.seed &#x3D; getRandomNBitInteger(32)
+
+    def next(self):
+        self.seed &#x3D; (self.a*self.seed+self.b) % self.m
+        return self.seed &gt;&gt; 16
+
+    def output(self):
+        print(&quot;a &#x3D; &#123;&#125;\nb &#x3D; &#123;&#125;\nm &#x3D; &#123;&#125;&quot;.format(self.a, self.b, self.m))
+        print(&quot;state1 &#x3D; &#123;&#125;&quot;.format(self.next()))
+        print(&quot;state2 &#x3D; &#123;&#125;&quot;.format(self.next()))
+
+
+class DH:
+    def __init__(self):
+        self.lcg &#x3D; LCG()
+        self.lcg.output()
+        self.g &#x3D; getRandomNBitInteger(128)
+        self.m &#x3D; getPrime(256)
+        self.A, self.a &#x3D; self.gen_AB()
+        self.B, self.b &#x3D; self.gen_AB()
+        self.key &#x3D; pow(self.A, self.b, self.m)
+
+    def gen_AB(self):
+        x &#x3D; &#39;&#39;
+        for _ in range(64):
+            x +&#x3D; &#39;1&#39; if self.lcg.next() % 2 else &#39;0&#39;
+        return pow(self.g, int(x, 2), self.m), int(x, 2)
+
+
+DH &#x3D; DH()
+flag &#x3D; bytes_to_long(flag)
+print(&quot;g &#x3D; &#123;&#125;\nA &#x3D; &#123;&#125;\nB &#x3D; &#123;&#125;\nM &#x3D; &#123;&#125;&quot;.format(DH.g, DH.A, DH.B, DH.m))
+print(&quot;Cipher &#x3D; &#123;&#125;&quot;.format(flag ^ DH.key))
+
+&#39;&#39;&#39;
+a &#x3D; 3844066521
+b &#x3D; 3316005024
+m &#x3D; 2249804527
+state1 &#x3D; 16269
+state2 &#x3D; 4249
+g &#x3D; 183096451267674849541594370111199688704
+A &#x3D; 102248652770540219619953045171664636108622486775480799200725530949685509093530
+B &#x3D; 74913924633988481450801262607456437193056607965094613549273335198280176291445
+M &#x3D; 102752586316294557951738800745394456033378966059875498971396396583576430992701
+Cipher &#x3D; 13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703
+&#39;&#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>爆破低位的那16位，满足条件的有四个</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
-a <span class="token operator">=</span> <span class="token number">3844066521</span>
-b <span class="token operator">=</span> <span class="token number">3316005024</span>
-m <span class="token operator">=</span> <span class="token number">2249804527</span>
-state1 <span class="token operator">=</span> <span class="token number">16269</span>
-state2 <span class="token operator">=</span> <span class="token number">4249</span>
-g <span class="token operator">=</span> <span class="token number">183096451267674849541594370111199688704</span>
-A <span class="token operator">=</span> <span class="token number">102248652770540219619953045171664636108622486775480799200725530949685509093530</span>
-B <span class="token operator">=</span> <span class="token number">74913924633988481450801262607456437193056607965094613549273335198280176291445</span>
-M <span class="token operator">=</span> <span class="token number">102752586316294557951738800745394456033378966059875498971396396583576430992701</span>
-Cipher <span class="token operator">=</span> <span class="token number">13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s1 <span class="token operator">=</span> <span class="token punctuation">(</span>state1 <span class="token operator">&lt;&lt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">+</span> i
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>s1 <span class="token operator">*</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> m<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">16</span> <span class="token operator">==</span> state2<span class="token punctuation">:</span>
-        s2 <span class="token operator">=</span> <span class="token punctuation">(</span>s1 <span class="token operator">*</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> m
-        x <span class="token operator">=</span> <span class="token string">''</span>
-        <span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            s2 <span class="token operator">=</span> <span class="token punctuation">(</span>s2 <span class="token operator">*</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> m
-            x <span class="token operator">+=</span> <span class="token string">'1'</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>s2<span class="token operator">>></span><span class="token number">16</span><span class="token punctuation">)</span><span class="token operator">%</span> <span class="token number">2</span> <span class="token keyword">else</span> <span class="token string">'0'</span>
-        x <span class="token operator">=</span> int<span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-        key <span class="token operator">=</span> pow<span class="token punctuation">(</span>B<span class="token punctuation">,</span> x<span class="token punctuation">,</span> M<span class="token punctuation">)</span>
-        <span class="token keyword">print</span> n2s<span class="token punctuation">(</span>Cipher <span class="token operator">^</span> key<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># flag&amp;#123;4dfe14e0c6c21ffcf5a3b4f0ed1911f6&amp;#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from libnum import *
+a &#x3D; 3844066521
+b &#x3D; 3316005024
+m &#x3D; 2249804527
+state1 &#x3D; 16269
+state2 &#x3D; 4249
+g &#x3D; 183096451267674849541594370111199688704
+A &#x3D; 102248652770540219619953045171664636108622486775480799200725530949685509093530
+B &#x3D; 74913924633988481450801262607456437193056607965094613549273335198280176291445
+M &#x3D; 102752586316294557951738800745394456033378966059875498971396396583576430992701
+Cipher &#x3D; 13040004482819935755130996285494678592830702618071750116744173145400949521388647864913527703
+for i in range(2**16):
+    s1 &#x3D; (state1 &lt;&lt; 16) + i
+    if ((s1 * a + b) % m) &gt;&gt; 16 &#x3D;&#x3D; state2:
+        s2 &#x3D; (s1 * a + b) % m
+        x &#x3D; &#39;&#39;
+        for _ in range(64):
+            s2 &#x3D; (s2 * a + b) % m
+            x +&#x3D; &#39;1&#39; if (s2&gt;&gt;16)% 2 else &#39;0&#39;
+        x &#x3D; int(x, 2)
+        key &#x3D; pow(B, x, M)
+        print n2s(Cipher ^ key)
+# flag&#123;4dfe14e0c6c21ffcf5a3b4f0ed1911f6&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -892,132 +902,6 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
 
                 </div>
             </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -1315,7 +1199,7 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1328,13 +1212,57 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.6k</span>&nbsp;字
+                class="white-color">4k</span>&nbsp;字
             
             
             
             
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "4";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             

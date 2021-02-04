@@ -36,7 +36,7 @@
 
    <style>
     body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-image: url(https://pic1.zhimg.com/80/v2-af16da70cb8e243abd76406cc4c52df4_1440w.jpg);
        background-repeat:no-repeat;
        background-size:cover;
        background-attachment:fixed;
@@ -472,14 +472,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
 
@@ -488,6 +488,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -499,123 +502,119 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="RoarCTF2019-babyRSA"><a href="#RoarCTF2019-babyRSA" class="headerlink" title="[RoarCTF2019]babyRSA"></a>[RoarCTF2019]babyRSA</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> sympy
-<span class="token keyword">import</span> random
+                <h1 id="RoarCTF2019-babyRSA"><a href="#RoarCTF2019-babyRSA" class="headerlink" title="[RoarCTF2019]babyRSA"></a>[RoarCTF2019]babyRSA</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">import sympy
+import random
 
-<span class="token keyword">def</span> <span class="token function">myGetPrime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    A<span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">513</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span>
-    B<span class="token operator">=</span>A<span class="token operator">-</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1e3</span><span class="token punctuation">,</span><span class="token number">1e5</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> sympy<span class="token punctuation">.</span>nextPrime<span class="token punctuation">(</span><span class="token punctuation">(</span>B!<span class="token punctuation">)</span><span class="token operator">%</span>A<span class="token punctuation">)</span>
-p<span class="token operator">=</span>myGetPrime<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#A1=21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407</span>
-<span class="token comment" spellcheck="true">#B1=21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596</span>
+def myGetPrime():
+    A&#x3D; getPrime(513)
+    print(A)
+    B&#x3D;A-random.randint(1e3,1e5)
+    print(B)
+    return sympy.nextPrime((B!)%A)
+p&#x3D;myGetPrime()
+#A1&#x3D;21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407
+#B1&#x3D;21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596
 
-q<span class="token operator">=</span>myGetPrime<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#A2=16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927</span>
-<span class="token comment" spellcheck="true">#B2=16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026</span>
+q&#x3D;myGetPrime()
+#A2&#x3D;16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927
+#B2&#x3D;16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026
 
-r<span class="token operator">=</span>myGetPrime<span class="token punctuation">(</span><span class="token punctuation">)</span>
+r&#x3D;myGetPrime()
 
-n<span class="token operator">=</span>p<span class="token operator">*</span>q<span class="token operator">*</span>r
-<span class="token comment" spellcheck="true">#n=85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733</span>
-c<span class="token operator">=</span>pow<span class="token punctuation">(</span>flag<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#e=0x1001</span>
-<span class="token comment" spellcheck="true">#c=75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428</span>
-<span class="token comment" spellcheck="true">#so,what is the flag?</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+n&#x3D;p*q*r
+#n&#x3D;85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733
+c&#x3D;pow(flag,e,n)
+#e&#x3D;0x1001
+#c&#x3D;75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428
+#so,what is the flag?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>wilson定理：<br>当且仅当p为素数时：( p -1 )! ≡ -1 ( mod p )</p>
 </blockquote>
 <p>通过invert函数，一步步将A推成B</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> gmpy2
-<span class="token keyword">import</span> sympy
-<span class="token keyword">import</span> libnum
-<span class="token keyword">def</span> <span class="token function">wilson</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    t<span class="token operator">=</span>A<span class="token operator">-</span>B<span class="token number">-1</span>
-    res<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>
-    k<span class="token operator">=</span>A<span class="token number">-1</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        res<span class="token operator">=</span><span class="token punctuation">(</span>res<span class="token operator">*</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>k<span class="token punctuation">,</span>A<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">%</span>A
-        k<span class="token operator">=</span>k<span class="token number">-1</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> res<span class="token operator">+</span>A
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> res
-n<span class="token operator">=</span><span class="token number">85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733</span>
-e<span class="token operator">=</span><span class="token number">0x1001</span>
-c<span class="token operator">=</span><span class="token number">75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428</span>
-A2<span class="token operator">=</span><span class="token number">16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927</span>
-B2<span class="token operator">=</span><span class="token number">16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026</span>
-A1<span class="token operator">=</span><span class="token number">21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407</span>
-B1<span class="token operator">=</span><span class="token number">21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596</span>
-p<span class="token operator">=</span>sympy<span class="token punctuation">.</span>nextprime<span class="token punctuation">(</span>wilson<span class="token punctuation">(</span>A1<span class="token punctuation">,</span>B1<span class="token punctuation">)</span><span class="token punctuation">)</span>
-q<span class="token operator">=</span>sympy<span class="token punctuation">.</span>nextprime<span class="token punctuation">(</span>wilson<span class="token punctuation">(</span>A2<span class="token punctuation">,</span>B2<span class="token punctuation">)</span><span class="token punctuation">)</span>
-r<span class="token operator">=</span>n<span class="token operator">//</span>p<span class="token operator">//</span>q
-phi<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token number">-1</span><span class="token punctuation">)</span>
-d<span class="token operator">=</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
-m<span class="token operator">=</span>pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>libnum<span class="token punctuation">.</span>n2s<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#RoarCTF&amp;#123;wm-CongrAtu1ation4-1t4-ju4t-A-bAby-R4A&amp;#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import gmpy2
+import sympy
+import libnum
+def wilson(A,B):
+	t&#x3D;A-B-1
+	res&#x3D;-1
+	k&#x3D;A-1
+	for i in range(t):
+		res&#x3D;(res*gmpy2.invert(k,A))%A
+		k&#x3D;k-1
+	if(res&lt;0):
+		return res+A
+	else:
+		return res
+n&#x3D;85492663786275292159831603391083876175149354309327673008716627650718160585639723100793347534649628330416631255660901307533909900431413447524262332232659153047067908693481947121069070451562822417357656432171870951184673132554213690123308042697361969986360375060954702920656364144154145812838558365334172935931441424096270206140691814662318562696925767991937369782627908408239087358033165410020690152067715711112732252038588432896758405898709010342467882264362733
+e&#x3D;0x1001
+c&#x3D;75700883021669577739329316795450706204502635802310731477156998834710820770245219468703245302009998932067080383977560299708060476222089630209972629755965140317526034680452483360917378812244365884527186056341888615564335560765053550155758362271622330017433403027261127561225585912484777829588501213961110690451987625502701331485141639684356427316905122995759825241133872734362716041819819948645662803292418802204430874521342108413623635150475963121220095236776428
+A2&#x3D;16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858418927
+B2&#x3D;16466113115839228119767887899308820025749260933863446888224167169857612178664139545726340867406790754560227516013796269941438076818194617030304851858351026
+A1&#x3D;21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467234407
+B1&#x3D;21856963452461630437348278434191434000066076750419027493852463513469865262064340836613831066602300959772632397773487317560339056658299954464169264467140596
+p&#x3D;sympy.nextprime(wilson(A1,B1))
+q&#x3D;sympy.nextprime(wilson(A2,B2))
+r&#x3D;n&#x2F;&#x2F;p&#x2F;&#x2F;q
+phi&#x3D;(p-1)*(q-1)*(r-1)
+d&#x3D;gmpy2.invert(e,phi)
+m&#x3D;pow(c,d,n)
+print(libnum.n2s(m))
+#RoarCTF&#123;wm-CongrAtu1ation4-1t4-ju4t-A-bAby-R4A&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>或者</p>
-<pre class="line-numbers language-python"><code class="language-python">    tmp <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range <span class="token punctuation">(</span>B<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>A<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   
-        tmp <span class="token operator">*=</span> i
-        tmp <span class="token operator">%=</span> A
-    a <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>tmp<span class="token punctuation">,</span>A<span class="token punctuation">)</span>
-    result <span class="token operator">=</span> sympy<span class="token punctuation">.</span>nextprime<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">tmp &#x3D; 1
+   for i in range (B+1,A-1):   
+       tmp *&#x3D; i
+       tmp %&#x3D; A
+   a &#x3D; gmpy2.invert(tmp,A)
+   result &#x3D; sympy.nextprime(a)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="NPUCTF2020-共-模-攻-击"><a href="#NPUCTF2020-共-模-攻-击" class="headerlink" title="[NPUCTF2020]共 模 攻 击"></a>[NPUCTF2020]共 模 攻 击</h1><p>hint.py</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> secret <span class="token keyword">import</span> hint
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+from Crypto.Util.number import *
+from secret import hint
 
-m <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>hint<span class="token punctuation">)</span>
-p <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-c <span class="token operator">=</span> pow<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+m &#x3D; bytes_to_long(hint)
+p &#x3D; getPrime(256)
+c &#x3D; pow(m, 256, p)
+print(p)
 
-p<span class="token punctuation">,</span> q <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">,</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> p <span class="token operator">*</span> q
-e1<span class="token punctuation">,</span> e2 <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">,</span> getPrime<span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">,</span> c2 <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> e1<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">,</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> e2<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>e1<span class="token punctuation">,</span> c1<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>e2<span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
+p, q &#x3D; getPrime(256), getPrime(256)
+n &#x3D; p * q
+e1, e2 &#x3D; getPrime(32), getPrime(32)
+c1, c2 &#x3D; pow(c, e1, n), pow(c, e2, n)
+print(n)
+print(e1, c1)
+print(e2, c2)
 
-<span class="token triple-quoted-string string">'''
+&#39;&#39;&#39;
 107316975771284342108362954945096489708900302633734520943905283655283318535709
 6807492006219935335233722232024809784434293293172317282814978688931711423939629682224374870233587969960713638310068784415474535033780772766171320461281579
 2303413961 1754421169036191391717309256938035960912941109206872374826444526733030696056821731708193270151759843780894750696642659795452787547355043345348714129217723
 2622163991 1613454015951555289711148366977297613624544025937559371784736059448454437652633847111272619248126613500028992813732842041018588707201458398726700828844249
-'''</span>
+&#39;&#39;&#39;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>c = m^256 mod p<br>m = nthroot_mod(c, 256, p)</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> sympy <span class="token keyword">import</span> nthroot_mod
-e1 <span class="token operator">=</span> <span class="token number">2303413961</span>
-e2 <span class="token operator">=</span> <span class="token number">2622163991</span>
-n <span class="token operator">=</span> <span class="token number">6807492006219935335233722232024809784434293293172317282814978688931711423939629682224374870233587969960713638310068784415474535033780772766171320461281579</span>
-c1 <span class="token operator">=</span> <span class="token number">1754421169036191391717309256938035960912941109206872374826444526733030696056821731708193270151759843780894750696642659795452787547355043345348714129217723</span>
-c2 <span class="token operator">=</span> <span class="token number">1613454015951555289711148366977297613624544025937559371784736059448454437652633847111272619248126613500028992813732842041018588707201458398726700828844249</span>
-p <span class="token operator">=</span> <span class="token number">107316975771284342108362954945096489708900302633734520943905283655283318535709</span>
-s <span class="token operator">=</span> gcdext<span class="token punctuation">(</span>e1<span class="token punctuation">,</span> e2<span class="token punctuation">)</span>
-s1 <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-s2 <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
-<span class="token comment" spellcheck="true"># 求模反元素</span>
-<span class="token keyword">if</span> s1 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
-  s1 <span class="token operator">=</span> <span class="token operator">-</span> s1
-  c1 <span class="token operator">=</span> invert<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-<span class="token keyword">elif</span> s2<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">:</span>
-  s2 <span class="token operator">=</span> <span class="token operator">-</span> s2
-  c2 <span class="token operator">=</span> invert<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-c <span class="token operator">=</span> pow<span class="token punctuation">(</span>c1<span class="token punctuation">,</span>s1<span class="token punctuation">,</span>n<span class="token punctuation">)</span> <span class="token operator">*</span> pow<span class="token punctuation">(</span>c2<span class="token punctuation">,</span>s2<span class="token punctuation">,</span>n<span class="token punctuation">)</span> <span class="token operator">%</span> n
-<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span>nthroot_mod<span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># m.bit_length() &lt; 400</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+from libnum import *
+from sympy import nthroot_mod
+e1 &#x3D; 2303413961
+e2 &#x3D; 2622163991
+n &#x3D; 6807492006219935335233722232024809784434293293172317282814978688931711423939629682224374870233587969960713638310068784415474535033780772766171320461281579
+c1 &#x3D; 1754421169036191391717309256938035960912941109206872374826444526733030696056821731708193270151759843780894750696642659795452787547355043345348714129217723
+c2 &#x3D; 1613454015951555289711148366977297613624544025937559371784736059448454437652633847111272619248126613500028992813732842041018588707201458398726700828844249
+p &#x3D; 107316975771284342108362954945096489708900302633734520943905283655283318535709
+s &#x3D; gcdext(e1, e2)
+s1 &#x3D; s[1]
+s2 &#x3D; s[2]
+# 求模反元素
+if s1 &lt; 0:
+  s1 &#x3D; - s1
+  c1 &#x3D; invert(c1, n)
+elif s2&lt;0:
+  s2 &#x3D; - s2
+  c2 &#x3D; invert(c2, n)
+c &#x3D; pow(c1,s1,n) * pow(c2,s2,n) % n
+print(n2s(nthroot_mod(c, 256, p)))
+# m.bit_length() &lt; 400<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Coppersmith定理：在一个e阶的mod n多项式f(x)中，如果有一个根小于n^1/e，就可以运用一个O(log n)的算法求出这些根。</p>
 <p>　　c1 = mp mod n = mp mod p*q</p>
 <p>　　c2 = mq mod n = mq mod p*q</p>
@@ -629,169 +628,162 @@ c <span class="token operator">=</span> pow<span class="token punctuation">(</sp
 <p>　　c1 * c2 = m2 + (ip + jq)m + ijn</p>
 <p>　　(c1 + c2)m = 2m2 + (ip+jq)m </p>
 <p>　　有： m2 - (c1 + c2)m + c1 * c2 = ijn ≡ 0 mod n</p>
-<pre class="line-numbers language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149</span>
-c1 <span class="token operator">=</span> <span class="token number">96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198</span>
-c2 <span class="token operator">=</span> <span class="token number">9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585</span>
-a <span class="token operator">=</span> c1 <span class="token operator">+</span> c2
-b <span class="token operator">=</span> c1 <span class="token operator">*</span> c2
-P<span class="token punctuation">.</span><span class="token operator">&lt;</span>x<span class="token operator">></span> <span class="token operator">=</span> PolynomialRing<span class="token punctuation">(</span>Zmod<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-f <span class="token operator">=</span> x<span class="token operator">^</span><span class="token number">2</span> <span class="token operator">-</span> a <span class="token operator">*</span> x <span class="token operator">+</span> b
-flag <span class="token operator">=</span> f<span class="token punctuation">.</span>small_roots<span class="token punctuation">(</span>X<span class="token operator">=</span><span class="token number">2</span><span class="token operator">^</span><span class="token number">400</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token number">4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># verrrrrrry_345yyyyyyy_rsaaaaaaa_righttttttt?</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="NCTF2019-easyRSA"><a href="#NCTF2019-easyRSA" class="headerlink" title="[NCTF2019]easyRSA"></a>[NCTF2019]easyRSA</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> flag <span class="token keyword">import</span> flag
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">n &#x3D; 128205304743751985889679351195836799434324346996129753896234917982647254577214018524580290192396070591032007818847697193260130051396080104704981594190602854241936777324431673564677900773992273463534717009587530152480725448774018550562603894883079711995434332008363470321069097619786793617099517770260029108149
+c1 &#x3D; 96860654235275202217368130195089839608037558388884522737500611121271571335123981588807994043800468529002147570655597610639680977780779494880330669466389788497046710319213376228391138021976388925171307760030058456934898771589435836261317283743951614505136840364638706914424433566782044926111639955612412134198
+c2 &#x3D; 9566853166416448316408476072940703716510748416699965603380497338943730666656667456274146023583837768495637484138572090891246105018219222267465595710692705776272469703739932909158740030049375350999465338363044226512016686534246611049299981674236577960786526527933966681954486377462298197949323271904405241585
+a &#x3D; c1 + c2
+b &#x3D; c1 * c2
+P.&lt;x&gt; &#x3D; PolynomialRing(Zmod(n))
+f &#x3D; x^2 - a * x + b
+flag &#x3D; f.small_roots(X&#x3D;2^400)
+print(flag)
+# 4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(n2s(4242839043019782000788118887372132807371568279472499477998758466224002905442227156537788110520335652385855))
+# verrrrrrry_345yyyyyyy_rsaaaaaaa_righttttttt?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-e <span class="token operator">=</span> <span class="token number">0x1337</span>
-p <span class="token operator">=</span> <span class="token number">199138677823743837339927520157607820029746574557746549094921488292877226509198315016018919385259781238148402833316033634968163276198999279327827901879426429664674358844084491830543271625147280950273934405879341438429171453002453838897458102128836690385604150324972907981960626767679153125735677417397078196059</span>
-q <span class="token operator">=</span> <span class="token number">112213695905472142415221444515326532320352429478341683352811183503269676555434601229013679319423878238944956830244386653674413411658696751173844443394608246716053086226910581400528167848306119179879115809778793093611381764939789057524575349501163689452810148280625226541609383166347879832134495444706697124741</span>
-n <span class="token operator">=</span> p <span class="token operator">*</span> q
+<h1 id="NCTF2019-easyRSA"><a href="#NCTF2019-easyRSA" class="headerlink" title="[NCTF2019]easyRSA"></a>[NCTF2019]easyRSA</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">from flag import flag
 
-<span class="token keyword">assert</span><span class="token punctuation">(</span>flag<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'NCTF'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-m <span class="token operator">=</span> int<span class="token punctuation">.</span>from_bytes<span class="token punctuation">(</span>flag<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'big'</span><span class="token punctuation">)</span>
-<span class="token keyword">assert</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>bit_length<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1337</span><span class="token punctuation">)</span>
+e &#x3D; 0x1337
+p &#x3D; 199138677823743837339927520157607820029746574557746549094921488292877226509198315016018919385259781238148402833316033634968163276198999279327827901879426429664674358844084491830543271625147280950273934405879341438429171453002453838897458102128836690385604150324972907981960626767679153125735677417397078196059
+q &#x3D; 112213695905472142415221444515326532320352429478341683352811183503269676555434601229013679319423878238944956830244386653674413411658696751173844443394608246716053086226910581400528167848306119179879115809778793093611381764939789057524575349501163689452810148280625226541609383166347879832134495444706697124741
+n &#x3D; p * q
 
-c <span class="token operator">=</span> pow<span class="token punctuation">(</span>m<span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 10562302690541901187975815594605242014385201583329309191736952454310803387032252007244962585846519762051885640856082157060593829013572592812958261432327975138581784360302599265408134332094134880789013207382277849503344042487389850373487656200657856862096900860792273206447552132458430989534820256156021128891296387414689693952047302604774923411425863612316726417214819110981605912408620996068520823370069362751149060142640529571400977787330956486849449005402750224992048562898004309319577192693315658275912449198365737965570035264841782399978307388920681068646219895287752359564029778568376881425070363592696751183359</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+assert(flag.startswith(&#39;NCTF&#39;))
+m &#x3D; int.from_bytes(flag.encode(), &#39;big&#39;)
+assert(m.bit_length() &gt; 1337)
+
+c &#x3D; pow(m, e, n)
+print(c)
+# 10562302690541901187975815594605242014385201583329309191736952454310803387032252007244962585846519762051885640856082157060593829013572592812958261432327975138581784360302599265408134332094134880789013207382277849503344042487389850373487656200657856862096900860792273206447552132458430989534820256156021128891296387414689693952047302604774923411425863612316726417214819110981605912408620996068520823370069362751149060142640529571400977787330956486849449005402750224992048562898004309319577192693315658275912449198365737965570035264841782399978307388920681068646219895287752359564029778568376881425070363592696751183359<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>e是φ(n)的一个因子，无法求出私钥d</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> tqdm <span class="token keyword">import</span> tqdm
-<span class="token keyword">def</span> <span class="token function">onemod</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    t <span class="token operator">=</span> p<span class="token number">-2</span>
-    <span class="token keyword">while</span> pow<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">//</span> r<span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span> t <span class="token operator">-=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> pow<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">//</span> r<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">solution</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span>root<span class="token punctuation">)</span><span class="token punctuation">:</span> 
-    g <span class="token operator">=</span> onemod<span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token number">0x1337</span><span class="token punctuation">)</span>
-    may <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0x1337</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">100</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-        may<span class="token punctuation">.</span>append<span class="token punctuation">(</span>root <span class="token operator">*</span> pow<span class="token punctuation">(</span>g<span class="token punctuation">,</span>i<span class="token punctuation">,</span>p<span class="token punctuation">)</span> <span class="token operator">%</span> p<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> may
-c <span class="token operator">=</span> <span class="token number">10562302690541901187975815594605242014385201583329309191736952454310803387032252007244962585846519762051885640856082157060593829013572592812958261432327975138581784360302599265408134332094134880789013207382277849503344042487389850373487656200657856862096900860792273206447552132458430989534820256156021128891296387414689693952047302604774923411425863612316726417214819110981605912408620996068520823370069362751149060142640529571400977787330956486849449005402750224992048562898004309319577192693315658275912449198365737965570035264841782399978307388920681068646219895287752359564029778568376881425070363592696751183359</span>
-p <span class="token operator">=</span> <span class="token number">199138677823743837339927520157607820029746574557746549094921488292877226509198315016018919385259781238148402833316033634968163276198999279327827901879426429664674358844084491830543271625147280950273934405879341438429171453002453838897458102128836690385604150324972907981960626767679153125735677417397078196059</span>
-q <span class="token operator">=</span> <span class="token number">112213695905472142415221444515326532320352429478341683352811183503269676555434601229013679319423878238944956830244386653674413411658696751173844443394608246716053086226910581400528167848306119179879115809778793093611381764939789057524575349501163689452810148280625226541609383166347879832134495444706697124741</span>
-e <span class="token operator">=</span> <span class="token number">0x1337</span>
-n <span class="token operator">=</span> p <span class="token operator">*</span> q
-c_p <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">3307</span> <span class="token operator">*</span> <span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> e<span class="token punctuation">)</span> <span class="token operator">//</span> e<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
-C1 <span class="token operator">=</span> solution<span class="token punctuation">(</span>p<span class="token punctuation">,</span> c_p<span class="token punctuation">)</span>
-c_q <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2649</span> <span class="token operator">*</span> <span class="token punctuation">(</span>q <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> e<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">//</span> e<span class="token punctuation">,</span> q<span class="token punctuation">)</span>
-C2 <span class="token operator">=</span> solution<span class="token punctuation">(</span>q<span class="token punctuation">,</span> c_q<span class="token punctuation">)</span>
-a <span class="token operator">=</span> invert<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span>
-b <span class="token operator">=</span> invert<span class="token punctuation">(</span>q<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
-flag<span class="token operator">=</span><span class="token number">0</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>C1<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>C2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        flag <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">if</span> flag <span class="token operator">%</span> <span class="token number">1000000</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-        x <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">*</span> q <span class="token operator">*</span> i <span class="token operator">+</span> a <span class="token operator">*</span> p <span class="token operator">*</span> j<span class="token punctuation">)</span> <span class="token operator">%</span> n
-        <span class="token keyword">if</span> b<span class="token string">"NCTF&amp;#123;"</span> <span class="token keyword">in</span> long_to_bytes<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-            exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="DJBCTF-RealSimpleAlgorithm"><a href="#DJBCTF-RealSimpleAlgorithm" class="headerlink" title="[DJBCTF]RealSimpleAlgorithm"></a>[DJBCTF]RealSimpleAlgorithm</h1><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+from Crypto.Util.number import *
+from tqdm import tqdm
+def onemod(p,r):
+    t &#x3D; p-2
+    while pow(t, (p-1) &#x2F;&#x2F; r, p) &#x3D;&#x3D; 1: t -&#x3D; 1
+    return pow(t, (p-1) &#x2F;&#x2F; r, p)
+def solution(p,root): 
+    g &#x3D; onemod(p, 0x1337)
+    may &#x3D; []
+    for i in range(0x1337):
+        if i % 100 &#x3D;&#x3D; 0:
+            print(i)
+        may.append(root * pow(g,i,p) % p)
+    return may
+c &#x3D; 10562302690541901187975815594605242014385201583329309191736952454310803387032252007244962585846519762051885640856082157060593829013572592812958261432327975138581784360302599265408134332094134880789013207382277849503344042487389850373487656200657856862096900860792273206447552132458430989534820256156021128891296387414689693952047302604774923411425863612316726417214819110981605912408620996068520823370069362751149060142640529571400977787330956486849449005402750224992048562898004309319577192693315658275912449198365737965570035264841782399978307388920681068646219895287752359564029778568376881425070363592696751183359
+p &#x3D; 199138677823743837339927520157607820029746574557746549094921488292877226509198315016018919385259781238148402833316033634968163276198999279327827901879426429664674358844084491830543271625147280950273934405879341438429171453002453838897458102128836690385604150324972907981960626767679153125735677417397078196059
+q &#x3D; 112213695905472142415221444515326532320352429478341683352811183503269676555434601229013679319423878238944956830244386653674413411658696751173844443394608246716053086226910581400528167848306119179879115809778793093611381764939789057524575349501163689452810148280625226541609383166347879832134495444706697124741
+e &#x3D; 0x1337
+n &#x3D; p * q
+c_p &#x3D; pow(c, (1 + 3307 * (p - 1) &#x2F;&#x2F; e) &#x2F;&#x2F; e, p)
+C1 &#x3D; solution(p, c_p)
+c_q &#x3D; pow(c, (1 + (2649 * (q - 1) &#x2F;&#x2F; e)) &#x2F;&#x2F; e, q)
+C2 &#x3D; solution(q, c_q)
+a &#x3D; invert(p, q)
+b &#x3D; invert(q, p)
+flag&#x3D;0
+for i in tqdm(C1):
+    for j in tqdm(C2):
+        flag +&#x3D; 1
+        if flag % 1000000 &#x3D;&#x3D; 0:
+            print(flag)
+        x &#x3D; (b * q * i + a * p * j) % n
+        if b&quot;NCTF&#123;&quot; in long_to_bytes(x):
+            print(long_to_bytes(x))
+            exit()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="DJBCTF-RealSimpleAlgorithm"><a href="#DJBCTF-RealSimpleAlgorithm" class="headerlink" title="[DJBCTF]RealSimpleAlgorithm"></a>[DJBCTF]RealSimpleAlgorithm</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">from Crypto.Util.number import *
+from secret import flag
 
-<span class="token keyword">def</span> <span class="token function">findPrime</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> k <span class="token keyword">if</span> isPrime<span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token keyword">else</span> findPrime<span class="token punctuation">(</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-    
-p <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-q <span class="token operator">=</span> findPrime<span class="token punctuation">(</span><span class="token number">20210123</span> <span class="token operator">*</span> p <span class="token operator">*</span> p<span class="token punctuation">)</span>
-r <span class="token operator">=</span> findPrime<span class="token punctuation">(</span>p <span class="token operator">*</span> q <span class="token operator">*</span> q<span class="token punctuation">)</span>
-s <span class="token operator">=</span> findPrime<span class="token punctuation">(</span>p <span class="token operator">*</span> q <span class="token operator">*</span> r<span class="token punctuation">)</span>
-n <span class="token operator">=</span> p <span class="token operator">*</span> q <span class="token operator">*</span> r <span class="token operator">*</span> s
-e <span class="token operator">=</span> <span class="token number">0x10001</span>
-m <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+def findPrime(k):
+	return k if isPrime(k) else findPrime(k+1)
+	
+p &#x3D; getPrime(256)
+q &#x3D; findPrime(20210123 * p * p)
+r &#x3D; findPrime(p * q * q)
+s &#x3D; findPrime(p * q * r)
+n &#x3D; p * q * r * s
+e &#x3D; 0x10001
+m &#x3D; bytes_to_long(flag)
 
-w <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>
-w<span class="token punctuation">.</span>write<span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-w<span class="token punctuation">.</span>write<span class="token punctuation">(</span>b<span class="token string">'\n\n'</span><span class="token punctuation">)</span>
-w<span class="token punctuation">.</span>write<span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>m<span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+w &#x3D; open(&#39;output&#39;,&#39;wb&#39;)
+w.write(long_to_bytes(n))
+w.write(b&#39;\n\n&#39;)
+w.write(long_to_bytes(pow(m, e, n)))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>猜想n约等于20210123的6次方乘上p的16次方</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">def</span> <span class="token function">findPrime</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> k <span class="token keyword">if</span> isPrime<span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token keyword">else</span> findPrime<span class="token punctuation">(</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> s2n<span class="token punctuation">(</span>b<span class="token string">'\x14r\xa6\xc3\xc1\xd1\xcd\xbf\xe7m8Q\x19*\xb5\x8f~\xd9\x08iD\xc6W\xca)_4\xd8tR\xd0_\xfd\xfb\xcb\xb1\x9cRc\xff\x18\x93\x8b\x1f\xe3\x07\xfe\xe2\xa1\x8d\xfa\xe4D\xe1qv]\xc3\x8808as\n\xac8S\xb7\xe1\x1b*\xde\xf5\x16\x02\xecv\xe2\x83*\x89g\x17\x9f\xe5\xe2U,\xb1\x94+\x17\xf0\x99\xa4%\xb9~^7_\x84\x0b\xa0\x98\xf8\xb2\xcf\x8c&lt;\xc4\x1a\x87f\xcaZ\x8f\xbb\x1a\xb8\xddh\xd3mL\x85\x87\xb6dfv\x01G\x9aX\xa5[\xff\x1e\xea\xfc5o\x9co\xad\xd5\xa6\xae\xffg!\xee\x9c\xaa\\\xdate\xf4\xea\x1a\xe2*\xbd\xa0\x1e\xcd\xf1j;\xa8\xd0^(d1`\xeb\xa43I\xfb\x8e4P!\xa9\xcd\x86\x95\x0e\xc1l\x96\xfc\x8f*\xb5$6\x03l\xbd\xf9\xbe\x0cBm\nm4\xa6aa9?pK]Y\x01:\xfaM\xc6\x1f\xe83\x0c\xe7\xfeW\xba\xa2\xf5\x88\x18h\xb5?+\x04\xb6@\xdf\x85\x15\x8c\xe5!8-&amp;\xc7FCfw\xba\x1d\xb2(\xe026?\xa3\x0b\x19\xf6\x9f\x1cB2\xee\x87\x02y\xc5\x95\x9a\xeb\t1E5x\x08\x0f\xafF\x96a\xe8\xa73P5*\xe4Y\\\xcaa\xfcy\xb0\x97DHm\xeb>;\xfadfu\xec\x90\xa4x\xc8\\\x87\xbf\xcdz(\x96^\x10\xd2\xe2\xc0\xd6\xe1\xb1\x9dk&amp;\xfb\x06J\x8c\x9f\x0c%\x97 \xd4i\xbbo\x1ft\x89Q-\x11\xf8\x9e\xce\xc2\x143\x1a\xf6\x05\x11\x9cn\xc9]o\xb40\xfa\x8c\xb8\xee\xaa\xc7\xf2_\x80\x81=ry\xb5\xc3\x1d\xcd\x1f\xc1)\x0b\xe8/[\xc3\x19\xb1\x1b`\x15\x07\xb2\x87\xce\xe6J1\xe6\xbcC&lt;\xd7\x99\x10:U\x92\x00d\x9eE3\xa7\xb0\x89\x180\xb6$pCWU)\x14\xb3\x11\x8c\x86V0>JQ\xf2h/\xcf\x15\xd2\x02\x0e\x9c\xab\xb3H\xf4\xe7\xd4\xd9\xe8&lt;Pk\x05qRN\xf8-\xa9=)J\xf4\x01j\x81\xc6\x99X\xf2\x87_\xaenl\xf3\xfb\xf6P\xa3_p\xc7\xc0a\xc1\xd4e&lt;\xc0\x8ei#Y\xeb\xb1\xa9z\xe0;I3U\x89\x84\xe9"S\x87?'</span><span class="token punctuation">)</span>
-c <span class="token operator">=</span> s2n<span class="token punctuation">(</span>b<span class="token string">'\r\xf3\xeb\xf3\x96\x9aGc\x10\xb8\xe7\x88P\xa9\x1f/\xfb\xf7;z \xc9\xca\xb3=\x9c\xee\x95vL\xd2y\x05\xafm\x18 \x7f\x1b\x8c\xfe#\x17\xc1+#\xf0\xa7\xbf\xe1\xc6\xf7\xb76L\xf7\xb0n\xf7(\xd5\xe59E\xfbp4\xe1\xa2w\xe5\xe5\xe5\xf2@%\xab\xfe@\xc8#^T\xa3\xb1w\xfb\xd9\x8bp\x0bxoR)\x9a\xc6\xe1\x9dT\xbd\xe7&amp;#123;\xef\xbc\xba\xa8\x0c\x8e\xbc/\xc9&amp;#125;\xcd\xd6\xc2\xdd\x16\xf1Qa\xed\x1a\x86\x1c)\x9e\xf0,\xf2\x11\xccD\t\x02M\x12\x85\xd6\xe1\x15"\xbd\x8b\xc4\x92\x94Y\x1d:\xc1\x17\x1c\x92\xd3>c\xc0BG\t\xac(#\x7f\\\xd6\x10Y\xdd\xf2\x06Nf\xac\x97 \xc3$\xd1\x06*\xf0\t\xcbM\xe4\x92\xa1,\xf0\x97\x86\x1e\xc2\x10gM\xe7\xf1L\x00b\xc6\xbeH|\xba\xa1o\x81\xf6\xe3\x87\xaa\xd3\xde\xbd\xafa\x81|\x8c\xb8\x91\xed\xca\x80\xf4\xf3\x91\x189\x0ciH\xdf\xcfj\x9eK\x83\x7f)d\xa8\x08\xe7F\\\xaa8\x1c\x96N\xb0\xb1\xabvP\'\xd4\xea\x02E:\xe0\xe9\x96\xc6\xdc\xd2\xd6\xce\xb7e\xcd\x8b\x1b\xc5\x9a/\xdd\x98\x94\x00\x18NC\x9e\xb2z\x9e\x0f\xffol\xc2\xf43\xbd\x1b\xea\xdf$\xc4\xe3\x96\x03_\x16a\x15\x13\xc7_g!\x11\xb2\xb9=\xe5?\x0b\xc0\xdf6!U\x06\xb2i\x94\xed0\xe8\xd8\xaf\x9f\'z\x02\xa1\x17\x8e\xdb@\xd9R\x9c&amp;\xed\x97&amp;\x9f\x82Y\nXS@\x976!\x19\x17c|Rv\xfc4@\xad\xed\x92U\xe2T\xed8qbn\xdf\xd8\xe06\xcf\xa0\x87;X\xe3:0\xa3Z\x98\x89\xbe\x8eJ\xd0\xd5rV\xea2\xa4\xc6\xaf\xdeBi\xd1`QR\x90W\x83\xb7Yy\xba\xaa\x08\x81\xe7|U\xde\xf5\xaeF\xb6K\x13\xa4]\xec\x931\xfb\xb0\xf4\xc5\x9e,\x8d\x138\x8c~\x03\xa9\xf2/dCw\xf6\xb7\x1d\xc9b\xdc\xc1\xde+.&amp;#123;PK\x17:\xa8\xd6\xcc\x9a\xee06\x00\x04\xbf\xcfXN\xb4\xcc\x03qQ/\x9e\x95\xf0\xa3\x0b\x08f\x0f\x03\x8e\xb7\xb1\xc4\x1avo\xbb\x9dGF\xb7.\t\xdd#\xf72 \xa8\x9f2b!'</span><span class="token punctuation">)</span>
-p <span class="token operator">=</span> iroot<span class="token punctuation">(</span>n<span class="token operator">//</span><span class="token punctuation">(</span><span class="token number">20210123</span><span class="token operator">**</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-q <span class="token operator">=</span> findPrime<span class="token punctuation">(</span><span class="token number">20210123</span> <span class="token operator">*</span> p <span class="token operator">*</span> p<span class="token punctuation">)</span>
-r <span class="token operator">=</span> findPrime<span class="token punctuation">(</span>p <span class="token operator">*</span> q <span class="token operator">*</span> q<span class="token punctuation">)</span>
-s <span class="token operator">=</span> findPrime<span class="token punctuation">(</span>p <span class="token operator">*</span> q <span class="token operator">*</span> r<span class="token punctuation">)</span>
-n <span class="token operator">=</span> p <span class="token operator">*</span> q <span class="token operator">*</span> r <span class="token operator">*</span> s
-e <span class="token operator">=</span> <span class="token number">0x10001</span>
-phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>r<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>s<span class="token number">-1</span><span class="token punctuation">)</span>
-d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> phi<span class="token punctuation">)</span>
-<span class="token keyword">print</span> n2s<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># flag&amp;#123;we11_y0U_aRe_n07_AFra1d_0F_nA1VE_R5A_NOw~&amp;#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="某校月赛"><a href="#某校月赛" class="headerlink" title="某校月赛"></a>某校月赛</h1><pre class="line-numbers language-python"><code class="language-python">m <span class="token operator">=</span> <span class="token string">"CSA&amp;#123;xxxx...&amp;#125;"</span>
-m <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from gmpy2 import *
+from libnum import *
+from Crypto.Util.number import *
+def findPrime(k):
+	return k if isPrime(k) else findPrime(k+1)
+n &#x3D; s2n(b&#39;\x14r\xa6\xc3\xc1\xd1\xcd\xbf\xe7m8Q\x19*\xb5\x8f~\xd9\x08iD\xc6W\xca)_4\xd8tR\xd0_\xfd\xfb\xcb\xb1\x9cRc\xff\x18\x93\x8b\x1f\xe3\x07\xfe\xe2\xa1\x8d\xfa\xe4D\xe1qv]\xc3\x8808as\n\xac8S\xb7\xe1\x1b*\xde\xf5\x16\x02\xecv\xe2\x83*\x89g\x17\x9f\xe5\xe2U,\xb1\x94+\x17\xf0\x99\xa4%\xb9~^7_\x84\x0b\xa0\x98\xf8\xb2\xcf\x8c&lt;\xc4\x1a\x87f\xcaZ\x8f\xbb\x1a\xb8\xddh\xd3mL\x85\x87\xb6dfv\x01G\x9aX\xa5[\xff\x1e\xea\xfc5o\x9co\xad\xd5\xa6\xae\xffg!\xee\x9c\xaa\\\xdate\xf4\xea\x1a\xe2*\xbd\xa0\x1e\xcd\xf1j;\xa8\xd0^(d1&#96;\xeb\xa43I\xfb\x8e4P!\xa9\xcd\x86\x95\x0e\xc1l\x96\xfc\x8f*\xb5$6\x03l\xbd\xf9\xbe\x0cBm\nm4\xa6aa9?pK]Y\x01:\xfaM\xc6\x1f\xe83\x0c\xe7\xfeW\xba\xa2\xf5\x88\x18h\xb5?+\x04\xb6@\xdf\x85\x15\x8c\xe5!8-&amp;\xc7FCfw\xba\x1d\xb2(\xe026?\xa3\x0b\x19\xf6\x9f\x1cB2\xee\x87\x02y\xc5\x95\x9a\xeb\t1E5x\x08\x0f\xafF\x96a\xe8\xa73P5*\xe4Y\\\xcaa\xfcy\xb0\x97DHm\xeb&gt;;\xfadfu\xec\x90\xa4x\xc8\\\x87\xbf\xcdz(\x96^\x10\xd2\xe2\xc0\xd6\xe1\xb1\x9dk&amp;\xfb\x06J\x8c\x9f\x0c%\x97 \xd4i\xbbo\x1ft\x89Q-\x11\xf8\x9e\xce\xc2\x143\x1a\xf6\x05\x11\x9cn\xc9]o\xb40\xfa\x8c\xb8\xee\xaa\xc7\xf2_\x80\x81&#x3D;ry\xb5\xc3\x1d\xcd\x1f\xc1)\x0b\xe8&#x2F;[\xc3\x19\xb1\x1b&#96;\x15\x07\xb2\x87\xce\xe6J1\xe6\xbcC&lt;\xd7\x99\x10:U\x92\x00d\x9eE3\xa7\xb0\x89\x180\xb6$pCWU)\x14\xb3\x11\x8c\x86V0&gt;JQ\xf2h&#x2F;\xcf\x15\xd2\x02\x0e\x9c\xab\xb3H\xf4\xe7\xd4\xd9\xe8&lt;Pk\x05qRN\xf8-\xa9&#x3D;)J\xf4\x01j\x81\xc6\x99X\xf2\x87_\xaenl\xf3\xfb\xf6P\xa3_p\xc7\xc0a\xc1\xd4e&lt;\xc0\x8ei#Y\xeb\xb1\xa9z\xe0;I3U\x89\x84\xe9&quot;S\x87?&#39;)
+c &#x3D; s2n(b&#39;\r\xf3\xeb\xf3\x96\x9aGc\x10\xb8\xe7\x88P\xa9\x1f&#x2F;\xfb\xf7;z \xc9\xca\xb3&#x3D;\x9c\xee\x95vL\xd2y\x05\xafm\x18 \x7f\x1b\x8c\xfe#\x17\xc1+#\xf0\xa7\xbf\xe1\xc6\xf7\xb76L\xf7\xb0n\xf7(\xd5\xe59E\xfbp4\xe1\xa2w\xe5\xe5\xe5\xf2@%\xab\xfe@\xc8#^T\xa3\xb1w\xfb\xd9\x8bp\x0bxoR)\x9a\xc6\xe1\x9dT\xbd\xe7&#123;\xef\xbc\xba\xa8\x0c\x8e\xbc&#x2F;\xc9&#125;\xcd\xd6\xc2\xdd\x16\xf1Qa\xed\x1a\x86\x1c)\x9e\xf0,\xf2\x11\xccD\t\x02M\x12\x85\xd6\xe1\x15&quot;\xbd\x8b\xc4\x92\x94Y\x1d:\xc1\x17\x1c\x92\xd3&gt;c\xc0BG\t\xac(#\x7f\\\xd6\x10Y\xdd\xf2\x06Nf\xac\x97 \xc3$\xd1\x06*\xf0\t\xcbM\xe4\x92\xa1,\xf0\x97\x86\x1e\xc2\x10gM\xe7\xf1L\x00b\xc6\xbeH|\xba\xa1o\x81\xf6\xe3\x87\xaa\xd3\xde\xbd\xafa\x81|\x8c\xb8\x91\xed\xca\x80\xf4\xf3\x91\x189\x0ciH\xdf\xcfj\x9eK\x83\x7f)d\xa8\x08\xe7F\\\xaa8\x1c\x96N\xb0\xb1\xabvP\&#39;\xd4\xea\x02E:\xe0\xe9\x96\xc6\xdc\xd2\xd6\xce\xb7e\xcd\x8b\x1b\xc5\x9a&#x2F;\xdd\x98\x94\x00\x18NC\x9e\xb2z\x9e\x0f\xffol\xc2\xf43\xbd\x1b\xea\xdf$\xc4\xe3\x96\x03_\x16a\x15\x13\xc7_g!\x11\xb2\xb9&#x3D;\xe5?\x0b\xc0\xdf6!U\x06\xb2i\x94\xed0\xe8\xd8\xaf\x9f\&#39;z\x02\xa1\x17\x8e\xdb@\xd9R\x9c&amp;\xed\x97&amp;\x9f\x82Y\nXS@\x976!\x19\x17c|Rv\xfc4@\xad\xed\x92U\xe2T\xed8qbn\xdf\xd8\xe06\xcf\xa0\x87;X\xe3:0\xa3Z\x98\x89\xbe\x8eJ\xd0\xd5rV\xea2\xa4\xc6\xaf\xdeBi\xd1&#96;QR\x90W\x83\xb7Yy\xba\xaa\x08\x81\xe7|U\xde\xf5\xaeF\xb6K\x13\xa4]\xec\x931\xfb\xb0\xf4\xc5\x9e,\x8d\x138\x8c~\x03\xa9\xf2&#x2F;dCw\xf6\xb7\x1d\xc9b\xdc\xc1\xde+.&#123;PK\x17:\xa8\xd6\xcc\x9a\xee06\x00\x04\xbf\xcfXN\xb4\xcc\x03qQ&#x2F;\x9e\x95\xf0\xa3\x0b\x08f\x0f\x03\x8e\xb7\xb1\xc4\x1avo\xbb\x9dGF\xb7.\t\xdd#\xf72 \xa8\x9f2b!&#39;)
+p &#x3D; iroot(n&#x2F;&#x2F;(20210123**6), 16)[0]
+q &#x3D; findPrime(20210123 * p * p)
+r &#x3D; findPrime(p * q * q)
+s &#x3D; findPrime(p * q * r)
+n &#x3D; p * q * r * s
+e &#x3D; 0x10001
+phi &#x3D; (p-1)*(q-1)*(r-1)*(s-1)
+d &#x3D; invert(e, phi)
+print n2s(pow(c, d, n))
+# flag&#123;we11_y0U_aRe_n07_AFra1d_0F_nA1VE_R5A_NOw~&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="某校月赛"><a href="#某校月赛" class="headerlink" title="某校月赛"></a>某校月赛</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">m &#x3D; &quot;CSA&#123;xxxx...&#125;&quot;
+m &#x3D; bytes_to_long(m)
 
-<span class="token keyword">def</span> <span class="token function">GetP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
-    b <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>next_prime<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-    <span class="token keyword">print</span> a<span class="token operator">*</span>b
-    c <span class="token operator">=</span> <span class="token punctuation">(</span>sympy<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">%</span>b
-    p <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>next_prime<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> p
+def GetP():
+    a &#x3D; getPrime(1024)
+    b &#x3D; gmpy2.next_prime(a)
+    print a*b
+    c &#x3D; (sympy.factorial(a+1))%b
+    p &#x3D; gmpy2.next_prime(c)
+    return p
 
-<span class="token keyword">def</span> <span class="token function">GetQ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
-    b <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> a<span class="token operator">></span>b
-    <span class="token keyword">print</span> b
-    q <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>next_prime<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>b<span class="token punctuation">,</span>pow<span class="token punctuation">(</span>a<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> q
+def GetQ():
+    a &#x3D; getPrime(1024)
+    b &#x3D; getPrime(1024)
+    assert a&gt;b
+    print b
+    q &#x3D; gmpy2.next_prime(pow(b,pow(a,a),a))
+    return q
 
-e <span class="token operator">=</span> <span class="token number">0x10001</span>
-p <span class="token operator">=</span> GetP<span class="token punctuation">(</span><span class="token punctuation">)</span>
-q <span class="token operator">=</span> GetQ<span class="token punctuation">(</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> p<span class="token operator">*</span>q
-c <span class="token operator">=</span> pow<span class="token punctuation">(</span>m<span class="token punctuation">,</span>e<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-<span class="token keyword">print</span> c
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+e &#x3D; 0x10001
+p &#x3D; GetP()
+q &#x3D; GetQ()
+n &#x3D; p*q
+c &#x3D; pow(m,e,n)
+print c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>因b是a的下一个质数，所以相差不大，可以先开方再依次减一来爆破<br>大整数求阶乘模，相差不多，可用威尔逊定理</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">wilson</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span>B<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    t<span class="token operator">=</span>A<span class="token operator">-</span>B<span class="token number">-1</span>
-    res<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>
-    k<span class="token operator">=</span>A<span class="token number">-1</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        res<span class="token operator">=</span><span class="token punctuation">(</span>res<span class="token operator">*</span>invert<span class="token punctuation">(</span>k<span class="token punctuation">,</span>A<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">%</span>A
-        k<span class="token operator">=</span>k<span class="token number">-1</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token operator">&lt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> res<span class="token operator">+</span>A
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> res
-e <span class="token operator">=</span> <span class="token number">0x10001</span>
-a_b <span class="token operator">=</span> <span class="token number">8791983291862316547120032002246797778973254864878605386970992669673492259939968094797888952000007665099557258875733921945858542033686958451053071321949445567554111280121591346171077943880260679125991880697230370219526880175562742459075094530147965941656736934866149682649579460280980677646021442609216740720035530819475189210391218236576964069192397380463810610320042000382292193209315399852054457274097472992485848055230344883241567824771770093197030208652860081386700063761662731826974842068243177453217775722649679295194925961548515215408631410811652474082983292228905477331688617735677908498102304912120235373673</span>
-b <span class="token operator">=</span> <span class="token number">118830448651410685339257790004824429485649682854840323484849009324486118171877706146949014994839630959269120471558355441928485561834486801067099318678275406237859608336855343079327803228141993768895085486382938883215719857931006640727311171816907582743931515808064737866306165395059736627157339004410141600439</span>
-c <span class="token operator">=</span> <span class="token number">1883542149569091174279536150168908263646954186271291671824785843443243892583487651671300286308926172470442971603905412854092328155166231193046952547441484309496731233232032329302915437265167230962789623953726262153609071938085116529042215589144472265020275468260088671221409979372525200484718932529778499387278835971899408449219198570586884993769637405957394495603493918863913753918387538916758810844800356847596945689024738607675026456041290170218954590732925097228128824030100261173705092887218946711496138633451915979360395821610285826057145659991391437575320290538094685588193509092498259185122588642642635746</span>
-_a <span class="token operator">=</span> iroot<span class="token punctuation">(</span>a_b<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-_b <span class="token operator">=</span> next_prime<span class="token punctuation">(</span>_a<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># while _a*_b!=a_b:</span>
-<span class="token comment" spellcheck="true">#     _a -= 1</span>
-<span class="token comment" spellcheck="true">#     _b = next_prime(_a)</span>
-<span class="token comment" spellcheck="true"># print _a</span>
-<span class="token comment" spellcheck="true"># print _b</span>
-_a <span class="token operator">=</span> <span class="token number">93765576262625915496683241788947101718343164873988642315984413216815591384688881866482241684943051686788225803937137421688879814888625596496853667570833634103978674488665724274162336184943604672899422874130229212143055853110350654929253902909062114677358501123568396278075295297381414205770662659185396216063</span>
-_b <span class="token operator">=</span> <span class="token number">93765576262625915496683241788947101718343164873988642315984413216815591384688881866482241684943051686788225803937137421688879814888625596496853667570833634103978674488665724274162336184943604672899422874130229212143055853110350654929253902909062114677358501123568396278075295297381414205770662659185396216471</span>
-q <span class="token operator">=</span> next_prime<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-_c <span class="token operator">=</span> wilson<span class="token punctuation">(</span>_b<span class="token punctuation">,</span> _a<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-p <span class="token operator">=</span> next_prime<span class="token punctuation">(</span>_c<span class="token punctuation">)</span>
-d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span> n2s<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> p<span class="token operator">*</span>q<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># CSA&amp;#123;RSARSaRsarsaRS4Rs4rs4rS4&amp;#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def wilson(A,B):
+	t&#x3D;A-B-1
+	res&#x3D;-1
+	k&#x3D;A-1
+	for i in range(t):
+		res&#x3D;(res*invert(k,A))%A
+		k&#x3D;k-1
+	if(res&lt;0):
+		return res+A
+	else:
+		return res
+e &#x3D; 0x10001
+a_b &#x3D; 8791983291862316547120032002246797778973254864878605386970992669673492259939968094797888952000007665099557258875733921945858542033686958451053071321949445567554111280121591346171077943880260679125991880697230370219526880175562742459075094530147965941656736934866149682649579460280980677646021442609216740720035530819475189210391218236576964069192397380463810610320042000382292193209315399852054457274097472992485848055230344883241567824771770093197030208652860081386700063761662731826974842068243177453217775722649679295194925961548515215408631410811652474082983292228905477331688617735677908498102304912120235373673
+b &#x3D; 118830448651410685339257790004824429485649682854840323484849009324486118171877706146949014994839630959269120471558355441928485561834486801067099318678275406237859608336855343079327803228141993768895085486382938883215719857931006640727311171816907582743931515808064737866306165395059736627157339004410141600439
+c &#x3D; 1883542149569091174279536150168908263646954186271291671824785843443243892583487651671300286308926172470442971603905412854092328155166231193046952547441484309496731233232032329302915437265167230962789623953726262153609071938085116529042215589144472265020275468260088671221409979372525200484718932529778499387278835971899408449219198570586884993769637405957394495603493918863913753918387538916758810844800356847596945689024738607675026456041290170218954590732925097228128824030100261173705092887218946711496138633451915979360395821610285826057145659991391437575320290538094685588193509092498259185122588642642635746
+_a &#x3D; iroot(a_b, 2)[0]
+_b &#x3D; next_prime(_a)
+# while _a*_b!&#x3D;a_b:
+# 	_a -&#x3D; 1
+# 	_b &#x3D; next_prime(_a)
+# print _a
+# print _b
+_a &#x3D; 93765576262625915496683241788947101718343164873988642315984413216815591384688881866482241684943051686788225803937137421688879814888625596496853667570833634103978674488665724274162336184943604672899422874130229212143055853110350654929253902909062114677358501123568396278075295297381414205770662659185396216063
+_b &#x3D; 93765576262625915496683241788947101718343164873988642315984413216815591384688881866482241684943051686788225803937137421688879814888625596496853667570833634103978674488665724274162336184943604672899422874130229212143055853110350654929253902909062114677358501123568396278075295297381414205770662659185396216471
+q &#x3D; next_prime(b)
+_c &#x3D; wilson(_b, _a+1)
+p &#x3D; next_prime(_c)
+d &#x3D; invert(e, (p-1)*(q-1))
+print n2s(pow(c, d, p*q))
+# CSA&#123;RSARSaRsarsaRS4Rs4rs4rS4&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -878,132 +870,6 @@ d <span class="token operator">=</span> invert<span class="token punctuation">(<
 
                 </div>
             </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
             
         </div>
     </div>
@@ -1300,7 +1166,7 @@ d <span class="token operator">=</span> invert<span class="token punctuation">(<
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1313,13 +1179,57 @@ d <span class="token operator">=</span> invert<span class="token punctuation">(<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.6k</span>&nbsp;字
+                class="white-color">4k</span>&nbsp;字
             
             
             
             
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "4";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
