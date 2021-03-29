@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LCG(线性同余生成器), Handy&#39;s blog">
+    <meta name="keywords" content="Handy&#39;s blog">
     <meta name="description" content="wuster">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LCG(线性同余生成器) | Handy&#39;s blog</title>
+    <title>Handy&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/zly.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LCG(线性同余生成器)</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -446,15 +446,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/note/" class="post-category">
-                                note
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -462,28 +453,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-04
+                    2021-02-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-02-04
+                    2021-03-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 
@@ -511,12 +502,12 @@
 <p>流密码（stream cipher)</p>
 </blockquote>
 <p>LCG属于PRNG和stream cipher的一种。</p>
-<h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>递归公式：</p>
-<p>若𝑔𝑐𝑑(𝑎,𝑚)=1，则周期𝑇=𝑜𝑟𝑑𝑚(𝑎)。</p>
+<h2 id="Principle"><a href="#Principle" class="headerlink" title="Principle"></a>Principle</h2><p>递归公式：$ S_{n+1} \equiv aS_{n} + b \left(\bmod m\right) $</p>
+<p>若 $ gcd\left(a, m\right) = 1 $ , 则周期 $ T = ordm\left(a\right) $</p>
 <p>所以选取系数时应尽量使得a为模m的原根，以此尽量延长LCG周期。</p>
 <blockquote>
-<p>整数的阶： a 与 n 互素，使得a^x≡1(mod n)成立的最小正整数 x 称为<strong>a模n的阶</strong>，记为ordna</p>
-<p>原根：当 ordna=φ(n)时，称a为模n的原根</p>
+<p>整数的阶： a 与 n 互素，使得$ a^{x} \equiv 1\left(\bmod n\right) $成立的最小正整数 x 称为<strong>a模n的阶</strong>，记为$ ordn\left(a\right) $</p>
+<p>原根：当 $ ordn\left(a\right) = \phi\left(n\right) $时，称a为模n的原根</p>
 </blockquote>
 <p>python代码实现：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LCG</span><span class="token punctuation">:</span>
@@ -538,8 +529,8 @@ gen <span class="token operator">=</span> LCG<span class="token punctuation">(</
 
 
 <h2 id="Crack-methods"><a href="#Crack-methods" class="headerlink" title="Crack methods"></a>Crack methods</h2><h3 id="unknown-b"><a href="#unknown-b" class="headerlink" title="unknown b"></a>unknown b</h3><p>已知：a,m,s0,s1</p>
-<p>因为<code> s1 = a * s0 + b (mod m)</code></p>
-<p>所以<code>b = s1 - a * s0 (mod m)</code></p>
+<p>因为$ s_{1} = a * s_{0} + b \left(\bmod m\right) $</p>
+<p>所以$ b = s_{1} - a * s_{0} \left(\bmod m\right) $</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_increment</span><span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span><span class="token punctuation">:</span>
     increment <span class="token operator">=</span> <span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span>multiplier<span class="token punctuation">)</span> <span class="token operator">%</span> modulus
     <span class="token keyword">return</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">,</span> increment</code></pre>
@@ -547,11 +538,11 @@ gen <span class="token operator">=</span> LCG<span class="token punctuation">(</
 
 <h3 id="unknown-a-b"><a href="#unknown-a-b" class="headerlink" title="unknown (a, b)"></a>unknown (a, b)</h3><p>已知：m,s0,s1,s2</p>
 <p>因为</p>
-<p><code>s1 = a * s0 + b (mod m) </code></p>
-<p><code>s2 = a * s1 + b (mod m)</code></p>
+<p> $ s_{1} = a * s_{0} + b \left(\bmod m\right) $</p>
+<p>$ s_{2} = a * s_{1} + b \left(\bmod m\right) $</p>
 <p>所以</p>
-<p><code>s2 - s1 = a * (s1 - s0) (mod m)</code></p>
-<p><code>a = (s2 - s1) / (s1 - s0) (mod m)</code></p>
+<p>$ s_{2} - s_{1} = a * \left(s_{1} - s_{0}\right) \left(\bmod m\right) $</p>
+<p>$ a = \left(s_{2} - s_{1}\right) / \left(s_{1} - s_{0}\right) \left(\bmod m\right) $</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_multiplier</span><span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">)</span><span class="token punctuation">:</span>
     multiplier <span class="token operator">=</span> <span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> invert<span class="token punctuation">(</span>states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> states<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> modulus<span class="token punctuation">)</span> <span class="token operator">%</span> modulus <span class="token comment"># 注意这里求逆元</span>
     <span class="token keyword">return</span> crack_unknown_increment<span class="token punctuation">(</span>states<span class="token punctuation">,</span> modulus<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span></code></pre>
@@ -562,8 +553,7 @@ gen <span class="token operator">=</span> LCG<span class="token punctuation">(</
 <p>求模等式方程组的通法</p>
 <p>基于LLL，对构造的格基进行约化</p>
 <p><img src="https://0xdktb.top/2020/03/27/Summary-of-Crypto-in-CTF-PRNG/Snipaste_2020-03-30_22-30-12.png" alt="img"></p>
-</blockquote>
-<blockquote>
+<p><img src="imgs/image-20210203152457151.png" alt="image-20210203152457151"></p>
 <pre class="language-python" data-language="python"><code class="language-python">A <span class="token operator">=</span> Matrix<span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">[</span>s0  <span class="token punctuation">,</span>s1  <span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">/</span>m <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">[</span><span class="token number">1</span>   <span class="token punctuation">,</span><span class="token number">1</span>   <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">,</span><span class="token number">1</span><span class="token operator">/</span>m <span class="token punctuation">,</span><span class="token number">0</span>   <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -591,18 +581,18 @@ b <span class="token operator">%=</span> m</code></pre>
 </blockquote>
 <h3 id="unknown-a-b-m"><a href="#unknown-a-b-m" class="headerlink" title="unknown (a, b, m)"></a>unknown (a, b, m)</h3><p>已知：s0-s6</p>
 <blockquote>
-<p>假设我们有一组数据data = {𝑘𝑖𝑁}(N为大素数，𝑘𝑖为𝐹𝑁下的随机数)，则reduce(gcd, data)很大概率即为N或N乘上一些很小的因子.（∵ 假设len(data)=n，则在𝑘𝑖视作完全随机的情况下，reduce(gcd, data)有除N外的素因子p的概率约为1/𝑝^𝑛，∴ 在p或n足够大的时候该方法能有效求解N）</p>
+<p>假设我们有一组数据data = {𝑘𝑖𝑁}(N为大素数，𝑘𝑖为𝐹𝑁下的随机数)，则reduce(gcd, data)很大概率即为N或N乘上一些很小的因子.（∵ 假设len(data)=n，则在𝑘𝑖视作完全随机的情况下，reduce(gcd, data)有除N外的素因子p的概率约为$ \frac{1}{p^{n}} $，∴ 在p或n足够大的时候该方法能有效求解N）</p>
 </blockquote>
 <p>即：如果有几个随机数分别乘以n，那么这几个数的gcd就很可能等于n。</p>
 <pre class="language-python" data-language="python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">123456789</span>
 <span class="token keyword">print</span> <span class="token builtin">reduce</span><span class="token punctuation">(</span>gcd<span class="token punctuation">,</span> <span class="token punctuation">[</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">,</span> randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">,</span> randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token operator">*</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># 123456789</span></code></pre>
-<p>引入序列𝑇𝑛=𝑆𝑛+1−𝑆𝑛</p>
-<p>𝑇𝑛+1=𝑆𝑛+2−𝑆𝑛+1=𝑎(𝑆𝑛+1−𝑆𝑛)=𝑎𝑇𝑛(𝑚𝑜𝑑 𝑚)</p>
-<p>𝑇𝑛+2=𝑆𝑛+3−𝑆𝑛+2=𝑎(𝑆𝑛+2−𝑆𝑛+1)=𝑎𝑇𝑛+1=𝑎^2𝑇𝑛(𝑚𝑜𝑑 𝑚)】</p>
-<p>∴𝑇𝑛𝑇𝑛+2−(𝑇𝑛+1)^2=0(𝑚𝑜𝑑 𝑚)</p>
+<p>引入序列$ T_{n} = S_{n+1} - S_{n} $</p>
+<p>$ T_{n+1} = S_{n+2} - S_{n+1} = a\left(S_{n+1} - S_{n}\right) = aT_{n}\left(\bmod m\right) $</p>
+<p>$ T_{n+2} = S_{n+3} - S_{n+2} = a\left(S_{n+2} - S_{n+1}\right) = aT_{n+1} = a^{2}T_{n}\left(\bmod m\right) $</p>
+<p>$ \therefore T_{n}T_{n+2} - \left(T_{n+1}\right)^{2} = 0\left(\bmod m\right) $</p>
 <p>因此只要我们能拿到连续𝑛(𝑛≥6)组数据，即可对module进行有效攻击. 后续即转为上一个情形的LCG攻击.</p>
-<p>也就是说我们可以利用n组s，生成几个mod m为0(m的倍数)的一组data(通过<code>𝑇𝑛𝑇𝑛+2−(𝑇𝑛+1)^2</code>求得)，就可以求得它们的最大公因数(<code>reduce(gcd, data)</code>)，也就是模数m，得到了m，就可以进而转化为unknown(a, b)。</p>
+<p>也就是说我们可以利用n组s，生成几个mod m为0(m的倍数)的一组data(通过$ T_{n}T_{n+2} - \left(T_{n+1}\right)^{2} $求得)，就可以求得它们的最大公因数(<code>reduce(gcd, data)</code>)，也就是模数m，得到了m，就可以进而转化为unknown(a, b)。</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crack_unknown_modulus</span><span class="token punctuation">(</span>states<span class="token punctuation">)</span><span class="token punctuation">:</span>
     diffs <span class="token operator">=</span> <span class="token punctuation">[</span>s1 <span class="token operator">-</span> s0 <span class="token keyword">for</span> s0<span class="token punctuation">,</span> s1 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>states<span class="token punctuation">,</span> states<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
     zeroes <span class="token operator">=</span> <span class="token punctuation">[</span>t2<span class="token operator">*</span>t0 <span class="token operator">-</span> t1<span class="token operator">*</span>t1 <span class="token keyword">for</span> t0<span class="token punctuation">,</span> t1<span class="token punctuation">,</span> t2 <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>diffs<span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> diffs<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -821,7 +811,6 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
         <span class="token keyword">print</span> n2s<span class="token punctuation">(</span>Cipher <span class="token operator">^</span> key<span class="token punctuation">)</span>
 <span class="token comment"># flag&#123;4dfe14e0c6c21ffcf5a3b4f0ed1911f6&#125;</span></code></pre>
 
-
                 
             </div>
             <hr/>
@@ -847,7 +836,7 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wusthandy.top/2021/02/04/lcg-xian-xing-tong-yu-sheng-cheng-qi/">http://wusthandy.top/2021/02/04/lcg-xian-xing-tong-yu-sheng-cheng-qi/</a>
+                    <a href="http://wusthandy.top/2021/02/03/lcg-xian-xing-tong-yu-sheng-cheng-qi/">http://wusthandy.top/2021/02/03/lcg-xian-xing-tong-yu-sheng-cheng-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -928,52 +917,9 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2021/02/04/lcg-xian-xing-tong-yu-sheng-cheng-qi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="LCG(线性同余生成器)">
-                        
-                        <span class="card-title">LCG(线性同余生成器)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/note/" class="post-category">
-                                    note
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2021/02/04/ji-5-dao-rsa/">
                     <div class="card-image">
@@ -991,9 +937,9 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-04
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1006,6 +952,44 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
                         </span>
                     </div>
                 </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/03/lcg-xian-xing-tong-yu-sheng-cheng-qi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Handy
+                            
+                        </span>
+                    </div>
+                </div>
+
                 
             </div>
         </div>
@@ -1205,7 +1189,7 @@ Cipher <span class="token operator">=</span> <span class="token number">13040004
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.5k</span>&nbsp;字
+                class="white-color">3.7k</span>&nbsp;字
             
             
             
