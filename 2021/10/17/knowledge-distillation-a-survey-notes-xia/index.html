@@ -1,0 +1,1175 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Knowledge Distillation- A Survey Notes（下）, Handy&#39;s blog">
+    <meta name="description" content="wuster">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Knowledge Distillation- A Survey Notes（下） | Handy&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/medias/zly.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://pic1.zhimg.com/80/v2-af16da70cb8e243abd76406cc4c52df4_1440w.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/zly.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Handy&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/zly.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Handy&#39;s blog</div>
+        <div class="logo-desc">
+            
+            wuster
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/WustHandy" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/WustHandy" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Knowledge Distillation- A Survey Notes（下）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/note/" class="post-category">
+                                note
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-10-17
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-10-17
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    17 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Teacher-Student-Architecture"><a href="#Teacher-Student-Architecture" class="headerlink" title="Teacher-Student Architecture"></a>Teacher-Student Architecture</h2><p>​        教师与学生之间知识获取和蒸馏的质量也取决于如何设计教师与学生网络。近年来，在蒸馏过程中，教师和学生的模型设置几乎都是预先固定的，尺寸和结构都是不变的，因此很容易造成模型容量的差距。然而，如何具体设计教师和学生的体系结构，以及为什么他们的体系结构是由这些模型设置决定的，几乎没有人知道。在本节中，我们主要讨论教师和学生模型结构之间的关系。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvik5l72akj60i60dsmy702.jpg"></p>
+<p>​        知识蒸馏被设计用于对深层神经网络进行集成。深层神经网络的复杂性主要来自两个维度：深度和宽度，即我们通常需要将知识从更深更广的神经网络转移到更浅更薄的神经网络。</p>
+<p>因此，学生网络通常可以是：</p>
+<ol>
+<li>教师网络的简化版本，<strong>每层的层数较少和/或通道数较少</strong></li>
+<li>教师网络的<strong>量化</strong>版本，与教师网络<strong>共享一些相同的结构</strong></li>
+<li>基于教师<strong>高效基本操作</strong>的小型网络</li>
+<li>具有<strong>优化全局网络结构</strong>的小型网络</li>
+<li>和老师一样的结构</li>
+</ol>
+<p>大型深度神经网络和小型学生神经网络之间的模型容量差距降低了知识传递的性能。</p>
+<ol>
+<li>引入了一名教师助理，以缓解教师模式和学生模式之间的培训差距，这一差距通过剩余学习得到进一步改善，即<strong>使用助理结构来学习剩余错误</strong>。</li>
+<li>关注最小化学生模型和教师模型在结构上的差异。例如将网络量化与知识蒸馏相结合，即学生模型是教师模型的小型量化版本。</li>
+<li>提出了结构压缩方法，即将多层学习的知识转移到单层。</li>
+<li>从教师网络到学生网络，在保持感受野的情况下，逐步进行知识迁移。在在线环境中，教师网络通常是学生网络的集合，其中学生模型彼此具有相似的结构（或相同的结构）。</li>
+</ol>
+<p>​        最近，<strong>深度可分离卷积</strong>被广泛用于设计用于移动或嵌入式设备的高效神经网络。受<strong>神经架构搜索</strong>（NAS）成功的启发，通过基于高效元运算或块搜索全局结构，小型神经网络的性能得到了进一步提高。此外，<strong>动态搜索适当知识转移机制</strong>的想法也出现在知识蒸馏中，例如，使用<strong>强化学习自动移除数据驱动方式中的冗余层</strong>，并搜索给定教师网络的最佳学生网络。知识蒸馏中的神经架构搜索思想，即<strong>在教师模型指导下对学生结构和知识转移的联合搜索</strong>，将是未来研究的一个有趣课题。</p>
+<h2 id="Distillation-Algorithms"><a href="#Distillation-Algorithms" class="headerlink" title="Distillation Algorithms"></a>Distillation Algorithms</h2><p>​        在教师模型和学生模型之间直接匹配响应/基于特征的知识边缘或特征空间的分布。</p>
+<h3 id="Adversarial-distillation"><a href="#Adversarial-distillation" class="headerlink" title="Adversarial distillation"></a>Adversarial distillation</h3><p>​        在知识蒸馏中，教师模型很难从真实的数据分布中完美学习，学生模型也无法很好地模仿教师模型，通过传递教师知识来学习数据的真实分布，因为其容量较小。最近，对抗式学习由于其在生成性网络中的巨大成功而受到越来越多的关注，GANs中的鉴别器估计样本来自训练数据分布的可能性，而生成器试图通过生成的数据样本愚弄鉴别器。受此启发，越来越多的对抗性知识分散方法被提出，以使教师/学生网络更好地理解真实的数据分布。</p>
+<ol>
+<li>对抗性生成器经过训练生成合成数据，该数据可直接用作训练数据集或用于扩充训练数据集。还尝试利用对抗性生成器生成知识转移的硬示例。</li>
+<li>引入鉴别器，通过使用日志或特征将样本与学生和教师模型区分开来。具体而言，使用未标记的数据样本来形成知识转移，并且使用了多个鉴别器。此外使用了有效的中间监督，即挤压知识边缘，以缓解教师和学生之间的能力差距。</li>
+<li>与上述两类不同，教师模型在学生模型的训练过程中是固定的，对抗性知识蒸馏也以在线方式工作，即教师和学生在每一种情况下共同优化。此外，利用知识蒸馏来压缩GAN，一个有学问的小GAN学生网络通过知识转移模仿一个更大的GAN教师网络。</li>
+</ol>
+<ol>
+<li>GAN是通过教师知识转移增强学生学习能力的有效工具</li>
+<li>GAN和KD的联合可以产生有价值的数据，用于改进KD性能，克服对不可用和不可访问数据的模仿</li>
+<li>KD可用于压缩GANs</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvil4j0zu1j60jg0fmabr02.jpg"></p>
+<h3 id="Multi-teacher-distillation"><a href="#Multi-teacher-distillation" class="headerlink" title="Multi-teacher distillation"></a>Multi-teacher distillation</h3><p>​        可以单独和完整地使用多个教师网络来进行教学过程中的蒸馏。要从多名教师那里传递知识，最简单的方法是使用所有教师的<strong>平均反应作为监督信号</strong>。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvilprqxqij60j80aiq3h02.jpg"></p>
+<p>​        以logits和特征表示作为知识。除了来自所有教师的平均logits外，还进一步纳入了<strong>中介人员的特征</strong>，以鼓励不同培训样本之间的差异性。为了利用逻辑特征和中间特征，使用了两个教师网络，其中一名教师向学生传授基于<strong>反应</strong>的知识，另一名教师向学生传授基于<strong>特征</strong>的知识。在每次迭代中从教师网络库中随机选择一名教师。为了从多个教师那里转移基于特征的知识，在学生网络中增加了额外的教师分支，以模仿教师的中间特征。重生网络以一步一步的方式解决了多个教师的问题，即t step的学生被用作t+1 step学生的老师。为了有效地执行知识传输并探索多台服务器的功能，已经提出了几种替代方法，通过添加不同的噪声或使用随机块和跳跃连接，模拟一名教师的多名教师。由于多教师KD的特殊性，其扩展被用于通过知识适应进行领域适应，并保护数据的竞争性和安全性。</p>
+<h3 id="Cross-modal-distillation"><a href="#Cross-modal-distillation" class="headerlink" title="Cross-modal distillation"></a>Cross-modal distillation</h3><p>​        在跨模态场景中，它可以很容易地实现不同模态之间的知识转移。不同的输入数据模式提供相似或补充信息，而某些模式的数据/标签在培训/测试阶段可能不可用。</p>
+<p>​        给定一个教师模型，该模型在一个模态（例如RGB图像）上预训练，并带有大量注释良好的数据样本，旨在使用新的未标记输入模态（例如深度图像和光流）将知识从教师模型转移到学生模型。具体而言，建议的方法依赖于两种模式上的未标记配对样本，即HRGB和深度图像，然后教师从RGB图像中获得的特征被用作监督来训练学生。成对样本背后的理念是通过成对样本注册传递注释/标签信息，并已广泛用于跨模式应用。为了通过墙壁和遮挡进行人体姿势估计，使用同步无线电信号和摄像机图像，在基于无线电的人体姿势估计模式之间传递知识。来自两种模式（RGBvideos和skeleton sequence）的成对样本用于转移从RGB视频中学习到的知识应用于新的基于骨架的人体动作识别模型。为了仅使用RGB图像来提高动作识别性能，对另一种模式（即深度图像）进行了跨模式辨别，以生成RGB图像模式的幻觉流。进一步介绍了对比损失，以在不同模式之间传递成对关系。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvinl29o7nj60iw0bst9i02.jpg"></p>
+<p>​        提出了一种基于知识蒸馏的可视化问答方法，将以图像问答为输入的三线性互动教师模型中的知识分解为以图像问答为输入的学习双线性互动学生模型。提出的概率知识蒸馏也被很好地用于从文本模态到视觉模态的知识转移。通过跨模态蒸馏提出了一种模态幻觉架构，以提高检测性能。</p>
+<h3 id="Graph-based-distillation"><a href="#Graph-based-distillation" class="headerlink" title="Graph-based distillation"></a>Graph-based distillation</h3><p>​        大多数知识蒸馏算法侧重于根据每个训练样本将知识从教师传递给学生，而最近提出了几种方法来探索数据内部的关系。主要思想可以概括为：</p>
+<ol>
+<li>利用图作为教学知识的载体</li>
+<li>利用图形控制教师知识的信息传递。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvinfg45y3j60iw0bcgma02.jpg"></p>
+<p>基于图形的知识属于基于关系的知识。在本节中，我们将介绍基于图的知识的典型定义和基于图的消息传递蒸馏算法。</p>
+<p>​        每个顶点代表一个自我监督教师和两个图，然后使用logits和中间特征构造，以将多个自我监督任务中的知识转移到学生模型/任务中。图形用于维持高维空间中样本之间的关系，然后通过建议的位置服务前损失函数进行知识转移。通过多头图考虑了数据关系，其中顶点是CNNs中不同层次的特征。直接传递了数据样本的交互关系，即匹配教师和学生之间的图形边缘。相似矩阵中的相互关系被改变，相似性保留知识通过匹配相似矩阵进行转移。不仅匹配了基于响应和基于特征的知识，还使用了基于图形的知识。实例特征和实例关系分别被建模为图形的顶点和边。</p>
+<p>​        与使用基于图形的知识不同，有几种方法使用图形控制知识转移的过程。考虑了模态差异，以纳入来自源域的专有信息，并引入了一个名为蒸馏图的定向图，以探索不同模态之间的关系，其中每个顶点表示一个模态，边表示一个模态到另一个的<strong>连接强度</strong>。提出了一种基于双向图形的多元协作学习，以探索不同的知识转移模式。进一步引入GNNs来处理基于图形的知识的知识转移。</p>
+<h3 id="Attention-based-distillation"><a href="#Attention-based-distillation" class="headerlink" title="Attention-based distillation"></a>Attention-based distillation</h3><p>​        由于注意可以很好地反映卷积神经网络的神经元激活，因此在知识蒸馏中使用了一些注意机制来提高学生网络的性能。在这些基于注意力的方法中，不同的注意力转移被定义为将知识从教师网络蒸馏到学生网络的机制。注意转移的核心是定义神经网络各层特征嵌入的注意图。也就是说，<strong>关于网络特征嵌入的知识是通过注意图函数传递的</strong>。与注意映射不同，通过设计注意机制，对不同的置信度规则进行注意分配，提出了一种注意知识蒸馏方法。</p>
+<h3 id="Data-free-distillation"><a href="#Data-free-distillation" class="headerlink" title="Data-free distillation"></a>Data-free distillation</h3><p>​        为了克服因隐私、合法性、安全性和保密性问题而导致的数据不可用问题，提出了一些无数据KD方法。顾名思义，学生网络的<strong>迁移训练数据是不存在</strong>的，可以通过不同的方式<strong>新生成或综合生成</strong>。传输数据由GAN生成。通过使用教师网络的<strong>层激活或层光谱激活重建</strong>用于训练学生网络的传输数据。不使用现有数据，传输数据是通过从教师网络的参数中建模softmax空间生成的。targetdata是通过使用教师网络特征表示中的信息生成的。与零次学习类似，设计了一种少次学习的知识蒸馏方法，该方法通过高斯过程将教师模型中的知识蒸馏到学生神经网络中，教师使用有限的标记数据。</p>
+<h3 id="Quantized-distillation"><a href="#Quantized-distillation" class="headerlink" title="Quantized distillation"></a>Quantized distillation</h3><p>​        网络量化通过将高精度网络（例如32位浮点）转换为低位网络（例如2位和8位），降低了神经网络的计算复杂性。同时，知识分解的目的是训练小模型，使其产生与复杂模型相似的性能。受此启发，一些量化KD方法通过使用师生框架中的量化过程提出。具体而言，提出了将知识转移到加权量化学生网络的量化蒸馏方法。提出的量化DKD被称为“学徒”，其中高精度网络作为教师，通过知识转移教授低精度网络作为学生。为了使小型学生网络很好地模拟大型教师网络，首先在特征图上对全精度教师网络进行量化，然后将知识从量化教师转移到量化学生网络。量化感知知识蒸馏是通过量化学生网络的自学习和师生网络知识转移的共同学习而提出的。此外，根据知识蒸馏的超参数（包括教师网络的大小和蒸馏温度），使用蒸馏和量化对深度神经网络进行了实证分析。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gvin0xfjstj60ig0bsjs902.jpg"></p>
+<h3 id="Lifelong-distillation"><a href="#Lifelong-distillation" class="headerlink" title="Lifelong distillation"></a>Lifelong distillation</h3><p>​        终身学习包括持续学习、持续学习和元学习，旨在以与人类相似的方式学习。它不仅可以积累以前学到的知识，还可以将学到的知识<strong>转化为未来的学习</strong>。考虑到知识分散的特点，它可以作为一种有效的方法来保存和转移所学知识，以避免灾难性的后果。</p>
+<p>​        设计了一个元传输网络，可以确定师生ar体系结构中传输的内容和位置。提出了一个称为Leap的轻量级框架，通过在学习过程中传递知识，实现任务流形上的元学习。设计了一种新的用于图像识别的知识转移网络体系结构，该结构同时结合了图像的视觉信息和先验知识。提出了一种用于图像检索的无意识知识保存方法，并保存和传递了来自图像形态和语义信息的教师知识边缘。此外，为了解决长期学习中的灾难性<strong>遗忘</strong>问题，全球蒸馏、多模型蒸馏、基于知识蒸馏的终身学习方法和其他基于知识蒸馏的方法已开发用于蒸馏所学知识并在新任务上教授学生网络。</p>
+<h3 id="NAS-based-distillation"><a href="#NAS-based-distillation" class="headerlink" title="NAS-based distillation"></a>NAS-based distillation</h3><p>​        神经结构搜索（NAS）是最流行的自动机器学习（AutoML）技术之一，其目的是自动识别深层神经模型，自适应地学习合适的深层神经结构。同时，在知识的蒸馏中，知识转移的成功不仅取决于教师的知识，还取决于学生的结构。然而，大教师模型和小学生模型之间可能存在能力差距，使学生难以从教师的知识中很好地学习。为了解决这个问题，已采用神经架构搜索来在知识蒸馏中找到合适的学生架构，如基于oracle的架构和架构感知知识蒸馏。此外，知识蒸馏还可用于提高神经架构搜索的效率，如AdaNAS、具有蒸馏架构知识的NAS和教师指导的架构搜索或TGSA。在GSA中，每个架构搜索步骤都被引导来模拟教师网络的中间特征表示，在该网络中，结构和候选作品（或学生）被有效地搜索，并且教师有效地监督自然迁移。</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>​        作为一种有效的深层神经网络压缩和加速技术，知识提取已广泛应用于人工智能的各个领域，包括视觉识别、语音识别、自然语言处理（NLP）和推荐系统。此外，知识提取还可用于其他目的，如数据隐私和<strong>防御对抗性攻击</strong>。</p>
+<h3 id="KD-in-Visual-Recognition"><a href="#KD-in-Visual-Recognition" class="headerlink" title="KD in Visual Recognition"></a>KD in Visual Recognition</h3><p>​        大多数知识蒸馏方法之前都是为图像分类而开发的，然后扩展到其他视觉识别应用，包括人脸识别，动作识别，对象检测、车道检测、行人检测、视频分类、人脸地标检测、人员重新识别，姿势估计，图像或视频分割，盐度估计，图像重分类，深度估计、目测里程和目视问题回答。</p>
+<h3 id="KD-in-NLP"><a href="#KD-in-NLP" class="headerlink" title="KD in NLP"></a>KD in NLP</h3><h3 id="KD-in-Speech-Recognition"><a href="#KD-in-Speech-Recognition" class="headerlink" title="KD in Speech Recognition"></a>KD in Speech Recognition</h3><h3 id="KD-in-Other-Applications"><a href="#KD-in-Other-Applications" class="headerlink" title="KD in Other Applications"></a>KD in Other Applications</h3><p>​        在推荐系统中，如何充分、正确地利用用户评论和产品图片等外部知识进行推荐，对深度推荐模型的有效性起着非常重要的作用。最重要的是，降低深度沟通模型的复杂性和提高效率也是非常必要的。最近，知识蒸馏已成功应用于深部模型压缩和加速的推荐系统。知识提取首次被引入推荐系统，并被称为排名提取，因为推荐是一个排名问题。设计了一种对抗性的知识提取方法，用于高效推荐。在这种推荐系统中，教师作为正确的复习预测网络监督学生的用户项目预测网络（生成器），学生的学习通过教师和学生网络之间的对抗性适应进行调整。设计了一个用于推荐系统的增强型协同去噪自动编码器（ECAE）模型，通过知识蒸馏从用户反馈的生成数据中捕获有用的知识并进行还原。统一的ECAE框架包括一个生成网络、一个再培训网络和一个从生成网络中转移知识和减少噪音的蒸馏层。</p>
+<p>​        利用教师-学生体系结构中知识分散的自然特性，知识蒸馏被用作一种有效的策略，用于解决深度模型的恶意攻击或干扰以及因隐私、证实性和安全问题而无法获得的数据问题。<strong>对抗性样本的干扰可以通过教师网络和蒸馏的稳健输出来克服</strong>。为了避免暴露直接使用数据的数据隐私，多名教师访问敏感或未标记数据的每个子集，并监督学生。为了解决数据带来的隐私和安全性问题，通过无数据蒸馏使用教师网络的分层操作或分层光谱激活来生成用于培训学生网络的数据。为了保护数据隐私和知识盗版，将学生模型发布在公共数据上，而教师模型发布在敏感和公共数据上。这种私有知识提取采用了隐私损失和bathloss来进一步提高隐私度。为了考虑隐私和性能之间的折衷，开发了一种新的基于分层知识提取的网络压缩方法，每类样本数很少，并取得了显著的性能。当然，知识提炼还有其他特别有趣的应用，如神经架构搜索和深层神经网络的可解释性。</p>
+<h2 id="Discussions"><a href="#Discussions" class="headerlink" title="Discussions"></a>Discussions</h2><h3 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h3><h3 id="Future-Directions"><a href="#Future-Directions" class="headerlink" title="Future Directions"></a>Future Directions</h3><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>​        本文从知识、蒸馏方案、师生体系结构、蒸馏算法、应用以及面临的挑战和未来方向等方面对知识蒸馏进行了全面的综述。我们希望这次全面的回顾不仅能提供知识蒸馏的一个概览，而且能为未来的研究提供一些见解。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Handy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wusthandy.github.io/2021/10/17/knowledge-distillation-a-survey-notes-xia/">https://wusthandy.github.io/2021/10/17/knowledge-distillation-a-survey-notes-xia/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Handy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/10/19/improving-the-adversarial-robustness-and-interpretabilityof-deep-neural-networks-by-regularizing-their-input-gradients/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Improving the Adversarial Robustness and Interpretabilityof Deep Neural Networks by Regularizing Their Input Gradients">
+                        
+                        <span class="card-title">Improving the Adversarial Robustness and Interpretabilityof Deep Neural Networks by Regularizing Their Input Gradients</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/note/" class="post-category">
+                                    note
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/10/knowledge-distillation-a-survey-notes-shang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Knowledge Distillation- A Survey Notes（上）">
+                        
+                        <span class="card-title">Knowledge Distillation- A Survey Notes（上）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/note/" class="post-category">
+                                    note
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2942228334"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Handy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">59.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "4";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="/null" target="_blank">冀ICP备20016511号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/WustHandy" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wusthandy@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=821644097" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 821644097" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

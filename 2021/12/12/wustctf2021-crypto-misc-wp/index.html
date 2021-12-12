@@ -1,0 +1,1375 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="记五道RSA, Handy&#39;s blog">
+    <meta name="description" content="wuster">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>记五道RSA | Handy&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/medias/zly.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"></head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://pic1.zhimg.com/80/v2-af16da70cb8e243abd76406cc4c52df4_1440w.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/zly.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Handy&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/zly.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Handy&#39;s blog</div>
+        <div class="logo-desc">
+            
+            wuster
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/WustHandy" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/WustHandy" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">记五道RSA</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/writeup/" class="post-category">
+                                writeup
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-12-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-12-12
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="signin"><a href="#signin" class="headerlink" title="signin"></a>signin</h2><p>零宽度字符隐写+emoji-aes</p>
+<h2 id="py2"><a href="#py2" class="headerlink" title="py2"></a>py2</h2><pre class="language-bash" data-language="bash"><code class="language-bash">__import__<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span>.system<span class="token punctuation">(</span><span class="token string">'/bin/sh'</span><span class="token punctuation">)</span></code></pre>
+<h2 id="ezsteg"><a href="#ezsteg" class="headerlink" title="ezsteg"></a>ezsteg</h2><p>用stegsolve打开图片，在red plane 0通道发现G plane通道有东西。<br>保存Green plane 0的图片然后用stegsolve的Image Combiner功能进行对比。<br>发现了前一半flag还有后一半flag的提示是用QIM量化，步长为20。在github搜索QIM quantization搜到这个网址<br><a target="_blank" rel="noopener" href="https://github.com/pl561/QuantizationIndexModulation/blob/master/qim.py">https://github.com/pl561/QuantizationIndexModulation/blob/master/qim.py</a><br>仿照里面的test_qim进行函数重写，发现结果里的msg_detected全是1和0，把所有的0都改成255，再保存成新的图片，得到后一半flag。</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">my_test_qim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    delta <span class="token operator">=</span> <span class="token number">20</span>
+    qim <span class="token operator">=</span> QIM<span class="token punctuation">(</span>delta<span class="token punctuation">)</span>
+    y <span class="token operator">=</span> cv2<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token string">'./ezsteg.png'</span><span class="token punctuation">)</span>
+    z_detected<span class="token punctuation">,</span> msg_detected <span class="token operator">=</span> qim<span class="token punctuation">.</span>detect<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>msg_detected<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>msg_detected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>msg_detected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> msg_detected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                    msg_detected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">255</span>
+    cv2<span class="token punctuation">.</span>imwrite<span class="token punctuation">(</span><span class="token string">'flag.png'</span><span class="token punctuation">,</span> msg_detected<span class="token punctuation">)</span></code></pre>
+<h2 id="babypcap"><a href="#babypcap" class="headerlink" title="babypcap"></a>babypcap</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># f=open('usbdata.txt','r')</span>
+<span class="token comment"># fi=open('out.txt','w')</span>
+<span class="token comment"># while 1:</span>
+<span class="token comment">#     a=f.readline().strip()</span>
+<span class="token comment">#     if a:</span>
+<span class="token comment">#         if len(a)==8: # 鼠标流量的话len改为8</span>
+<span class="token comment">#             out=''</span>
+<span class="token comment">#             for i in range(0,len(a),2):</span>
+<span class="token comment">#                 if i+2 != len(a):</span>
+<span class="token comment">#                     out+=a[i]+a[i+1]+":"</span>
+<span class="token comment">#                 else:</span>
+<span class="token comment">#                     out+=a[i]+a[i+1]</span>
+<span class="token comment">#             fi.write(out)</span>
+<span class="token comment">#             fi.write('\n')</span>
+<span class="token comment">#     else:</span>
+<span class="token comment">#         break</span>
+
+<span class="token comment"># fi.close()</span>
+
+
+nums <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+keys <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'out.txt'</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'xy.txt'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">)</span>
+posx <span class="token operator">=</span> <span class="token number">0</span>
+posy <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> line <span class="token keyword">in</span> keys<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">12</span> <span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span>
+    y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">127</span> <span class="token punctuation">:</span>
+        x <span class="token operator">-=</span> <span class="token number">256</span>
+    <span class="token keyword">if</span> y <span class="token operator">></span> <span class="token number">127</span> <span class="token punctuation">:</span>
+        y <span class="token operator">-=</span> <span class="token number">256</span>
+    posx <span class="token operator">+=</span> x
+    posy <span class="token operator">+=</span> y
+    btn_flag <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>line<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">)</span>  <span class="token comment"># 1 for left , 2 for right , 0 for nothing</span>
+    <span class="token keyword">if</span> btn_flag <span class="token operator">==</span> <span class="token number">2</span> <span class="token punctuation">:</span> <span class="token comment"># 1 代表左键</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>posx<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>posy<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span>
+
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h2 id="forensic"><a href="#forensic" class="headerlink" title="forensic"></a>forensic</h2><p>Volatility hashdump</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="checkin"><a href="#checkin" class="headerlink" title="checkin"></a>checkin</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+a <span class="token operator">=</span> <span class="token number">96316700053619982349826498082259844895063380240567022005928513915204024844540469555622671378420860794984950658042831492783861955562369157151421516119461394776198481138414957948098639517961692333468639614643929505462336976740245087790881358621201910998692556309218648061409226131514631759925556900619868423867</span>
+p <span class="token operator">=</span> <span class="token number">177239747994633072316370036717795850380946952732364574855526378691774946405888176887836729298576549186507345842031428239242107123560927684315092976659481316206341152868428190256155821018749939785354467611248296042929661619015242685527886041555723637417300791242768261681522882474858447747878003388616705422171</span>
+c <span class="token operator">=</span> <span class="token number">31249810030340024867701516253216124873798373762921285160326678130373368708545564162489355490838932695325242212478465783024384459580684925642281202270189855386158713050116222890609403658664009085600847194989625233217765205670373759181021708443179634537090066546973252972859914381008999790882607671941093099299</span>
+ni <span class="token operator">=</span> invert<span class="token punctuation">(</span>a<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+m <span class="token operator">=</span> c <span class="token operator">*</span> ni <span class="token operator">%</span> p 
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="base"><a href="#base" class="headerlink" title="base"></a>base</h2><pre class="language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> <span class="token string">'zCN7zTIOntz8zCiPzsQQzCySltr8m9mJyCiMmsQMmPmRzwyPzdfBowzZ='</span>
+b_char <span class="token operator">=</span> <span class="token string">'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/'</span>
+b <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b_char<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token operator">==</span> b_char<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            b <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">bin</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'0b'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>b<span class="token punctuation">[</span>i<span class="token punctuation">:</span> i<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span></code></pre>
+<h2 id="random1"><a href="#random1" class="headerlink" title="random1"></a>random1</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># py2</span>
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> gmpy2
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+
+n <span class="token operator">=</span> <span class="token number">144573683990296079611135474661197492569962285163118264304760128514378450625043070474838075626723354220121948920313400664358341070757676498630899262349227958025807395866103391135742530910291132519036950667849498017553807524999532071920009738654477379676790400942232810106883328105428161410721145229679023998881</span>
+c <span class="token operator">=</span> <span class="token number">140936410048438311250552166359315531524717850408136878422422753861467709727494132943441793325459384490656351395836085596063714127829696538515364822908513326788824368390411397265861249839989684310498194231709180660320399728106109349119244510966442534818280589033645304725341767217060885195904689618851168472021</span>
+res <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">224</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">63</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">139</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">205</span><span class="token punctuation">,</span> <span class="token number">108</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">237</span><span class="token punctuation">,</span> <span class="token number">68</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">206</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">,</span>
+    <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">232</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">168</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">214</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">185</span><span class="token punctuation">,</span> <span class="token number">107</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">176</span><span class="token punctuation">,</span> <span class="token number">219</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">,</span>
+    <span class="token number">249</span><span class="token punctuation">,</span> <span class="token number">88</span><span class="token punctuation">,</span> <span class="token number">86</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">110</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">171</span><span class="token punctuation">,</span> <span class="token number">220</span><span class="token punctuation">,</span> <span class="token number">249</span><span class="token punctuation">,</span> <span class="token number">251</span><span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">149</span><span class="token punctuation">,</span> <span class="token number">234</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span>
+    <span class="token number">126</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">207</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">199</span><span class="token punctuation">,</span> <span class="token number">155</span><span class="token punctuation">,</span> <span class="token number">56</span><span class="token punctuation">,</span> <span class="token number">142</span><span class="token punctuation">,</span> <span class="token number">199</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">173</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span> <span class="token number">195</span><span class="token punctuation">,</span>
+    <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">175</span><span class="token punctuation">,</span> <span class="token number">178</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">73</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">223</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">254</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">94</span><span class="token punctuation">,</span> <span class="token number">156</span><span class="token punctuation">,</span> <span class="token number">97</span><span class="token punctuation">,</span> <span class="token number">67</span><span class="token punctuation">,</span>
+    <span class="token number">252</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">179</span><span class="token punctuation">,</span> <span class="token number">245</span><span class="token punctuation">,</span> <span class="token number">231</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">77</span><span class="token punctuation">,</span> <span class="token number">63</span><span class="token punctuation">,</span> <span class="token number">167</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">136</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">210</span><span class="token punctuation">,</span> <span class="token number">219</span><span class="token punctuation">,</span> <span class="token number">226</span><span class="token punctuation">,</span>
+    <span class="token number">164</span><span class="token punctuation">,</span> <span class="token number">164</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">122</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">86</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">251</span><span class="token punctuation">,</span> <span class="token number">126</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">119</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">,</span> <span class="token number">142</span><span class="token punctuation">,</span> <span class="token number">187</span><span class="token punctuation">,</span>
+    <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">169</span><span class="token punctuation">,</span> <span class="token number">82</span><span class="token punctuation">,</span> <span class="token number">192</span><span class="token punctuation">,</span> <span class="token number">244</span><span class="token punctuation">,</span> <span class="token number">191</span><span class="token punctuation">,</span> <span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">62</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">,</span> <span class="token number">141</span><span class="token punctuation">,</span> <span class="token number">248</span><span class="token punctuation">,</span> <span class="token number">147</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span>
+    <span class="token number">236</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">177</span><span class="token punctuation">,</span> <span class="token number">110</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">39</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">73</span><span class="token punctuation">,</span> <span class="token number">172</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">46</span><span class="token punctuation">,</span>
+    <span class="token number">164</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">242</span><span class="token punctuation">,</span> <span class="token number">70</span>
+<span class="token punctuation">]</span>
+seeds <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">9999</span><span class="token punctuation">,</span> <span class="token number">1247</span><span class="token punctuation">,</span> <span class="token number">5097</span><span class="token punctuation">,</span> <span class="token number">7717</span><span class="token punctuation">,</span> <span class="token number">7026</span><span class="token punctuation">,</span> <span class="token number">8398</span><span class="token punctuation">,</span> <span class="token number">961</span><span class="token punctuation">,</span> <span class="token number">3156</span><span class="token punctuation">,</span> <span class="token number">1271</span><span class="token punctuation">,</span> <span class="token number">7473</span><span class="token punctuation">,</span> <span class="token number">3669</span><span class="token punctuation">,</span> <span class="token number">6716</span><span class="token punctuation">,</span>
+    <span class="token number">7550</span><span class="token punctuation">,</span> <span class="token number">1426</span><span class="token punctuation">,</span> <span class="token number">8065</span><span class="token punctuation">,</span> <span class="token number">351</span><span class="token punctuation">,</span> <span class="token number">738</span><span class="token punctuation">,</span> <span class="token number">4057</span><span class="token punctuation">,</span> <span class="token number">877</span><span class="token punctuation">,</span> <span class="token number">4029</span><span class="token punctuation">,</span> <span class="token number">7606</span><span class="token punctuation">,</span> <span class="token number">1822</span><span class="token punctuation">,</span> <span class="token number">7749</span><span class="token punctuation">,</span> <span class="token number">7973</span><span class="token punctuation">,</span> <span class="token number">9666</span><span class="token punctuation">,</span>
+    <span class="token number">5927</span><span class="token punctuation">,</span> <span class="token number">7944</span><span class="token punctuation">,</span> <span class="token number">1240</span><span class="token punctuation">,</span> <span class="token number">8960</span><span class="token punctuation">,</span> <span class="token number">443</span><span class="token punctuation">,</span> <span class="token number">6349</span><span class="token punctuation">,</span> <span class="token number">5949</span><span class="token punctuation">,</span> <span class="token number">5913</span><span class="token punctuation">,</span> <span class="token number">2332</span><span class="token punctuation">,</span> <span class="token number">7255</span><span class="token punctuation">,</span> <span class="token number">5185</span><span class="token punctuation">,</span> <span class="token number">5504</span><span class="token punctuation">,</span>
+    <span class="token number">3499</span><span class="token punctuation">,</span> <span class="token number">8855</span><span class="token punctuation">,</span> <span class="token number">4183</span><span class="token punctuation">,</span> <span class="token number">8812</span><span class="token punctuation">,</span> <span class="token number">5865</span><span class="token punctuation">,</span> <span class="token number">4147</span><span class="token punctuation">,</span> <span class="token number">5091</span><span class="token punctuation">,</span> <span class="token number">4556</span><span class="token punctuation">,</span> <span class="token number">1968</span><span class="token punctuation">,</span> <span class="token number">5589</span><span class="token punctuation">,</span> <span class="token number">2481</span><span class="token punctuation">,</span> <span class="token number">3411</span><span class="token punctuation">,</span>
+    <span class="token number">514</span><span class="token punctuation">,</span> <span class="token number">589</span><span class="token punctuation">,</span> <span class="token number">8078</span><span class="token punctuation">,</span> <span class="token number">9590</span><span class="token punctuation">,</span> <span class="token number">1765</span><span class="token punctuation">,</span> <span class="token number">1009</span><span class="token punctuation">,</span> <span class="token number">4415</span><span class="token punctuation">,</span> <span class="token number">6603</span><span class="token punctuation">,</span> <span class="token number">3978</span><span class="token punctuation">,</span> <span class="token number">9215</span><span class="token punctuation">,</span> <span class="token number">5307</span><span class="token punctuation">,</span> <span class="token number">3804</span><span class="token punctuation">,</span> <span class="token number">1141</span><span class="token punctuation">,</span>
+    <span class="token number">6691</span><span class="token punctuation">,</span> <span class="token number">1760</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token number">7008</span><span class="token punctuation">,</span> <span class="token number">6165</span><span class="token punctuation">,</span> <span class="token number">9974</span><span class="token punctuation">,</span> <span class="token number">1194</span><span class="token punctuation">,</span> <span class="token number">3665</span><span class="token punctuation">,</span> <span class="token number">7579</span><span class="token punctuation">,</span> <span class="token number">1148</span><span class="token punctuation">,</span> <span class="token number">5786</span><span class="token punctuation">,</span> <span class="token number">6175</span><span class="token punctuation">,</span>
+    <span class="token number">1333</span><span class="token punctuation">,</span> <span class="token number">7932</span><span class="token punctuation">,</span> <span class="token number">8217</span><span class="token punctuation">,</span> <span class="token number">9058</span><span class="token punctuation">,</span> <span class="token number">5400</span><span class="token punctuation">,</span> <span class="token number">6527</span><span class="token punctuation">,</span> <span class="token number">6220</span><span class="token punctuation">,</span> <span class="token number">1111</span><span class="token punctuation">,</span> <span class="token number">4265</span><span class="token punctuation">,</span> <span class="token number">208</span><span class="token punctuation">,</span> <span class="token number">2191</span><span class="token punctuation">,</span> <span class="token number">9706</span><span class="token punctuation">,</span>
+    <span class="token number">1019</span><span class="token punctuation">,</span> <span class="token number">7249</span><span class="token punctuation">,</span> <span class="token number">7644</span><span class="token punctuation">,</span> <span class="token number">907</span><span class="token punctuation">,</span> <span class="token number">5679</span><span class="token punctuation">,</span> <span class="token number">3335</span><span class="token punctuation">,</span> <span class="token number">3181</span><span class="token punctuation">,</span> <span class="token number">5301</span><span class="token punctuation">,</span> <span class="token number">4977</span><span class="token punctuation">,</span> <span class="token number">2455</span><span class="token punctuation">,</span> <span class="token number">724</span><span class="token punctuation">,</span> <span class="token number">4447</span><span class="token punctuation">,</span> <span class="token number">3566</span><span class="token punctuation">,</span>
+    <span class="token number">9161</span><span class="token punctuation">,</span> <span class="token number">1289</span><span class="token punctuation">,</span> <span class="token number">181</span><span class="token punctuation">,</span> <span class="token number">3509</span><span class="token punctuation">,</span> <span class="token number">6305</span><span class="token punctuation">,</span> <span class="token number">8183</span><span class="token punctuation">,</span> <span class="token number">4024</span><span class="token punctuation">,</span> <span class="token number">2630</span><span class="token punctuation">,</span> <span class="token number">131</span><span class="token punctuation">,</span> <span class="token number">1822</span><span class="token punctuation">,</span> <span class="token number">8918</span><span class="token punctuation">,</span> <span class="token number">5595</span><span class="token punctuation">,</span> <span class="token number">6849</span><span class="token punctuation">,</span>
+    <span class="token number">2555</span><span class="token punctuation">,</span> <span class="token number">4221</span><span class="token punctuation">,</span> <span class="token number">3023</span><span class="token punctuation">,</span> <span class="token number">5828</span><span class="token punctuation">,</span> <span class="token number">5622</span><span class="token punctuation">,</span> <span class="token number">5812</span><span class="token punctuation">,</span> <span class="token number">2378</span><span class="token punctuation">,</span> <span class="token number">746</span><span class="token punctuation">,</span> <span class="token number">3608</span><span class="token punctuation">,</span> <span class="token number">822</span><span class="token punctuation">,</span> <span class="token number">4856</span><span class="token punctuation">,</span> <span class="token number">6987</span><span class="token punctuation">,</span> <span class="token number">9977</span><span class="token punctuation">,</span>
+    <span class="token number">5289</span><span class="token punctuation">,</span> <span class="token number">342</span><span class="token punctuation">,</span> <span class="token number">5418</span><span class="token punctuation">,</span> <span class="token number">9974</span><span class="token punctuation">,</span> <span class="token number">5291</span><span class="token punctuation">,</span> <span class="token number">6895</span><span class="token punctuation">,</span> <span class="token number">9663</span><span class="token punctuation">,</span> <span class="token number">3642</span><span class="token punctuation">,</span> <span class="token number">2965</span><span class="token punctuation">,</span> <span class="token number">8003</span><span class="token punctuation">,</span> <span class="token number">5830</span><span class="token punctuation">,</span> <span class="token number">6373</span><span class="token punctuation">,</span>
+    <span class="token number">3394</span><span class="token punctuation">,</span> <span class="token number">8308</span><span class="token punctuation">,</span> <span class="token number">6754</span><span class="token punctuation">,</span> <span class="token number">4843</span><span class="token punctuation">,</span> <span class="token number">2100</span><span class="token punctuation">,</span> <span class="token number">1355</span><span class="token punctuation">,</span> <span class="token number">5166</span><span class="token punctuation">,</span> <span class="token number">601</span><span class="token punctuation">,</span> <span class="token number">9987</span><span class="token punctuation">,</span> <span class="token number">8921</span><span class="token punctuation">,</span> <span class="token number">7563</span><span class="token punctuation">,</span> <span class="token number">2250</span><span class="token punctuation">,</span>
+    <span class="token number">9056</span><span class="token punctuation">,</span> <span class="token number">2873</span><span class="token punctuation">,</span> <span class="token number">7479</span><span class="token punctuation">,</span> <span class="token number">5508</span><span class="token punctuation">,</span> <span class="token number">109</span>
+<span class="token punctuation">]</span>
+
+dp <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>seeds<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>seeds<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    rands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        rands<span class="token punctuation">.</span>append<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    dp <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>rands<span class="token punctuation">[</span>i <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">^</span> res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+dp <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span>
+e <span class="token operator">=</span> <span class="token number">0x10001</span>
+n <span class="token operator">=</span> <span class="token number">144573683990296079611135474661197492569962285163118264304760128514378450625043070474838075626723354220121948920313400664358341070757676498630899262349227958025807395866103391135742530910291132519036950667849498017553807524999532071920009738654477379676790400942232810106883328105428161410721145229679023998881</span>
+c <span class="token operator">=</span> <span class="token number">140936410048438311250552166359315531524717850408136878422422753861467709727494132943441793325459384490656351395836085596063714127829696538515364822908513326788824368390411397265861249839989684310498194231709180660320399728106109349119244510966442534818280589033645304725341767217060885195904689618851168472021</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dp <span class="token operator">*</span> e <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> n <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp <span class="token operator">*</span> e <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>dp <span class="token operator">*</span> e <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+            q <span class="token operator">=</span> n <span class="token operator">//</span> p
+            phi <span class="token operator">=</span> <span class="token punctuation">(</span>q <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> phi<span class="token punctuation">)</span>
+            m <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="random2"><a href="#random2" class="headerlink" title="random2"></a>random2</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Cipher <span class="token keyword">import</span> AES
+<span class="token keyword">from</span> mt19937predictor <span class="token keyword">import</span> MT19937Predictor
+
+keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">74737492451949886796883447380</span><span class="token punctuation">,</span> <span class="token number">51358027370976380985099489502</span><span class="token punctuation">,</span> <span class="token number">412762483065178295255791439485932171376749700084</span><span class="token punctuation">,</span> <span class="token number">910689806</span><span class="token punctuation">,</span> <span class="token number">1149695904</span><span class="token punctuation">,</span> <span class="token number">3104053370</span><span class="token punctuation">,</span> <span class="token number">221975799</span><span class="token punctuation">,</span> <span class="token number">3823412020</span><span class="token punctuation">,</span> <span class="token number">958468189</span><span class="token punctuation">,</span> <span class="token number">3586356097</span><span class="token punctuation">,</span> <span class="token number">340817801</span><span class="token punctuation">,</span> <span class="token number">2878068849</span><span class="token punctuation">,</span> <span class="token number">2732757663</span><span class="token punctuation">,</span> <span class="token number">2018092082</span><span class="token punctuation">,</span> <span class="token number">1847897227</span><span class="token punctuation">,</span> <span class="token number">1759748212</span><span class="token punctuation">,</span> <span class="token number">1295396426</span><span class="token punctuation">,</span> <span class="token number">2794984001</span><span class="token punctuation">,</span> <span class="token number">4265922173</span><span class="token punctuation">,</span> <span class="token number">3532941962</span><span class="token punctuation">,</span> <span class="token number">3649453440</span><span class="token punctuation">,</span> <span class="token number">1086966694</span><span class="token punctuation">,</span> <span class="token number">2188196779</span><span class="token punctuation">,</span> <span class="token number">1036830362</span><span class="token punctuation">,</span> <span class="token number">3114332204</span><span class="token punctuation">,</span> <span class="token number">2720067903</span><span class="token punctuation">,</span> <span class="token number">3763019658</span><span class="token punctuation">,</span> <span class="token number">4220680032</span><span class="token punctuation">,</span> <span class="token number">1434665040</span><span class="token punctuation">,</span> <span class="token number">2867449357</span><span class="token punctuation">,</span> <span class="token number">327630472</span><span class="token punctuation">,</span> <span class="token number">4028025891</span><span class="token punctuation">,</span> <span class="token number">1107232876</span><span class="token punctuation">,</span> <span class="token number">1341894502</span><span class="token punctuation">,</span> <span class="token number">3410775936</span><span class="token punctuation">,</span> <span class="token number">792029308</span><span class="token punctuation">,</span> <span class="token number">2140406850</span><span class="token punctuation">,</span> <span class="token number">618481849</span><span class="token punctuation">,</span> <span class="token number">3329607978</span><span class="token punctuation">,</span> <span class="token number">1024829298</span><span class="token punctuation">,</span> <span class="token number">1620771375</span><span class="token punctuation">,</span> <span class="token number">1042727260</span><span class="token punctuation">,</span> <span class="token number">1141119170</span><span class="token punctuation">,</span> <span class="token number">2850063412</span><span class="token punctuation">,</span> <span class="token number">722634918</span><span class="token punctuation">,</span> <span class="token number">109575186</span><span class="token punctuation">,</span> <span class="token number">1993029882</span><span class="token punctuation">,</span> <span class="token number">2096912385</span><span class="token punctuation">,</span> <span class="token number">866181039</span><span class="token punctuation">,</span> <span class="token number">827908342</span><span class="token punctuation">,</span> <span class="token number">1718528485</span><span class="token punctuation">,</span> <span class="token number">1617437693</span><span class="token punctuation">,</span> <span class="token number">3893036959</span><span class="token punctuation">,</span> <span class="token number">2846991704</span><span class="token punctuation">,</span> <span class="token number">3366375532</span><span class="token punctuation">,</span> <span class="token number">2763086122</span><span class="token punctuation">,</span> <span class="token number">2690998389</span><span class="token punctuation">,</span> <span class="token number">1148589641</span><span class="token punctuation">,</span> <span class="token number">1571939581</span><span class="token punctuation">,</span> <span class="token number">2933947318</span><span class="token punctuation">,</span> <span class="token number">4121295833</span><span class="token punctuation">,</span> <span class="token number">3030689848</span><span class="token punctuation">,</span> <span class="token number">1790011374</span><span class="token punctuation">,</span> <span class="token number">109272014</span><span class="token punctuation">,</span> <span class="token number">121093659</span><span class="token punctuation">,</span> <span class="token number">4007439172</span><span class="token punctuation">,</span> <span class="token number">831512040</span><span class="token punctuation">,</span> <span class="token number">978840109</span><span class="token punctuation">,</span> <span class="token number">3000990210</span><span class="token punctuation">,</span> <span class="token number">3025633350</span><span class="token punctuation">,</span> <span class="token number">1335144143</span><span class="token punctuation">,</span> <span class="token number">4107810622</span><span class="token punctuation">,</span> <span class="token number">1035611013</span><span class="token punctuation">,</span> <span class="token number">3925921218</span><span class="token punctuation">,</span> <span class="token number">1398042454</span><span class="token punctuation">,</span> <span class="token number">1123546694</span><span class="token punctuation">,</span> <span class="token number">4161792772</span><span class="token punctuation">,</span> <span class="token number">1177640646</span><span class="token punctuation">,</span> <span class="token number">4066189210</span><span class="token punctuation">,</span> <span class="token number">2240592239</span><span class="token punctuation">,</span> <span class="token number">508327944</span><span class="token punctuation">,</span> <span class="token number">839225012</span><span class="token punctuation">,</span> <span class="token number">1605466793</span><span class="token punctuation">,</span> <span class="token number">2875695963</span><span class="token punctuation">,</span> <span class="token number">626270177</span><span class="token punctuation">,</span> <span class="token number">1371375933</span><span class="token punctuation">,</span> <span class="token number">11364760</span><span class="token punctuation">,</span> <span class="token number">3470778132</span><span class="token punctuation">,</span> <span class="token number">1706915094</span><span class="token punctuation">,</span> <span class="token number">1458410373</span><span class="token punctuation">,</span> <span class="token number">98854289</span><span class="token punctuation">,</span> <span class="token number">1392252258</span><span class="token punctuation">,</span> <span class="token number">1560427103</span><span class="token punctuation">,</span> <span class="token number">3615589636</span><span class="token punctuation">,</span> <span class="token number">147666569</span><span class="token punctuation">,</span> <span class="token number">1045773025</span><span class="token punctuation">,</span> <span class="token number">4263298490</span><span class="token punctuation">,</span> <span class="token number">3895751869</span><span class="token punctuation">,</span> <span class="token number">2691680307</span><span class="token punctuation">,</span> <span class="token number">1699526232</span><span class="token punctuation">,</span> <span class="token number">3685180876</span><span class="token punctuation">,</span> <span class="token number">729503966</span><span class="token punctuation">,</span> <span class="token number">554847696</span><span class="token punctuation">,</span> <span class="token number">1562590775</span><span class="token punctuation">,</span> <span class="token number">3563661002</span><span class="token punctuation">,</span> <span class="token number">963617489</span><span class="token punctuation">,</span> <span class="token number">3181526105</span><span class="token punctuation">,</span> <span class="token number">2184215744</span><span class="token punctuation">,</span> <span class="token number">2144648457</span><span class="token punctuation">,</span> <span class="token number">1109270973</span><span class="token punctuation">,</span> <span class="token number">3071342721</span><span class="token punctuation">,</span> <span class="token number">2842429183</span><span class="token punctuation">,</span> <span class="token number">668733579</span><span class="token punctuation">,</span> <span class="token number">1262667392</span><span class="token punctuation">,</span> <span class="token number">772190169</span><span class="token punctuation">,</span> <span class="token number">1000365415</span><span class="token punctuation">,</span> <span class="token number">3453506497</span><span class="token punctuation">,</span> <span class="token number">412844225</span><span class="token punctuation">,</span> <span class="token number">9975293</span><span class="token punctuation">,</span> <span class="token number">919025159</span><span class="token punctuation">,</span> <span class="token number">3317679250</span><span class="token punctuation">,</span> <span class="token number">2335686357</span><span class="token punctuation">,</span> <span class="token number">1608848888</span><span class="token punctuation">,</span> <span class="token number">2579223536</span><span class="token punctuation">,</span> <span class="token number">1816878070</span><span class="token punctuation">,</span> <span class="token number">3734808856</span><span class="token punctuation">,</span> <span class="token number">269077113</span><span class="token punctuation">,</span> <span class="token number">2396885783</span><span class="token punctuation">,</span> <span class="token number">1147867931</span><span class="token punctuation">,</span> <span class="token number">2331502665</span><span class="token punctuation">,</span> <span class="token number">2928315805</span><span class="token punctuation">,</span> <span class="token number">908907677</span><span class="token punctuation">,</span> <span class="token number">1009287219</span><span class="token punctuation">,</span> <span class="token number">1017406485</span><span class="token punctuation">,</span> <span class="token number">3870217028</span><span class="token punctuation">,</span> <span class="token number">1835376973</span><span class="token punctuation">,</span> <span class="token number">890949168</span><span class="token punctuation">,</span> <span class="token number">671845795</span><span class="token punctuation">,</span> <span class="token number">3380480668</span><span class="token punctuation">,</span> <span class="token number">4171623559</span><span class="token punctuation">,</span> <span class="token number">1662988401</span><span class="token punctuation">,</span> <span class="token number">3709126631</span><span class="token punctuation">,</span> <span class="token number">2520677766</span><span class="token punctuation">,</span> <span class="token number">1660449390</span><span class="token punctuation">,</span> <span class="token number">120494599</span><span class="token punctuation">,</span> <span class="token number">907225530</span><span class="token punctuation">,</span> <span class="token number">3665272463</span><span class="token punctuation">,</span> <span class="token number">136171352</span><span class="token punctuation">,</span> <span class="token number">1758076339</span><span class="token punctuation">,</span> <span class="token number">3009587924</span><span class="token punctuation">,</span> <span class="token number">2866084549</span><span class="token punctuation">,</span> <span class="token number">3656368543</span><span class="token punctuation">,</span> <span class="token number">1692972691</span><span class="token punctuation">,</span> <span class="token number">714237605</span><span class="token punctuation">,</span> <span class="token number">892521830</span><span class="token punctuation">,</span> <span class="token number">1942496649</span><span class="token punctuation">,</span> <span class="token number">4241764492</span><span class="token punctuation">,</span> <span class="token number">930308540</span><span class="token punctuation">,</span> <span class="token number">3340229942</span><span class="token punctuation">,</span> <span class="token number">773043293</span><span class="token punctuation">,</span> <span class="token number">3514688079</span><span class="token punctuation">,</span> <span class="token number">1318180965</span><span class="token punctuation">,</span> <span class="token number">1669012263</span><span class="token punctuation">,</span> <span class="token number">3638042505</span><span class="token punctuation">,</span> <span class="token number">3025395295</span><span class="token punctuation">,</span> <span class="token number">226129302</span><span class="token punctuation">,</span> <span class="token number">153479541</span><span class="token punctuation">,</span> <span class="token number">2764571825</span><span class="token punctuation">,</span> <span class="token number">3421587858</span><span class="token punctuation">,</span> <span class="token number">334668853</span><span class="token punctuation">,</span> <span class="token number">1330796170</span><span class="token punctuation">,</span> <span class="token number">218556632</span><span class="token punctuation">,</span> <span class="token number">972714166</span><span class="token punctuation">,</span> <span class="token number">922603164</span><span class="token punctuation">,</span> <span class="token number">4024647445</span><span class="token punctuation">,</span> <span class="token number">4233196368</span><span class="token punctuation">,</span> <span class="token number">1249046751</span><span class="token punctuation">,</span> <span class="token number">3667925019</span><span class="token punctuation">,</span> <span class="token number">2276336634</span><span class="token punctuation">,</span> <span class="token number">3644888947</span><span class="token punctuation">,</span> <span class="token number">1444996806</span><span class="token punctuation">,</span> <span class="token number">413210699</span><span class="token punctuation">,</span> <span class="token number">2208048223</span><span class="token punctuation">,</span> <span class="token number">3813568258</span><span class="token punctuation">,</span> <span class="token number">2345486173</span><span class="token punctuation">,</span> <span class="token number">487998086</span><span class="token punctuation">,</span> <span class="token number">477969329</span><span class="token punctuation">,</span> <span class="token number">3409170127</span><span class="token punctuation">,</span> <span class="token number">3568976035</span><span class="token punctuation">,</span> <span class="token number">3460493127</span><span class="token punctuation">,</span> <span class="token number">2697206478</span><span class="token punctuation">,</span> <span class="token number">1262489351</span><span class="token punctuation">,</span> <span class="token number">4011219190</span><span class="token punctuation">,</span> <span class="token number">1419296521</span><span class="token punctuation">,</span> <span class="token number">1307871567</span><span class="token punctuation">,</span> <span class="token number">270455245</span><span class="token punctuation">,</span> <span class="token number">4245043905</span><span class="token punctuation">,</span> <span class="token number">687578193</span><span class="token punctuation">,</span> <span class="token number">1070246561</span><span class="token punctuation">,</span> <span class="token number">185531160</span><span class="token punctuation">,</span> <span class="token number">2626503659</span><span class="token punctuation">,</span> <span class="token number">3372671141</span><span class="token punctuation">,</span> <span class="token number">3673238883</span><span class="token punctuation">,</span> <span class="token number">2542194104</span><span class="token punctuation">,</span> <span class="token number">4260369384</span><span class="token punctuation">,</span> <span class="token number">67076509</span><span class="token punctuation">,</span> <span class="token number">4164858072</span><span class="token punctuation">,</span> <span class="token number">3344428349</span><span class="token punctuation">,</span> <span class="token number">2674528215</span><span class="token punctuation">,</span> <span class="token number">2352981085</span><span class="token punctuation">,</span> <span class="token number">4188340133</span><span class="token punctuation">,</span> <span class="token number">2490407345</span><span class="token punctuation">,</span> <span class="token number">2277623345</span><span class="token punctuation">,</span> <span class="token number">578009254</span><span class="token punctuation">,</span> <span class="token number">589898778</span><span class="token punctuation">,</span> <span class="token number">2257425250</span><span class="token punctuation">,</span> <span class="token number">4264855682</span><span class="token punctuation">,</span> <span class="token number">3217088425</span><span class="token punctuation">,</span> <span class="token number">1918678675</span><span class="token punctuation">,</span> <span class="token number">2409396248</span><span class="token punctuation">,</span> <span class="token number">366216060</span><span class="token punctuation">,</span> <span class="token number">2318262020</span><span class="token punctuation">,</span> <span class="token number">2695905062</span><span class="token punctuation">,</span> <span class="token number">1588352782</span><span class="token punctuation">,</span> <span class="token number">1427064824</span><span class="token punctuation">,</span> <span class="token number">470125313</span><span class="token punctuation">,</span> <span class="token number">3305196643</span><span class="token punctuation">,</span> <span class="token number">1839661592</span><span class="token punctuation">,</span> <span class="token number">2584820258</span><span class="token punctuation">,</span> <span class="token number">299694866</span><span class="token punctuation">,</span> <span class="token number">4205679150</span><span class="token punctuation">,</span> <span class="token number">3105720803</span><span class="token punctuation">,</span> <span class="token number">2804340888</span><span class="token punctuation">,</span> <span class="token number">3893613342</span><span class="token punctuation">,</span> <span class="token number">733876896</span><span class="token punctuation">,</span> <span class="token number">232917987</span><span class="token punctuation">,</span> <span class="token number">2727309654</span><span class="token punctuation">,</span> <span class="token number">1790439074</span><span class="token punctuation">,</span> <span class="token number">1927738154</span><span class="token punctuation">,</span> <span class="token number">4017472905</span><span class="token punctuation">,</span> <span class="token number">1863059250</span><span class="token punctuation">,</span> <span class="token number">655457188</span><span class="token punctuation">,</span> <span class="token number">3759472447</span><span class="token punctuation">,</span> <span class="token number">4183317773</span><span class="token punctuation">,</span> <span class="token number">797877611</span><span class="token punctuation">,</span> <span class="token number">2699417810</span><span class="token punctuation">,</span> <span class="token number">803278050</span><span class="token punctuation">,</span> <span class="token number">3877877653</span><span class="token punctuation">,</span> <span class="token number">1586583099</span><span class="token punctuation">,</span> <span class="token number">3875432289</span><span class="token punctuation">,</span> <span class="token number">111221042</span><span class="token punctuation">,</span> <span class="token number">233407522</span><span class="token punctuation">,</span> <span class="token number">3347300855</span><span class="token punctuation">,</span> <span class="token number">3873882496</span><span class="token punctuation">,</span> <span class="token number">3741842610</span><span class="token punctuation">,</span> <span class="token number">717425034</span><span class="token punctuation">,</span> <span class="token number">2557158550</span><span class="token punctuation">,</span> <span class="token number">876205693</span><span class="token punctuation">,</span> <span class="token number">683472955</span><span class="token punctuation">,</span> <span class="token number">3676324193</span><span class="token punctuation">,</span> <span class="token number">758448123</span><span class="token punctuation">,</span> <span class="token number">1995439610</span><span class="token punctuation">,</span> <span class="token number">2943722151</span><span class="token punctuation">,</span> <span class="token number">1610689376</span><span class="token punctuation">,</span> <span class="token number">4230997558</span><span class="token punctuation">,</span> <span class="token number">802060680</span><span class="token punctuation">,</span> <span class="token number">2861576590</span><span class="token punctuation">,</span> <span class="token number">960427169</span><span class="token punctuation">,</span> <span class="token number">2361123516</span><span class="token punctuation">,</span> <span class="token number">2886027757</span><span class="token punctuation">,</span> <span class="token number">271492995</span><span class="token punctuation">,</span> <span class="token number">3597341957</span><span class="token punctuation">,</span> <span class="token number">1973308613</span><span class="token punctuation">,</span> <span class="token number">687254699</span><span class="token punctuation">,</span> <span class="token number">2103809719</span><span class="token punctuation">,</span> <span class="token number">1260885931</span><span class="token punctuation">,</span> <span class="token number">2906748062</span><span class="token punctuation">,</span> <span class="token number">873332944</span><span class="token punctuation">,</span> <span class="token number">3671891228</span><span class="token punctuation">,</span> <span class="token number">2490863425</span><span class="token punctuation">,</span> <span class="token number">274650518</span><span class="token punctuation">,</span> <span class="token number">990260178</span><span class="token punctuation">,</span> <span class="token number">989305697</span><span class="token punctuation">,</span> <span class="token number">3765783495</span><span class="token punctuation">,</span> <span class="token number">3579353903</span><span class="token punctuation">,</span> <span class="token number">1372910559</span><span class="token punctuation">,</span> <span class="token number">165320956</span><span class="token punctuation">,</span> <span class="token number">896735304</span><span class="token punctuation">,</span> <span class="token number">3564054930</span><span class="token punctuation">,</span> <span class="token number">2374613969</span><span class="token punctuation">,</span> <span class="token number">786938917</span><span class="token punctuation">,</span> <span class="token number">3955168292</span><span class="token punctuation">,</span> <span class="token number">2134822172</span><span class="token punctuation">,</span> <span class="token number">1403480802</span><span class="token punctuation">,</span> <span class="token number">1340392765</span><span class="token punctuation">,</span> <span class="token number">3154014116</span><span class="token punctuation">,</span> <span class="token number">1793814283</span><span class="token punctuation">,</span> <span class="token number">1981841272</span><span class="token punctuation">,</span> <span class="token number">1873394217</span><span class="token punctuation">,</span> <span class="token number">4217089972</span><span class="token punctuation">,</span> <span class="token number">3403224767</span><span class="token punctuation">,</span> <span class="token number">111486932</span><span class="token punctuation">,</span> <span class="token number">1370301502</span><span class="token punctuation">,</span> <span class="token number">1137722044</span><span class="token punctuation">,</span> <span class="token number">1454768737</span><span class="token punctuation">,</span> <span class="token number">2817161685</span><span class="token punctuation">,</span> <span class="token number">1373532601</span><span class="token punctuation">,</span> <span class="token number">88198402</span><span class="token punctuation">,</span> <span class="token number">1162901466</span><span class="token punctuation">,</span> <span class="token number">1764878443</span><span class="token punctuation">,</span> <span class="token number">3204368881</span><span class="token punctuation">,</span> <span class="token number">764246346</span><span class="token punctuation">,</span> <span class="token number">3192119660</span><span class="token punctuation">,</span> <span class="token number">876165427</span><span class="token punctuation">,</span> <span class="token number">4104033361</span><span class="token punctuation">,</span> <span class="token number">2154934077</span><span class="token punctuation">,</span> <span class="token number">1561430573</span><span class="token punctuation">,</span> <span class="token number">826991304</span><span class="token punctuation">,</span> <span class="token number">849458135</span><span class="token punctuation">,</span> <span class="token number">4188058136</span><span class="token punctuation">,</span> <span class="token number">1199351023</span><span class="token punctuation">,</span> <span class="token number">2127952015</span><span class="token punctuation">,</span> <span class="token number">2094038064</span><span class="token punctuation">,</span> <span class="token number">300699273</span><span class="token punctuation">,</span> <span class="token number">3378157804</span><span class="token punctuation">,</span> <span class="token number">6679715</span><span class="token punctuation">,</span> <span class="token number">559293910</span><span class="token punctuation">,</span> <span class="token number">3028818176</span><span class="token punctuation">,</span> <span class="token number">2490265745</span><span class="token punctuation">,</span> <span class="token number">3646800433</span><span class="token punctuation">,</span> <span class="token number">1746603729</span><span class="token punctuation">,</span> <span class="token number">1531309519</span><span class="token punctuation">,</span> <span class="token number">18564847</span><span class="token punctuation">,</span> <span class="token number">3452425344</span><span class="token punctuation">,</span> <span class="token number">1989426082</span><span class="token punctuation">,</span> <span class="token number">2251367880</span><span class="token punctuation">,</span> <span class="token number">1426356258</span><span class="token punctuation">,</span> <span class="token number">2425736463</span><span class="token punctuation">,</span> <span class="token number">1600248295</span><span class="token punctuation">,</span> <span class="token number">955344576</span><span class="token punctuation">,</span> <span class="token number">3502485031</span><span class="token punctuation">,</span> <span class="token number">1323390407</span><span class="token punctuation">,</span> <span class="token number">399691485</span><span class="token punctuation">,</span> <span class="token number">1835777771</span><span class="token punctuation">,</span> <span class="token number">1828335677</span><span class="token punctuation">,</span> <span class="token number">3348082301</span><span class="token punctuation">,</span> <span class="token number">3687268482</span><span class="token punctuation">,</span> <span class="token number">2457400649</span><span class="token punctuation">,</span> <span class="token number">3368374393</span><span class="token punctuation">,</span> <span class="token number">1119303358</span><span class="token punctuation">,</span> <span class="token number">1270433121</span><span class="token punctuation">,</span> <span class="token number">3059691677</span><span class="token punctuation">,</span> <span class="token number">2392910075</span><span class="token punctuation">,</span> <span class="token number">591224638</span><span class="token punctuation">,</span> <span class="token number">1311675618</span><span class="token punctuation">,</span> <span class="token number">4122050325</span><span class="token punctuation">,</span> <span class="token number">4014348903</span><span class="token punctuation">,</span> <span class="token number">2095907405</span><span class="token punctuation">,</span> <span class="token number">1519824911</span><span class="token punctuation">,</span> <span class="token number">2825776887</span><span class="token punctuation">,</span> <span class="token number">3354142321</span><span class="token punctuation">,</span> <span class="token number">1098235797</span><span class="token punctuation">,</span> <span class="token number">1481266867</span><span class="token punctuation">,</span> <span class="token number">1051367302</span><span class="token punctuation">,</span> <span class="token number">1263016096</span><span class="token punctuation">,</span> <span class="token number">1336057651</span><span class="token punctuation">,</span> <span class="token number">1683842359</span><span class="token punctuation">,</span> <span class="token number">4054448354</span><span class="token punctuation">,</span> <span class="token number">1491994207</span><span class="token punctuation">,</span> <span class="token number">1160110019</span><span class="token punctuation">,</span> <span class="token number">3222808831</span><span class="token punctuation">,</span> <span class="token number">177510926</span><span class="token punctuation">,</span> <span class="token number">423347477</span><span class="token punctuation">,</span> <span class="token number">803602771</span><span class="token punctuation">,</span> <span class="token number">2683641253</span><span class="token punctuation">,</span> <span class="token number">2919035439</span><span class="token punctuation">,</span> <span class="token number">2485161789</span><span class="token punctuation">,</span> <span class="token number">3378544338</span><span class="token punctuation">,</span> <span class="token number">1610409532</span><span class="token punctuation">,</span> <span class="token number">1545641821</span><span class="token punctuation">,</span> <span class="token number">546762619</span><span class="token punctuation">,</span> <span class="token number">2395983270</span><span class="token punctuation">,</span> <span class="token number">3838745031</span><span class="token punctuation">,</span> <span class="token number">789177414</span><span class="token punctuation">,</span> <span class="token number">2123719243</span><span class="token punctuation">,</span> <span class="token number">3476088109</span><span class="token punctuation">,</span> <span class="token number">1615713790</span><span class="token punctuation">,</span> <span class="token number">1335041829</span><span class="token punctuation">,</span> <span class="token number">4006963851</span><span class="token punctuation">,</span> <span class="token number">1700197865</span><span class="token punctuation">,</span> <span class="token number">73798124</span><span class="token punctuation">,</span> <span class="token number">1251950799</span><span class="token punctuation">,</span> <span class="token number">2448692292</span><span class="token punctuation">,</span> <span class="token number">937465221</span><span class="token punctuation">,</span> <span class="token number">2191277155</span><span class="token punctuation">,</span> <span class="token number">2283183462</span><span class="token punctuation">,</span> <span class="token number">3235943428</span><span class="token punctuation">,</span> <span class="token number">1888733145</span><span class="token punctuation">,</span> <span class="token number">1637420644</span><span class="token punctuation">,</span> <span class="token number">2906472352</span><span class="token punctuation">,</span> <span class="token number">538528848</span><span class="token punctuation">,</span> <span class="token number">1787881095</span><span class="token punctuation">,</span> <span class="token number">2527345959</span><span class="token punctuation">,</span> <span class="token number">816324140</span><span class="token punctuation">,</span> <span class="token number">780626095</span><span class="token punctuation">,</span> <span class="token number">3958671235</span><span class="token punctuation">,</span> <span class="token number">1060151404</span><span class="token punctuation">,</span> <span class="token number">3939612973</span><span class="token punctuation">,</span> <span class="token number">720163439</span><span class="token punctuation">,</span> <span class="token number">3130037256</span><span class="token punctuation">,</span> <span class="token number">868218434</span><span class="token punctuation">,</span> <span class="token number">594717218</span><span class="token punctuation">,</span> <span class="token number">2378649142</span><span class="token punctuation">,</span> <span class="token number">630567292</span><span class="token punctuation">,</span> <span class="token number">272416131</span><span class="token punctuation">,</span> <span class="token number">2656750985</span><span class="token punctuation">,</span> <span class="token number">2254309115</span><span class="token punctuation">,</span> <span class="token number">398769631</span><span class="token punctuation">,</span> <span class="token number">144191385</span><span class="token punctuation">,</span> <span class="token number">3584257427</span><span class="token punctuation">,</span> <span class="token number">2276368553</span><span class="token punctuation">,</span> <span class="token number">4037163602</span><span class="token punctuation">,</span> <span class="token number">2651140730</span><span class="token punctuation">,</span> <span class="token number">2231274829</span><span class="token punctuation">,</span> <span class="token number">1953622167</span><span class="token punctuation">,</span> <span class="token number">4083152642</span><span class="token punctuation">,</span> <span class="token number">3006733661</span><span class="token punctuation">,</span> <span class="token number">929392152</span><span class="token punctuation">,</span> <span class="token number">843949652</span><span class="token punctuation">,</span> <span class="token number">2714951407</span><span class="token punctuation">,</span> <span class="token number">810363743</span><span class="token punctuation">,</span> <span class="token number">1283798592</span><span class="token punctuation">,</span> <span class="token number">3121903325</span><span class="token punctuation">,</span> <span class="token number">1988057118</span><span class="token punctuation">,</span> <span class="token number">356119324</span><span class="token punctuation">,</span> <span class="token number">1904222878</span><span class="token punctuation">,</span> <span class="token number">4044843055</span><span class="token punctuation">,</span> <span class="token number">112669104</span><span class="token punctuation">,</span> <span class="token number">868692487</span><span class="token punctuation">,</span> <span class="token number">1115920155</span><span class="token punctuation">,</span> <span class="token number">1623439582</span><span class="token punctuation">,</span> <span class="token number">488326378</span><span class="token punctuation">,</span> <span class="token number">148287535</span><span class="token punctuation">,</span> <span class="token number">3338996246</span><span class="token punctuation">,</span> <span class="token number">2166938666</span><span class="token punctuation">,</span> <span class="token number">3797453833</span><span class="token punctuation">,</span> <span class="token number">1474427255</span><span class="token punctuation">,</span> <span class="token number">1386753952</span><span class="token punctuation">,</span> <span class="token number">3317126798</span><span class="token punctuation">,</span> <span class="token number">2190807666</span><span class="token punctuation">,</span> <span class="token number">4259624962</span><span class="token punctuation">,</span> <span class="token number">3066765455</span><span class="token punctuation">,</span> <span class="token number">2382942891</span><span class="token punctuation">,</span> <span class="token number">4046402452</span><span class="token punctuation">,</span> <span class="token number">3243966738</span><span class="token punctuation">,</span> <span class="token number">1774858251</span><span class="token punctuation">,</span> <span class="token number">3181254579</span><span class="token punctuation">,</span> <span class="token number">2171453049</span><span class="token punctuation">,</span> <span class="token number">905778132</span><span class="token punctuation">,</span> <span class="token number">1409024919</span><span class="token punctuation">,</span> <span class="token number">4082347550</span><span class="token punctuation">,</span> <span class="token number">1308497825</span><span class="token punctuation">,</span> <span class="token number">3944454243</span><span class="token punctuation">,</span> <span class="token number">1681570359</span><span class="token punctuation">,</span> <span class="token number">3622008213</span><span class="token punctuation">,</span> <span class="token number">1130389974</span><span class="token punctuation">,</span> <span class="token number">3937594426</span><span class="token punctuation">,</span> <span class="token number">4193387111</span><span class="token punctuation">,</span> <span class="token number">4156444245</span><span class="token punctuation">,</span> <span class="token number">1665819644</span><span class="token punctuation">,</span> <span class="token number">4099931325</span><span class="token punctuation">,</span> <span class="token number">546382740</span><span class="token punctuation">,</span> <span class="token number">3459524364</span><span class="token punctuation">,</span> <span class="token number">3215392046</span><span class="token punctuation">,</span> <span class="token number">628790677</span><span class="token punctuation">,</span> <span class="token number">2460115724</span><span class="token punctuation">,</span> <span class="token number">4154656625</span><span class="token punctuation">,</span> <span class="token number">1738275004</span><span class="token punctuation">,</span> <span class="token number">372632247</span><span class="token punctuation">,</span> <span class="token number">3901053671</span><span class="token punctuation">,</span> <span class="token number">1968302733</span><span class="token punctuation">,</span> <span class="token number">1542557146</span><span class="token punctuation">,</span> <span class="token number">954360221</span><span class="token punctuation">,</span> <span class="token number">94489421</span><span class="token punctuation">,</span> <span class="token number">2526265974</span><span class="token punctuation">,</span> <span class="token number">3493620125</span><span class="token punctuation">,</span> <span class="token number">227040704</span><span class="token punctuation">,</span> <span class="token number">1966827767</span><span class="token punctuation">,</span> <span class="token number">2710288704</span><span class="token punctuation">,</span> <span class="token number">1777503765</span><span class="token punctuation">,</span> <span class="token number">3060587047</span><span class="token punctuation">,</span> <span class="token number">2922448684</span><span class="token punctuation">,</span> <span class="token number">1818271608</span><span class="token punctuation">,</span> <span class="token number">3774695159</span><span class="token punctuation">,</span> <span class="token number">198891092</span><span class="token punctuation">,</span> <span class="token number">1892315134</span><span class="token punctuation">,</span> <span class="token number">1988189925</span><span class="token punctuation">,</span> <span class="token number">1877360903</span><span class="token punctuation">,</span> <span class="token number">176031450</span><span class="token punctuation">,</span> <span class="token number">782372078</span><span class="token punctuation">,</span> <span class="token number">2630033970</span><span class="token punctuation">,</span> <span class="token number">222585085</span><span class="token punctuation">,</span> <span class="token number">1784220674</span><span class="token punctuation">,</span> <span class="token number">187019927</span><span class="token punctuation">,</span> <span class="token number">3793161227</span><span class="token punctuation">,</span> <span class="token number">275394451</span><span class="token punctuation">,</span> <span class="token number">3620112924</span><span class="token punctuation">,</span> <span class="token number">1046758031</span><span class="token punctuation">,</span> <span class="token number">794695465</span><span class="token punctuation">,</span> <span class="token number">4020417715</span><span class="token punctuation">,</span> <span class="token number">1036350909</span><span class="token punctuation">,</span> <span class="token number">1034143101</span><span class="token punctuation">,</span> <span class="token number">130770292</span><span class="token punctuation">,</span> <span class="token number">3376762604</span><span class="token punctuation">,</span> <span class="token number">3099991375</span><span class="token punctuation">,</span> <span class="token number">1317943524</span><span class="token punctuation">,</span> <span class="token number">538393453</span><span class="token punctuation">,</span> <span class="token number">1676278328</span><span class="token punctuation">,</span> <span class="token number">3728445031</span><span class="token punctuation">,</span> <span class="token number">2444153711</span><span class="token punctuation">,</span> <span class="token number">1294577644</span><span class="token punctuation">,</span> <span class="token number">3255702608</span><span class="token punctuation">,</span> <span class="token number">382221508</span><span class="token punctuation">,</span> <span class="token number">501348604</span><span class="token punctuation">,</span> <span class="token number">1545416914</span><span class="token punctuation">,</span> <span class="token number">4046130944</span><span class="token punctuation">,</span> <span class="token number">1518955393</span><span class="token punctuation">,</span> <span class="token number">3919525514</span><span class="token punctuation">,</span> <span class="token number">1729967634</span><span class="token punctuation">,</span> <span class="token number">2572204860</span><span class="token punctuation">,</span> <span class="token number">3777225961</span><span class="token punctuation">,</span> <span class="token number">1646036822</span><span class="token punctuation">,</span> <span class="token number">475018472</span><span class="token punctuation">,</span> <span class="token number">2247517569</span><span class="token punctuation">,</span> <span class="token number">4257731164</span><span class="token punctuation">,</span> <span class="token number">1111295866</span><span class="token punctuation">,</span> <span class="token number">524303023</span><span class="token punctuation">,</span> <span class="token number">3981652986</span><span class="token punctuation">,</span> <span class="token number">4072216404</span><span class="token punctuation">,</span> <span class="token number">3747688429</span><span class="token punctuation">,</span> <span class="token number">1885894640</span><span class="token punctuation">,</span> <span class="token number">833446526</span><span class="token punctuation">,</span> <span class="token number">3955045968</span><span class="token punctuation">,</span> <span class="token number">1703975805</span><span class="token punctuation">,</span> <span class="token number">1141801012</span><span class="token punctuation">,</span> <span class="token number">2437322873</span><span class="token punctuation">,</span> <span class="token number">2732846667</span><span class="token punctuation">,</span> <span class="token number">1371506834</span><span class="token punctuation">,</span> <span class="token number">669098384</span><span class="token punctuation">,</span> <span class="token number">1963802511</span><span class="token punctuation">,</span> <span class="token number">1542039</span><span class="token punctuation">,</span> <span class="token number">728580454</span><span class="token punctuation">,</span> <span class="token number">4041454310</span><span class="token punctuation">,</span> <span class="token number">1019581040</span><span class="token punctuation">,</span> <span class="token number">3144560205</span><span class="token punctuation">,</span> <span class="token number">1329189307</span><span class="token punctuation">,</span> <span class="token number">1043039655</span><span class="token punctuation">,</span> <span class="token number">1028345076</span><span class="token punctuation">,</span> <span class="token number">3541168610</span><span class="token punctuation">,</span> <span class="token number">2082983922</span><span class="token punctuation">,</span> <span class="token number">1305525731</span><span class="token punctuation">,</span> <span class="token number">1078333930</span><span class="token punctuation">,</span> <span class="token number">556043109</span><span class="token punctuation">,</span> <span class="token number">3570861415</span><span class="token punctuation">,</span> <span class="token number">1623319076</span><span class="token punctuation">,</span> <span class="token number">3514585273</span><span class="token punctuation">,</span> <span class="token number">223719132</span><span class="token punctuation">,</span> <span class="token number">4031808254</span><span class="token punctuation">,</span> <span class="token number">2549094947</span><span class="token punctuation">,</span> <span class="token number">3825858427</span><span class="token punctuation">,</span> <span class="token number">3214724358</span><span class="token punctuation">,</span> <span class="token number">1835103180</span><span class="token punctuation">,</span> <span class="token number">2471774591</span><span class="token punctuation">,</span> <span class="token number">2111554082</span><span class="token punctuation">,</span> <span class="token number">2948121215</span><span class="token punctuation">,</span> <span class="token number">1362405065</span><span class="token punctuation">,</span> <span class="token number">3765638194</span><span class="token punctuation">,</span> <span class="token number">491471279</span><span class="token punctuation">,</span> <span class="token number">2479158340</span><span class="token punctuation">,</span> <span class="token number">3749279021</span><span class="token punctuation">,</span> <span class="token number">3306251008</span><span class="token punctuation">,</span> <span class="token number">2577577664</span><span class="token punctuation">,</span> <span class="token number">1245538106</span><span class="token punctuation">,</span> <span class="token number">503105027</span><span class="token punctuation">,</span> <span class="token number">139202844</span><span class="token punctuation">,</span> <span class="token number">2287890849</span><span class="token punctuation">,</span> <span class="token number">3563168099</span><span class="token punctuation">,</span> <span class="token number">1467460138</span><span class="token punctuation">,</span> <span class="token number">3922094655</span><span class="token punctuation">,</span> <span class="token number">1903765924</span><span class="token punctuation">,</span> <span class="token number">3858903218</span><span class="token punctuation">,</span> <span class="token number">3343562703</span><span class="token punctuation">,</span> <span class="token number">2145132444</span><span class="token punctuation">,</span> <span class="token number">1134537221</span><span class="token punctuation">,</span> <span class="token number">2942539446</span><span class="token punctuation">,</span> <span class="token number">914603375</span><span class="token punctuation">,</span> <span class="token number">2155053085</span><span class="token punctuation">,</span> <span class="token number">2864704965</span><span class="token punctuation">,</span> <span class="token number">1971547127</span><span class="token punctuation">,</span> <span class="token number">1892432263</span><span class="token punctuation">,</span> <span class="token number">2604528206</span><span class="token punctuation">,</span> <span class="token number">3387176542</span><span class="token punctuation">,</span> <span class="token number">361652931</span><span class="token punctuation">,</span> <span class="token number">2305859318</span><span class="token punctuation">,</span> <span class="token number">1345198505</span><span class="token punctuation">,</span> <span class="token number">2416327840</span><span class="token punctuation">,</span> <span class="token number">887059258</span><span class="token punctuation">,</span> <span class="token number">3219763770</span><span class="token punctuation">,</span> <span class="token number">316636299</span><span class="token punctuation">,</span> <span class="token number">307065443</span><span class="token punctuation">,</span> <span class="token number">431437125</span><span class="token punctuation">,</span> <span class="token number">4279494318</span><span class="token punctuation">,</span> <span class="token number">220513368</span><span class="token punctuation">,</span> <span class="token number">2362459616</span><span class="token punctuation">,</span> <span class="token number">3712600310</span><span class="token punctuation">,</span> <span class="token number">2105434588</span><span class="token punctuation">,</span> <span class="token number">2938672182</span><span class="token punctuation">,</span> <span class="token number">3316109731</span><span class="token punctuation">,</span> <span class="token number">850677909</span><span class="token punctuation">,</span> <span class="token number">1593089633</span><span class="token punctuation">,</span> <span class="token number">1448569654</span><span class="token punctuation">,</span> <span class="token number">2885245137</span><span class="token punctuation">,</span> <span class="token number">3269946753</span><span class="token punctuation">,</span> <span class="token number">885150079</span><span class="token punctuation">,</span> <span class="token number">2358168430</span><span class="token punctuation">,</span> <span class="token number">1785698607</span><span class="token punctuation">,</span> <span class="token number">1757002566</span><span class="token punctuation">,</span> <span class="token number">197277094</span><span class="token punctuation">,</span> <span class="token number">47259139</span><span class="token punctuation">,</span> <span class="token number">2710959991</span><span class="token punctuation">,</span> <span class="token number">710476854</span><span class="token punctuation">,</span> <span class="token number">1929434500</span><span class="token punctuation">,</span> <span class="token number">1732169408</span><span class="token punctuation">,</span> <span class="token number">381305673</span><span class="token punctuation">,</span> <span class="token number">2982171232</span><span class="token punctuation">,</span> <span class="token number">486112880</span><span class="token punctuation">,</span> <span class="token number">3651033563</span><span class="token punctuation">,</span> <span class="token number">734915423</span><span class="token punctuation">,</span> <span class="token number">27291312</span><span class="token punctuation">,</span> <span class="token number">93262695</span><span class="token punctuation">,</span> <span class="token number">3206874794</span><span class="token punctuation">,</span> <span class="token number">1595912125</span><span class="token punctuation">,</span> <span class="token number">643556702</span><span class="token punctuation">,</span> <span class="token number">2929755197</span><span class="token punctuation">,</span> <span class="token number">1043917347</span><span class="token punctuation">,</span> <span class="token number">3181953869</span><span class="token punctuation">,</span> <span class="token number">3059173850</span><span class="token punctuation">,</span> <span class="token number">986850461</span><span class="token punctuation">,</span> <span class="token number">947059764</span><span class="token punctuation">]</span>
+c <span class="token operator">=</span> <span class="token string">b'\xd1\xfb\xd3\xf0U\x14\x18\xa9Yf=\xa6\x7fJ\xd0aZ=\xf7\xf6\x1e]\xe7\x07\xbd\x0b\xc9\xf8\xe7k\xa7\x16\xc1Z:\xbf\xde\xea=3\xe0\x82\xf0\xca\xd2R\x91\xf5\x0f\xd1\x06\x99G\xf6\x8dh\x9c\x14Wi\xaf\xdbFL'</span>
+p <span class="token operator">=</span> MT19937Predictor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>keys<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">or</span> i <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        p<span class="token punctuation">.</span>setrandbits<span class="token punctuation">(</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">96</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> i <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        p<span class="token punctuation">.</span>setrandbits<span class="token punctuation">(</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">160</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        p<span class="token punctuation">.</span>setrandbits<span class="token punctuation">(</span>keys<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span>
+key <span class="token operator">=</span> long_to_bytes<span class="token punctuation">(</span>p<span class="token punctuation">.</span>getrandbits<span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+cipher <span class="token operator">=</span> AES<span class="token punctuation">.</span>new<span class="token punctuation">(</span>key<span class="token punctuation">,</span> AES<span class="token punctuation">.</span>MODE_ECB<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>cipher<span class="token punctuation">.</span>decrypt<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa1"><a href="#rsa1" class="headerlink" title="rsa1"></a>rsa1</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> sympy <span class="token keyword">import</span> Symbol<span class="token punctuation">,</span> solve
+n <span class="token operator">=</span> <span class="token number">26305215103655644423271873654270896239286789695124090349749665534703077917412304839568833642664450313935099298310980853882272879981733372730292018544572625316902809164514982172181951319743072017697845536018391193871280565807620618786757590917994266113737303548654644579447152708491947981939693209377062932887079053535685222915049638973744785910187846488048054614595896905717548173503097932486976548606688284094985163387830871173351156872303901802063874643159872076045421856161697020709841563253543301088673347562874178275457662923268303751458373213379823091743254295392098852050657389100668196543581156089543387981749</span>
+s <span class="token operator">=</span> <span class="token number">4323761888398018609852335503896306767680254689118307249919076945474100280053222216117890335097280655812579700210142850972114032619375512508094444700268269861295454361479936323488734938967486887087065985770337167952405916865514342667568344884512919390473013721005783345127779614050256684329541419938215219111638334871769224566807758669615177139619330644265349270609231736366888506999373399354453570974856230273436956657673552797254044789898850371608837651642705304346761776584170067536342839950077554921714223414452726231759701672899981770205900654174771977192152231671555687060576625055995576371428030016472160229195</span>
+c <span class="token operator">=</span> <span class="token number">18524879875046454765780419291902161505187119049317257440202645362184543856980037891446139747396472606884190295519693050825702398302375035356073354030439092479076493350280491879942676232543272035009619776448668367631674751270025422471697604807309328948811730211796077194562605273068248003067084062604953180981092602825269082443194821795267533259542345280789423885313715011198756408238675212294964169231866750121782891392974982538883759460499654964916672646713561365268497621669918260512318121987464087203488943192447244656120553657904643768811055634526867642121977282747786019413676386087742587120310706285467632914627</span>
+s <span class="token operator">=</span> invert<span class="token punctuation">(</span>s<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+p <span class="token operator">=</span> Symbol<span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span>
+q <span class="token operator">=</span> Symbol<span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span>
+p<span class="token punctuation">,</span> q <span class="token operator">=</span> solve<span class="token punctuation">(</span><span class="token punctuation">[</span>p<span class="token operator">*</span>q<span class="token operator">-</span>n<span class="token punctuation">,</span> <span class="token number">1314</span><span class="token operator">*</span>p<span class="token operator">-</span><span class="token number">520</span><span class="token operator">*</span>q<span class="token operator">-</span>s<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>p<span class="token punctuation">,</span> q<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+p <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+q <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+e <span class="token operator">=</span> <span class="token number">0x10001</span>
+d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa2"><a href="#rsa2" class="headerlink" title="rsa2"></a>rsa2</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+
+n <span class="token operator">=</span> <span class="token number">2387626545085756713585102877878108862015179080332961598635902226358817519910295819153349225103418927970241049968506375997</span>
+e <span class="token operator">=</span> <span class="token number">65537</span>
+c_mod_p <span class="token operator">=</span> <span class="token number">647648029783204084679833378591490303778808042166748545307033</span>
+c_mod_q <span class="token operator">=</span> <span class="token number">716978243624820144982668239669070880505037391756433243913335</span>
+p <span class="token operator">=</span> iroot<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> is_prime<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        q <span class="token operator">=</span> next_prime<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> p <span class="token operator">*</span> q <span class="token operator">==</span> n<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c <span class="token operator">=</span> <span class="token punctuation">(</span>c_mod_p<span class="token operator">*</span>invert<span class="token punctuation">(</span>q<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token operator">*</span>q <span class="token operator">+</span> c_mod_q<span class="token operator">*</span>invert<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">%</span> n
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa3"><a href="#rsa3" class="headerlink" title="rsa3"></a>rsa3</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> random <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+n <span class="token operator">=</span> <span class="token number">18896787369812506729161146792420582463075195289705130332145125441873359008259477778705050612028016445531171582699463469223129134497144553118164991259539504187512021208315754514545996574862689888723728779368278057158884309498791988824815380906489884221955569016913002047690134495021638325076324337204120358289197345473645253964897309936634674685256494467965994763346209088569312900310384221856890129638589708704488570062170587822159840004471847429651335596065845176922611177484979368701185198370143451554032097774883881063941164928195206151285053023900417539545188981446823285592433963817981924569149446287916824382561</span>
+d <span class="token operator">=</span> <span class="token number">5703031224919077324199739420591218709082873607810515782527403392203078685694557440606179655084946477198544985797529455998356213302699576058168444727748170549839026313064029609887624795981035801288838847172210685453187859645339376946854805971427795291607171515106310442975161667104581906887477593810523773846781119913091652230585316578697966956441025050411703279543735184615408372827086048067763849304020844971586419985599715291049252337301504847183917086038225366804009601071701854587257618991903027592792223359879103979050158387898497645317134119316587856020926045834487915948391807346208594166279941244305061329677</span>
+friend_keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">111697</span><span class="token punctuation">,</span> <span class="token number">106721</span><span class="token punctuation">,</span> <span class="token number">116423</span><span class="token punctuation">,</span> <span class="token number">88843</span><span class="token punctuation">,</span> <span class="token number">119159</span><span class="token punctuation">,</span> <span class="token number">70639</span><span class="token punctuation">,</span> <span class="token number">80819</span><span class="token punctuation">,</span> <span class="token number">74489</span><span class="token punctuation">,</span> <span class="token number">121931</span><span class="token punctuation">,</span> <span class="token number">101141</span><span class="token punctuation">]</span>
+c <span class="token operator">=</span> <span class="token number">11994381627759026162899170243195205997473390753474105847444301599471367630328999329971554672898042711258332343414555886491105235450415874967500999777727188222201701790615800443999694661391161603608205580744046340685740132462956669428633202538875197708853419127000877908034155683418476839027176847825085191766500657063936087300707648173167638212184409940441341192494973780078520658057628747235702262261650533074207402665937459065342008813881483658655820794105733254390600096188629251786257035958039797032257689446780150685916517843665881340793492146980771808706103032498053602112046452376378597181639545983846067945876</span>
+e <span class="token operator">=</span> <span class="token number">0x10001</span>
+<span class="token keyword">def</span> <span class="token function">getpq</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> e<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+		k <span class="token operator">=</span> e <span class="token operator">*</span> d <span class="token operator">-</span> <span class="token number">1</span>
+		g <span class="token operator">=</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+		<span class="token keyword">while</span> k <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+			k <span class="token operator">=</span> k <span class="token operator">//</span> <span class="token number">2</span>
+			temp <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>g<span class="token punctuation">,</span> k<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+			<span class="token keyword">if</span> gcd<span class="token punctuation">(</span>temp<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span> <span class="token keyword">and</span> temp <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+				<span class="token keyword">return</span> gcd<span class="token punctuation">(</span>temp<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+
+p <span class="token operator">=</span> getpq<span class="token punctuation">(</span>n<span class="token punctuation">,</span> e<span class="token punctuation">,</span> d<span class="token punctuation">)</span>
+q <span class="token operator">=</span> n <span class="token operator">//</span> p
+e <span class="token operator">=</span> friend_keys<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> e<span class="token punctuation">:</span>
+	d <span class="token operator">=</span> invert<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	c <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa4"><a href="#rsa4" class="headerlink" title="rsa4"></a>rsa4</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+
+
+n <span class="token operator">=</span> <span class="token number">18344208622226145563275332631675852812637974117269410580356372484730868630041087771967863177399468436907179629991713287958712918155881322973807806301979120718337971766642141160715457959104230009865832490334268400708057378872793969706058766934173901720807601381260226109710528613914848911497044918273137096903522367120819016923613011696956531078735040866726836147244627617752866449680818575750555372925099203864465221467261643732258403282300830500857008951036100240417305652712966271750963365056888669691476588673457169183575547654173584411488289083479722447529687480093984214874840116386641308648928664471249163053399</span>
+c <span class="token operator">=</span> <span class="token number">5799835212682670854600787421394304700766812650929331808305024781919809808414116741938033087654173522429848434831011913540857883976763801585735031494044357475999623804769581806159695530735320829983994397494910262812269266183428964227240479098342185016875916463463869275180539449912347431388217372994987664171819970167145891087464365899986673967607036447794731478364868669512779723692729123522060403205286021628536236794321362684707698114447595523828110511521587142146690874947566042115081767036515192408523157587036063428678576881221634685127738856946514330198100929281963428110917369571549814920857266365740708152342</span>
+e <span class="token operator">=</span> <span class="token number">0x10001</span>
+p <span class="token operator">=</span> gcd<span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+q <span class="token operator">=</span> n <span class="token operator">//</span> p
+d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token punctuation">(</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">//</span> p <span class="token operator">//</span> <span class="token number">2021</span> <span class="token operator">//</span> <span class="token number">1211</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa5"><a href="#rsa5" class="headerlink" title="rsa5"></a>rsa5</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+
+n <span class="token operator">=</span> <span class="token number">89114498420780604917531033169596392769455738343415866175560827716329038325885040230287167130153562721085218031290598924393710777384195303868086861588496841776165960494754159665639269842671254641757507534815336115279112577992964099982530678699389798633559364922445110277096686903849847611549099340416648410741</span>
+c1 <span class="token operator">=</span> <span class="token number">5735952141642500488957438428695439035757844707618704182655499843027856939311070755815954816072248816712526137792678092545003791094632649549645878951707384683857212799418894784114432305066187852999119421690587457065466839964716069311139937099286027346944058896149918834128185367804403864368930212475453509851</span>
+c2 <span class="token operator">=</span> <span class="token number">83661280370185647448453005460717066890991000188427326405001096935902371566724181207272659273801621639886691480155364009831593695466677783865595971645100536369801815619337129766823938463338128554716970036817952870569822208326583141745930557453969795334892493524974870629590649696998539807821542822600655060074</span>
+e1 <span class="token operator">=</span> <span class="token number">65536</span>
+e2 <span class="token operator">=</span> <span class="token number">270270</span>
+s <span class="token operator">=</span> gcdext<span class="token punctuation">(</span>e1<span class="token punctuation">,</span> e2<span class="token punctuation">)</span>
+s1 <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+s2 <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> s1 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    s1 <span class="token operator">=</span> <span class="token operator">-</span>s1
+    c1 <span class="token operator">=</span> invert<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+<span class="token keyword">elif</span> s2 <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    s2 <span class="token operator">=</span> <span class="token operator">-</span>s2
+    c2 <span class="token operator">=</span> invert<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+m <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c1<span class="token punctuation">,</span> s1<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c2<span class="token punctuation">,</span> s2<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">%</span> n
+m <span class="token operator">=</span> iroot<span class="token punctuation">(</span>m<span class="token punctuation">,</span> gcd<span class="token punctuation">(</span>e1<span class="token punctuation">,</span> e2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n2s<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h2 id="rsa6"><a href="#rsa6" class="headerlink" title="rsa6"></a>rsa6</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># sage</span>
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+
+c <span class="token operator">=</span> <span class="token number">7925347972369425166024054435177230521701403766897655936389976238335255023323703665687524237012185378041937237193923196710161053156355234066441645319711183701842329620157704166371157650717222839619648271152128682372913126096365783687520564982937168484788081317675474463083132784582384187507869255885228857467817831476035971705449862080689947994230445839759775090629780928956469253251286916417455655651048075284914909735365261929381321728491210171149534927100638988443996951222567422983340301657352071004491710550791174969744159251674787486029098454525075603086354538724909971206057136959433644905534281024876827756696137754971560173166243058604302626662055704726217622510459832665465892627420770569017615057586162821398601805202941141301996106309483845544353310688985128566888120627304619788965507172962378342832673025236542745105311081361289182947417363008698994494622282298082815746490101801126669328319034060270856334194300252718523432106663273533374335697785044530801700554935518675122267487553622164033394485640597163056563842371857031514865235177157462198413279830879705708485929558610831286243249229145583827781884735083543818839971554442994288987473842873588257719658328581033891822672997846833635917945202914668666249069209</span>
+N <span class="token operator">=</span> <span class="token number">327704199063655154339194866047748377300483661546348646619543042402260458534101350044000928583250118734194187256215886625771489682622806492392158515139856977282405831771426953889407535449903946471081769989651651591222623997395529035591781660724645156930487601579241488206427939500937938255588575188735472745545946966631822161787569690670592431700668322671046133380934851245111908808167859798212265435088714280150547423032692815776965063410936310739819923896759441335001874930520763236975226711207654895127866843378461328154795776319242290600812698882674645791266238574096744538101900116337068936957681128459670057096430909525261047967406584507167977208793797870831858199445206260549902066723878612723426168458993576999172766781960053959813246897054556640370355234535221471564607870502627719243185861171079980645221020435603883953809425799723857745727457620742919434348781413514988026742127568571934186958953140598517500511323011929458037325804993377002532922851586492715993738894057370890612824581248076082409851337738126905208244299232520865145447167051764102587067960512092944943632792165293701233755265831135001570237083525408605939160927853199431652266761149838259483979450360702066085191758469080084577999970704509262494734276631</span>
+e1 <span class="token operator">=</span> <span class="token number">113093816717144841270493376736752441673022256694148583901036760385290294469429291287395932962657459627279948131588586212784590640516333875415213429718659370434377813079419901793552309461703882586527503420999488191213528380154291270445702806410792319417099800769397301837093257916765727595155732721396733301006197816845511287287300240373894663383088203656193754454195781571647148298850615901090657526494250418115895409707363373152838151538570469978232752856573089149548109243765929129792122940993776991512134978235283946198861884114007985343254462515565194689101887047325062995222232830812585485386335674066695574712424013748788932584416194906037669948036361191560447424191340446408227050317480535979753006991332324053550385053870295648784077492339350541225982286056281016618014141105366605422149895221611592416532345771815704307846206281439784932410973601384402414039900782254330313269415078960064305344681778478762050176778461863907418405687378915582516510150832198276943089812715818203025913800315465878924192853193803827276622946514235810979197716378589261982901063684489176009723390727783448898996904743318965120718829513279206531437783722261301609689797505310206968838386508504975439758618002450017650730285740872724819939789165</span>
+e2 <span class="token operator">=</span> <span class="token number">52078480224223317668569462543933564802023331503631866060760905823225375689371194081168967121103174053841803074696022983040703342927472417376159406035704091279470236253461384492704221051191760736060554344469790547031831005280443071825906849136068345545676606027290833620827164313993131618431323752276734358952300945077463041766652124937491934577599675761171103129304421215868699904698815021459210815711145905970197203457821690991062538955208578611369077013345454745776462370445888778852408762328672347603381098296861114748964667016949680885383533471825896084968002739256577852020182053683898979088285241943075282763120057336283443785884582655033693855047579690620713987723203443968343939397180233749872965864492970538352607580127433388577728197382785447538830263277945571714749460381851739146671950305422054343439472788329964959190357803126824073890041111240661865272585084722373190936827940607158935817277773095693778187682594957687156914929123683762234852584982077245872009863739187381156755686726633110551567659009061033997083241163551489323473968854060108298085327929582165884662155874639976829347066561636002017516485007419416446064739412984229663151827434850017915971108388331662865610040555809970494140145365617095067391830661</span>
+a <span class="token operator">=</span> <span class="token number">0.198</span>  <span class="token comment"># 811./4097</span>
+M1 <span class="token operator">=</span> N<span class="token operator">**</span><span class="token number">0.5</span>
+M2 <span class="token operator">=</span> N<span class="token operator">**</span><span class="token punctuation">(</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+D <span class="token operator">=</span> diagonal_matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span> <span class="token punctuation">[</span>N<span class="token punctuation">,</span> M1<span class="token punctuation">,</span> M2<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+M <span class="token operator">=</span> matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span>N<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> N<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> e1<span class="token punctuation">,</span> <span class="token operator">-</span>e1<span class="token punctuation">,</span> <span class="token operator">-</span>e1 <span class="token operator">*</span> N<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> e2<span class="token punctuation">,</span> <span class="token operator">-</span>e2 <span class="token operator">*</span> N<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> e1 <span class="token operator">*</span> e2<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> D
+L <span class="token operator">=</span> M<span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span>
+t <span class="token operator">=</span> vector<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span> L<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> t <span class="token operator">*</span> M<span class="token operator">**</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+phi <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> e1<span class="token punctuation">)</span>
+d <span class="token operator">=</span> inverse<span class="token punctuation">(</span><span class="token number">0x10001</span><span class="token punctuation">,</span> phi<span class="token punctuation">)</span>
+m <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> N<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Handy</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wusthandy.github.io/2021/12/12/wustctf2021-crypto-misc-wp/">https://wusthandy.github.io/2021/12/12/wustctf2021-crypto-misc-wp/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Handy</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/12/12/wustctf2021-crypto-misc-wp/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="记五道RSA">
+                        
+                        <span class="card-title">记五道RSA</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/writeup/" class="post-category">
+                                    writeup
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/05/october-summary/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="October Summary">
+                        
+                        <span class="card-title">October Summary</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/writeup/" class="post-category">
+                                    writeup
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2942228334"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Handy</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">59.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "2";
+                    var startDate = "4";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="/null" target="_blank">冀ICP备20016511号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+    <a href="https://github.com/WustHandy" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:wusthandy@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=821644097" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 821644097" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
