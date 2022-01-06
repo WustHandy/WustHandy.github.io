@@ -4,7 +4,26 @@
   
     
     <entry>
-      <title>记五道RSA</title>
+      <title>pytorch api notes</title>
+      <link href="2022/01/06/pytorch-api-notes/"/>
+      <url>2022/01/06/pytorch-api-notes/</url>
+      
+        <content type="html"><![CDATA[<h2 id="nn-CrossEntropyLoss"><a href="#nn-CrossEntropyLoss" class="headerlink" title="nn.CrossEntropyLoss()"></a>nn.CrossEntropyLoss()</h2><p>$$<br>softmax(x)=\frac{e^{x_{i}}}{\sum_{j}e^{x_{j}}}<br>$$</p><p>$$<br>logsoftmax(x)=log\frac{e^{x_{i}}}{\sum_{j}e^{x_{j}}}<br>$$</p><p>logsoftmax能够解决函数上溢和下溢的问题,加快运算速度,提高数据稳定性。简单说,因为softmax会进行指数操作,当$x_{i}$的值过大或者过小的时候$e^{x_{i}}$可能会超过float的表示范围(即上溢),也可能四舍五入为0,导致下溢。</p><p>NLLLoss(),即负对数似然损失函数(Negtive Log Likehood)<br>$$<br>nllloss=-\frac{1}{N}\sum_{i=1}^{N}y_{i}(logsoftmax)<br>$$<br>$y_{i}$是one_hot编码后的数据标签</p><p><strong>CrossEntropyLoss其实是LogSoftMax和NLLLoss的合体</strong></p><ol><li>分类任务</li><li>向更高精度和召回值优化</li></ol><h2 id="detach"><a href="#detach" class="headerlink" title="detach()"></a>detach()</h2><p>从计算图中脱离出来。</p><p>假设有模型A和模型B，我们需要将A的输出作为B的输入，但训练时我们只训练模型B. 那么可以这样做：</p><pre class="language-python" data-language="python"><code class="language-python">input_B <span class="token operator">=</span> output_A<span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><p>它可以使两个计算图的梯度传递断开，从而实现我们所需的功能。</p><p>返回一个新的tensor，新的tensor和原来的tensor共享数据内存，但不涉及梯度计算，即requires_grad=False。修改其中一个tensor的值，另一个也会改变，因为是共享同一块内存，但如果对其中一个tensor执行某些内置操作，则会报错。</p><h2 id="uniform"><a href="#uniform" class="headerlink" title="uniform()"></a>uniform()</h2><p>从均匀分布中抽样数值进行填充</p><h2 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a>clamp()</h2><p>将输入input张量每个元素的范围限制到区间 [min,max]，返回结果到一个新张量。</p><h2 id="nn-KLDivLoss"><a href="#nn-KLDivLoss" class="headerlink" title="nn.KLDivLoss()"></a>nn.KLDivLoss()</h2><p>相对熵 = 交叉熵 - 信息熵<br>$$<br>loss(p,x)=-\sum xlog(p)-(-\sum xlog(x))<br>$$</p><ol><li><p>信息熵是该label完美编码所需的信息量。</p></li><li><p>交叉熵是该label不完美编码（用观察值编码所需的信息量）。</p></li><li><p>相对熵是交叉熵和信息熵的差值，也就是所需额外的信息量。</p></li><li><p>分类任务</p></li><li><p>和交叉熵计算差不多，通常使用交叉熵</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> note </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>wustctf2021 Crypto&amp;Misc wp</title>
       <link href="2021/12/12/wustctf2021-crypto-misc-wp/"/>
       <url>2021/12/12/wustctf2021-crypto-misc-wp/</url>
       
